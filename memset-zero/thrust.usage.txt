@@ -1,0 +1,18 @@
+Resource usage:
+ Common:
+  GLOBAL:14
+ Function _ZN6thrust8cuda_cub4core13_kernel_agentINS0_14__parallel_for16ParallelForAgentINS0_11__transform17unary_transform_fIPKiNS_10device_ptrIiEENS5_14no_stencil_tagENS_8identityIiEENS5_21always_true_predicateEEElEESF_lEEvT0_T1_:
+  REG:9 STACK:0 SHARED:0 LOCAL:0 CONSTANT[0]:352 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN6thrust8cuda_cub4core13_kernel_agentINS0_14__parallel_for16ParallelForAgentINS0_6__fill7functorINS_6detail15normal_iteratorINS_10device_ptrIiEEEEiEElEESC_lEEvT0_T1_:
+  REG:7 STACK:0 SHARED:0 LOCAL:0 CONSTANT[0]:344 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN6thrust8cuda_cub3cub11EmptyKernelIvEEvv:
+  REG:2 STACK:0 SHARED:0 LOCAL:0 CONSTANT[0]:320 TEXTURE:0 SURFACE:0 SAMPLER:0
+
+Fatbin ptx code:
+================
+arch = sm_35
+code version = [6,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed

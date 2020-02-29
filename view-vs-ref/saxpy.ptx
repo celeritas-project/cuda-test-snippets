@@ -1,0 +1,71 @@
+compile_size = 64bit
+compressed
+.version 6.5
+.target sm_35
+.address_size 64
+.visible .entry _Z4moveiPdS_S_PKdS1_S1_S1_(
+.param .u32 _Z4moveiPdS_S_PKdS1_S1_S1__param_0,
+.param .u64 _Z4moveiPdS_S_PKdS1_S1_S1__param_1,
+.param .u64 _Z4moveiPdS_S_PKdS1_S1_S1__param_2,
+.param .u64 _Z4moveiPdS_S_PKdS1_S1_S1__param_3,
+.param .u64 _Z4moveiPdS_S_PKdS1_S1_S1__param_4,
+.param .u64 _Z4moveiPdS_S_PKdS1_S1_S1__param_5,
+.param .u64 _Z4moveiPdS_S_PKdS1_S1_S1__param_6,
+.param .u64 _Z4moveiPdS_S_PKdS1_S1_S1__param_7
+)
+{
+.reg .pred %p<2>;
+.reg .b32 %r<12>;
+.reg .f64 %fd<11>;
+.reg .b64 %rd<23>;
+ld.param.u32 %r2, [_Z4moveiPdS_S_PKdS1_S1_S1__param_0];
+ld.param.u64 %rd1, [_Z4moveiPdS_S_PKdS1_S1_S1__param_1];
+ld.param.u64 %rd2, [_Z4moveiPdS_S_PKdS1_S1_S1__param_2];
+ld.param.u64 %rd3, [_Z4moveiPdS_S_PKdS1_S1_S1__param_3];
+ld.param.u64 %rd4, [_Z4moveiPdS_S_PKdS1_S1_S1__param_4];
+ld.param.u64 %rd5, [_Z4moveiPdS_S_PKdS1_S1_S1__param_5];
+ld.param.u64 %rd6, [_Z4moveiPdS_S_PKdS1_S1_S1__param_6];
+ld.param.u64 %rd7, [_Z4moveiPdS_S_PKdS1_S1_S1__param_7];
+mov.u32 %r3, %tid.x;
+mov.u32 %r4, %ctaid.y;
+mov.u32 %r5, %nctaid.x;
+mov.u32 %r6, %ctaid.x;
+mad.lo.s32 %r7, %r4, %r5, %r6;
+mov.u32 %r8, %ntid.y;
+mov.u32 %r9, %tid.y;
+mad.lo.s32 %r10, %r7, %r8, %r9;
+mov.u32 %r11, %ntid.x;
+mad.lo.s32 %r1, %r10, %r11, %r3;
+setp.ge.s32	%p1, %r1, %r2;
+@%p1 bra BB0_2;
+cvta.to.global.u64 %rd8, %rd7;
+cvta.to.global.u64 %rd9, %rd4;
+mul.wide.s32 %rd10, %r1, 8;
+add.s64 %rd11, %rd9, %rd10;
+add.s64 %rd12, %rd8, %rd10;
+ld.global.nc.f64 %fd1, [%rd12];
+ld.global.nc.f64 %fd2, [%rd11];
+cvta.to.global.u64 %rd13, %rd1;
+add.s64 %rd14, %rd13, %rd10;
+ld.global.f64 %fd3, [%rd14];
+fma.rn.f64 %fd4, %fd2, %fd1, %fd3;
+st.global.f64 [%rd14], %fd4;
+cvta.to.global.u64 %rd15, %rd5;
+add.s64 %rd16, %rd15, %rd10;
+ld.global.nc.f64 %fd5, [%rd16];
+cvta.to.global.u64 %rd17, %rd2;
+add.s64 %rd18, %rd17, %rd10;
+ld.global.f64 %fd6, [%rd18];
+fma.rn.f64 %fd7, %fd5, %fd1, %fd6;
+st.global.f64 [%rd18], %fd7;
+cvta.to.global.u64 %rd19, %rd6;
+add.s64 %rd20, %rd19, %rd10;
+ld.global.nc.f64 %fd8, [%rd20];
+cvta.to.global.u64 %rd21, %rd3;
+add.s64 %rd22, %rd21, %rd10;
+ld.global.f64 %fd9, [%rd22];
+fma.rn.f64 %fd10, %fd8, %fd1, %fd9;
+st.global.f64 [%rd22], %fd10;
+BB0_2:
+ret;
+}

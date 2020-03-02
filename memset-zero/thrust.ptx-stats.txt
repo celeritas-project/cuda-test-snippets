@@ -1,0 +1,13 @@
+add           7
+bra           4
+cvt           7
+cvta          3
+ld           10
+min           2
+mov           6
+mul           2
+setp          6
+shl           2
+st            7
+sub           2
+TOTAL        58

@@ -5,6 +5,8 @@
 
 tempdirname=$(mktemp -d)
 
+PTXSTATS=$(dirname $0)/ptx-stats.py
+
 for filename in $*; do
   basename="${filename%.*}"
   tempname=${tempdirname}/${basename}.o
@@ -18,8 +20,8 @@ for filename in $*; do
     | tail -n +10 \
     > ${basename}.usage.txt
   cuobjdump --dump-ptx ${tempname} \
-    | sed -e "/^$/d" | tail -n +14 \
     > ${basename}.ptx
+  $PTXSTATS ${basename}.ptx > ${basename}.ptx-stats.txt
   cuobjdump --dump-sass ${tempname} \
     | sed -e "s'\s*/\* 0x[a-f0-9]\+ \*/\s*$''" \
     > ${basename}.s

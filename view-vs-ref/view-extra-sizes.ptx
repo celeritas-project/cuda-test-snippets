@@ -1,0 +1,66 @@
+compile_size = 64bit
+compressed
+.version 6.5
+.target sm_35
+.address_size 64
+.visible .entry _Z4move17SizedParticleView(
+.param .align 8 .b8 _Z4move17SizedParticleView_param_0[112]
+)
+{
+.reg .pred %p<2>;
+.reg .b32 %r<18>;
+.reg .f64 %fd<13>;
+.reg .b64 %rd<23>;
+ld.param.u64 %rd7, [_Z4move17SizedParticleView_param_0+104];
+ld.param.u64 %rd6, [_Z4move17SizedParticleView_param_0+88];
+ld.param.u64 %rd5, [_Z4move17SizedParticleView_param_0+72];
+ld.param.u64 %rd4, [_Z4move17SizedParticleView_param_0+56];
+ld.param.u64 %rd3, [_Z4move17SizedParticleView_param_0+40];
+ld.param.u64 %rd2, [_Z4move17SizedParticleView_param_0+24];
+ld.param.u64 %rd1, [_Z4move17SizedParticleView_param_0+8];
+ld.param.u32 %r2, [_Z4move17SizedParticleView_param_0];
+mov.u32 %r9, %ctaid.y;
+mov.u32 %r10, %nctaid.x;
+mov.u32 %r11, %ctaid.x;
+mad.lo.s32 %r12, %r9, %r10, %r11;
+mov.u32 %r13, %ntid.y;
+mov.u32 %r14, %tid.y;
+mad.lo.s32 %r15, %r12, %r13, %r14;
+mov.u32 %r16, %ntid.x;
+mov.u32 %r17, %tid.x;
+mad.lo.s32 %r1, %r15, %r16, %r17;
+setp.ge.s32	%p1, %r1, %r2;
+@%p1 bra BB0_2;
+cvta.to.global.u64 %rd8, %rd7;
+cvta.to.global.u64 %rd9, %rd6;
+cvta.to.global.u64 %rd10, %rd5;
+cvta.to.global.u64 %rd11, %rd4;
+cvta.to.global.u64 %rd12, %rd3;
+cvta.to.global.u64 %rd13, %rd2;
+cvta.to.global.u64 %rd14, %rd1;
+mul.wide.s32 %rd15, %r1, 8;
+add.s64 %rd16, %rd11, %rd15;
+add.s64 %rd17, %rd8, %rd15;
+ld.global.f64 %fd1, [%rd17];
+ld.global.f64 %fd2, [%rd16];
+add.s64 %rd18, %rd14, %rd15;
+ld.global.f64 %fd3, [%rd18];
+fma.rn.f64 %fd4, %fd2, %fd1, %fd3;
+st.global.f64 [%rd18], %fd4;
+add.s64 %rd19, %rd10, %rd15;
+ld.global.f64 %fd5, [%rd17];
+ld.global.f64 %fd6, [%rd19];
+add.s64 %rd20, %rd13, %rd15;
+ld.global.f64 %fd7, [%rd20];
+fma.rn.f64 %fd8, %fd6, %fd5, %fd7;
+st.global.f64 [%rd20], %fd8;
+add.s64 %rd21, %rd9, %rd15;
+ld.global.f64 %fd9, [%rd17];
+ld.global.f64 %fd10, [%rd21];
+add.s64 %rd22, %rd12, %rd15;
+ld.global.f64 %fd11, [%rd22];
+fma.rn.f64 %fd12, %fd10, %fd9, %fd11;
+st.global.f64 [%rd22], %fd12;
+BB0_2:
+ret;
+}

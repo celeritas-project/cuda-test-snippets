@@ -13,19 +13,19 @@ compile_size = 64bit
 
         /*0008*/                   MOV R1, c[0x0][0x44];
         /*0010*/                   S2R R0, SR_CTAID.X;
-        /*0018*/                   S2R R3, SR_CTAID.Y;
-        /*0020*/                   S2R R4, SR_TID.Y;
-        /*0028*/                   IMAD R0, R3, c[0x0][0x34], R0;
-        /*0030*/                   S2R R3, SR_TID.X;
-        /*0038*/                   IMAD R0, R0, c[0x0][0x2c], R4;
+        /*0018*/                   S2R R3, SR_TID.X;
+        /*0020*/                   IMAD R0, R0, c[0x0][0x28], R3;
+        /*0028*/                   MOV32I R3, 0x4;
+        /*0030*/                   ISCADD R2.CC, R0, c[0x0][0x140], 0x2;
+        /*0038*/                   IMAD.HI.X R3, R0, R3, c[0x0][0x144];
 
-        /*0048*/                   IMAD R0, R0, c[0x0][0x28], R3;
-        /*0050*/                   MOV32I R3, 0x4;
-        /*0058*/                   ISCADD R2.CC, R0, c[0x0][0x140], 0x2;
-        /*0060*/                   IMAD.HI.X R3, R0, R3, c[0x0][0x144];
-        /*0068*/                   ST.E [R2], RZ;
-        /*0070*/                   EXIT;
-        /*0078*/                   BRA 0x78;
+        /*0048*/                   ST.E [R2], RZ;
+        /*0050*/                   EXIT;
+        /*0058*/                   BRA 0x58;
+        /*0060*/                   NOP;
+        /*0068*/                   NOP;
+        /*0070*/                   NOP;
+        /*0078*/                   NOP;
 		............................
 
 

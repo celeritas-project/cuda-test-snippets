@@ -2,7 +2,7 @@ Resource usage:
  Common:
   GLOBAL:0
  Function _Z11memset_zeroPi:
-  REG:5 STACK:0 SHARED:0 LOCAL:0 CONSTANT[0]:328 TEXTURE:0 SURFACE:0 SAMPLER:0
+  REG:4 STACK:0 SHARED:0 LOCAL:0 CONSTANT[0]:328 TEXTURE:0 SURFACE:0 SAMPLER:0
 
 Fatbin ptx code:
 ================

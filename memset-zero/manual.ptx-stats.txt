@@ -1,8 +1,8 @@
 add           1
 cvta          1
 ld            1
-mad           3
-mov           8
+mad           1
+mov           4
 mul           1
 st            1
-TOTAL        16
+TOTAL        10

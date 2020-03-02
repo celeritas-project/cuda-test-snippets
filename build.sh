@@ -9,7 +9,7 @@ PTXSTATS=$(dirname $0)/ptx-stats.py
 
 for filename in $*; do
   basename="${filename%.*}"
-  tempname=${tempdirname}/${basename}.o
+  tempname=${tempdirname}/${basename##*/}.o
   nvcc -std=c++14 \
      -gencode arch=compute_35,code=compute_35 \
      -gencode arch=compute_35,code=sm_35 \

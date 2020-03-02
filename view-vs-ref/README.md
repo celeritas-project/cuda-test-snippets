@@ -48,4 +48,6 @@ The "reference", explicit saxpy, and reference plus restricted saxpy have the sa
 
 There appears to be no abstraction penalty for using a "reference" that embeds the thread ID as compared to a direct view. In fact, because pulling data into the reference may reduce the chance of having to re-access global memory, it can be "safer", as the initial implementation of both ref and view here showed that it  was easy to increase the number of memory accesses unintentionally.
 
+Additionally, storing extra but unused data in a view is fine, as it increases the constant memory usage but does not affect the register usage.
+
 The overall conclusion is that it's not necessary to worry about interacting with the view plus thread index at every step in the process. Dealing with thread-local references improves abstraction with no potential performance penalty.

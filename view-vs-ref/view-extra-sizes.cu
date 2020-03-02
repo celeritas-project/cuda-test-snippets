@@ -9,9 +9,7 @@ struct View {
 struct SizedParticleView {
   View<double> x, y, z, u, v, w, nextdist;
 
-  __device__ int size() const {
-      return x.size;
-  }
+  __device__ int size() const { return x.size; }
 
   __device__ Point get_pos(int i) const {
     return {x.ptr + i, y.ptr + i, z.ptr + i};

@@ -1,0 +1,10 @@
+add           7
+cvta          7
+fma           3
+ld           15
+mad           1
+mov           3
+mul           1
+setp          1
+st            3
+TOTAL        41

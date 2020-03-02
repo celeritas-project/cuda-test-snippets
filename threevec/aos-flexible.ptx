@@ -1,0 +1,87 @@
+
+Fatbin elf code:
+================
+arch = sm_35
+code version = [1,7]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_35
+code version = [6,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed
+
+
+
+
+
+
+
+
+.version 6.5
+.target sm_35
+.address_size 64
+
+
+
+.visible .entry _Z4move4View(
+.param .align 8 .b8 _Z4move4View_param_0[32]
+)
+{
+.reg .pred %p<2>;
+.reg .b32 %r<6>;
+.reg .f64 %fd<11>;
+.reg .b64 %rd<20>;
+
+
+ld.param.u64 %rd3, [_Z4move4View_param_0+24];
+ld.param.u64 %rd2, [_Z4move4View_param_0+16];
+ld.param.u64 %rd1, [_Z4move4View_param_0+8];
+ld.param.u32 %r2, [_Z4move4View_param_0];
+mov.u32 %r3, %ntid.x;
+mov.u32 %r4, %ctaid.x;
+mov.u32 %r5, %tid.x;
+mad.lo.s32 %r1, %r3, %r4, %r5;
+setp.ge.s32	%p1, %r1, %r2;
+@%p1 bra BB0_2;
+
+mul.wide.s32 %rd4, %r1, 24;
+add.s64 %rd5, %rd1, %rd4;
+add.s64 %rd6, %rd5, 8;
+add.s64 %rd7, %rd5, 16;
+add.s64 %rd8, %rd2, %rd4;
+add.s64 %rd9, %rd8, 8;
+add.s64 %rd10, %rd8, 16;
+mul.wide.s32 %rd11, %r1, 8;
+add.s64 %rd12, %rd3, %rd11;
+cvta.to.global.u64 %rd13, %rd5;
+cvta.to.global.u64 %rd14, %rd6;
+cvta.to.global.u64 %rd15, %rd7;
+cvta.to.global.u64 %rd16, %rd8;
+cvta.to.global.u64 %rd17, %rd9;
+cvta.to.global.u64 %rd18, %rd10;
+cvta.to.global.u64 %rd19, %rd12;
+ld.global.f64 %fd1, [%rd16];
+ld.global.f64 %fd2, [%rd19];
+ld.global.f64 %fd3, [%rd13];
+fma.rn.f64 %fd4, %fd2, %fd1, %fd3;
+st.global.f64 [%rd13], %fd4;
+ld.global.f64 %fd5, [%rd17];
+ld.global.f64 %fd6, [%rd14];
+fma.rn.f64 %fd7, %fd2, %fd5, %fd6;
+st.global.f64 [%rd14], %fd7;
+ld.global.f64 %fd8, [%rd18];
+ld.global.f64 %fd9, [%rd15];
+fma.rn.f64 %fd10, %fd2, %fd8, %fd9;
+st.global.f64 [%rd15], %fd10;
+
+BB0_2:
+ret;
+}
+
+

@@ -1,0 +1,65 @@
+
+Fatbin elf code:
+================
+arch = sm_35
+code version = [1,7]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_35
+code version = [6,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed
+
+
+
+
+
+
+
+
+.version 6.5
+.target sm_35
+.address_size 64
+
+
+
+.visible .entry _Z12print_valuesPKiPKdPi(
+.param .u64 _Z12print_valuesPKiPKdPi_param_0,
+.param .u64 _Z12print_valuesPKiPKdPi_param_1,
+.param .u64 _Z12print_valuesPKiPKdPi_param_2
+)
+{
+.reg .pred %p<2>;
+.reg .b32 %r<5>;
+.reg .f64 %fd<2>;
+.reg .b64 %rd<12>;
+
+
+ld.param.u64 %rd1, [_Z12print_valuesPKiPKdPi_param_0];
+ld.param.u64 %rd2, [_Z12print_valuesPKiPKdPi_param_1];
+ld.param.u64 %rd3, [_Z12print_valuesPKiPKdPi_param_2];
+cvta.to.global.u64 %rd4, %rd3;
+cvta.to.global.u64 %rd5, %rd2;
+cvta.to.global.u64 %rd6, %rd1;
+mov.u32 %r1, %tid.x;
+mul.wide.s32 %rd7, %r1, 4;
+add.s64 %rd8, %rd6, %rd7;
+ld.global.u32 %r2, [%rd8];
+mul.wide.s32 %rd9, %r1, 8;
+add.s64 %rd10, %rd5, %rd9;
+ld.global.f64 %fd1, [%rd10];
+setp.gt.f64	%p1, %fd1, 0d0000000000000000;
+selp.u32	%r3, 1, 0, %p1;
+add.s32 %r4, %r3, %r2;
+add.s64 %rd11, %rd4, %rd7;
+st.global.u32 [%rd11], %r4;
+ret;
+}
+
+

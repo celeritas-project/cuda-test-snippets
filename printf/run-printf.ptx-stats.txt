@@ -1,0 +1,10 @@
+add           6
+call          1
+cvta          5
+ld            8
+mov           3
+mul           2
+selp          1
+setp          1
+st            5
+TOTAL        32

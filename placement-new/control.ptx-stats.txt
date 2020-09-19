@@ -1,0 +1,8 @@
+add           3
+cvta          2
+ld            2
+mov           2
+mul           2
+shl           1
+st            3
+TOTAL        15

@@ -1,0 +1,14 @@
+abs           1
+add           7
+cvta          1
+fma          14
+ld            2
+mov          26
+mul           2
+selp          1
+setp          3
+shl           3
+shr           2
+st            1
+sub           1
+TOTAL        64

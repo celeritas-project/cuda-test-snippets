@@ -1,0 +1,14 @@
+Resource usage:
+ Common:
+  GLOBAL:0
+ Function _Z7mylog10Pd:
+  REG:22 STACK:0 SHARED:0 LOCAL:0 CONSTANT[0]:328 CONSTANT[2]:120 TEXTURE:0 SURFACE:0 SAMPLER:0
+
+Fatbin ptx code:
+================
+arch = sm_35
+code version = [6,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed

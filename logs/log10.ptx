@@ -155,7 +155,7 @@ fma.rn.f64 %fd11, %fd59, %fd10, %fd10;
 mov.b64 {%temp, %r15}, %fd59;
 }
 mov.b32 %f1, %r15;
-setp.eq.f32	%p3, %f1, 0f00000000;
+setp.eq.ftz.f32	%p3, %f1, 0f00000000;
 selp.f64	%fd61, 0dFFF0000000000000, %fd11, %p3;
 
 BB0_7:

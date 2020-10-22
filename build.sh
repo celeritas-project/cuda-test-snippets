@@ -13,6 +13,7 @@ for filename in $*; do
   nvcc -std=c++14 \
      -gencode arch=compute_35,code=compute_35 \
      -gencode arch=compute_35,code=sm_35 \
+     -use_fast_math \
      -c \
      -o ${tempname} \
      ${filename}

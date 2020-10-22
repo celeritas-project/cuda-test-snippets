@@ -97,14 +97,14 @@ mov.b64 %fd40, {%r2, %r6};
 mov.b64 {%temp, %r7}, %fd1;
 }
 mov.b32 %f2, %r7;
-abs.f32 %f1, %f2;
-setp.lt.f32	%p1, %f1, 0f4086232B;
+abs.ftz.f32 %f1, %f2;
+setp.lt.ftz.f32	%p1, %f1, 0f4086232B;
 @%p1 bra BB0_3;
 
 setp.lt.f64	%p2, %fd1, 0d0000000000000000;
 add.f64 %fd37, %fd1, 0d7FF0000000000000;
 selp.f64	%fd40, 0d0000000000000000, %fd37, %p2;
-setp.geu.f32	%p3, %f1, 0f40874800;
+setp.geu.ftz.f32	%p3, %f1, 0f40874800;
 @%p3 bra BB0_3;
 
 shr.u32 %r8, %r1, 31;

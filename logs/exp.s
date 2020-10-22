@@ -22,7 +22,7 @@ compile_size = 64bit
         /*0048*/                   LD.E.64 R4, [R2];
         /*0050*/                   SSY 0x190;
         /*0058*/                   DFMA R6, R4, c[0x2][0x0], R6;
-        /*0060*/                   FSETP.GEU.AND P0, PT, |R5|, c[0x2][0x6c], PT;
+        /*0060*/                   FSETP.GEU.FTZ.AND P0, PT, |R5|, c[0x2][0x6c], PT;
         /*0068*/                   DADD R8, R6, -6.75539944105574400000e+15;
         /*0070*/                   DFMA R10, R8, c[0x2][0x8], R4;
         /*0078*/                   DFMA R10, R8, c[0x2][0x10], R10;
@@ -45,19 +45,19 @@ compile_size = 64bit
 
         /*0108*/                   MOV R12, R8;
         /*0110*/              @!P0 NOP.S;
-        /*0118*/                   FSETP.GEU.AND P1, PT, |R5|, c[0x2][0x70], PT;
-        /*0120*/                   DSETP.GEU.AND P0, PT, R4, RZ, PT;
+        /*0118*/                   FSETP.GEU.FTZ.AND P0, PT, |R5|, c[0x2][0x70], PT;
+        /*0120*/                   DSETP.GEU.AND P1, PT, R4, RZ, PT;
         /*0128*/                   DADD R4, R4, +INF ;
-        /*0130*/              @!P1 IMAD.U32.U32.HI R0, R6, 0x2, R6;
-        /*0138*/                   SEL R13, R5, RZ, P0;
+        /*0130*/              @!P0 IMAD.U32.U32.HI R0, R6, 0x2, R6;
+        /*0138*/                   SEL R13, R5, RZ, P1;
 
-        /*0148*/                   SEL R12, R4, RZ, P0;
-        /*0150*/              @!P1 MOV R4, RZ;
-        /*0158*/              @!P1 SHR R7, R0, 0x1;
-        /*0160*/              @!P1 ISUB R6, R6, R7;
-        /*0168*/              @!P1 IMAD R9, R7, c[0x2][0x68], R9;
-        /*0170*/              @!P1 ISCADD32I R5, R6, 0x3ff00000, 0x14;
-        /*0178*/              @!P1 DMUL R12, R8, R4;
+        /*0148*/                   SEL R12, R4, RZ, P1;
+        /*0150*/              @!P0 MOV R4, RZ;
+        /*0158*/              @!P0 SHR R7, R0, 0x1;
+        /*0160*/              @!P0 ISUB R6, R6, R7;
+        /*0168*/              @!P0 IMAD R9, R7, c[0x2][0x68], R9;
+        /*0170*/              @!P0 ISCADD32I R5, R6, 0x3ff00000, 0x14;
+        /*0178*/              @!P0 DMUL R12, R8, R4;
 
         /*0188*/                   NOP.S;
         /*0190*/                   ST.E.64 [R2], R12;

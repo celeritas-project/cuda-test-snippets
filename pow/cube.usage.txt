@@ -1,8 +1,8 @@
 Resource usage:
  Common:
   GLOBAL:0
- Function _Z6cu_powPd:
-  REG:30 STACK:0 SHARED:0 LOCAL:0 CONSTANT[0]:328 CONSTANT[2]:228 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _Z7cu_cbrtPd:
+  REG:8 STACK:0 SHARED:0 LOCAL:0 CONSTANT[0]:328 TEXTURE:0 SURFACE:0 SAMPLER:0
 
 Fatbin ptx code:
 ================

@@ -54,14 +54,14 @@ ld.global.f64 %fd1, [%rd4];
 .reg .b32 %temp; 
 mov.b64 {%temp, %r1}, %fd1;
 }
-mov.f64 %fd12, 0d3FD5555555555555;
+mov.f64 %fd12, 0d4008000000000000;
 {
 .reg .b32 %temp; 
 mov.b64 {%temp, %r2}, %fd12;
 }
 bfe.u32 %r4, %r2, 20, 11;
 add.s32 %r5, %r4, -1012;
-mov.u64 %rd5, 4599676419421066581;
+mov.u64 %rd5, 4613937818241073152;
 shl.b64 %rd6, %rd5, %r5;
 setp.ne.s64	%p2, %rd6, -9223372036854775808;
 setp.eq.s64	%p3, %rd6, -9223372036854775808;
@@ -121,11 +121,11 @@ BB0_3:
 @%p4 bra BB0_6;
 
 cvt.rzi.f64.f64	%fd14, %fd12;
-setp.neu.f64	%p9, %fd14, 0d3FD5555555555555;
+setp.neu.f64	%p9, %fd14, 0d4008000000000000;
 selp.f64	%fd17, 0dFFF8000000000000, %fd17, %p9;
 
 BB0_6:
-add.f64 %fd18, %fd1, 0d3FD5555555555555;
+add.f64 %fd18, %fd1, 0d4008000000000000;
 {
 .reg .b32 %temp; 
 mov.b64 {%temp, %r15}, %fd18;
@@ -306,7 +306,7 @@ fma.rn.f64 %fd88, %fd80, %fd87, %fd86;
 add.f64 %fd89, %fd82, %fd88;
 sub.f64 %fd90, %fd82, %fd89;
 add.f64 %fd91, %fd88, %fd90;
-mov.f64 %fd92, 0d3FD5555555555555;
+mov.f64 %fd92, 0d4008000000000000;
 {
 .reg .b32 %temp; 
 mov.b64 {%temp, %r28}, %fd92;

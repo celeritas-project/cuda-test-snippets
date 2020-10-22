@@ -1,0 +1,53 @@
+
+Fatbin elf code:
+================
+arch = sm_35
+code version = [1,7]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_35
+code version = [6,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed
+
+
+
+
+
+
+
+
+.version 6.5
+.target sm_35
+.address_size 64
+
+
+
+.visible .entry _Z7cu_cbrtPd(
+.param .u64 _Z7cu_cbrtPd_param_0
+)
+{
+.reg .b32 %r<2>;
+.reg .f64 %fd<4>;
+.reg .b64 %rd<5>;
+
+
+ld.param.u64 %rd1, [_Z7cu_cbrtPd_param_0];
+cvta.to.global.u64 %rd2, %rd1;
+mov.u32 %r1, %tid.x;
+mul.wide.u32 %rd3, %r1, 8;
+add.s64 %rd4, %rd2, %rd3;
+ld.global.f64 %fd1, [%rd4];
+mul.f64 %fd2, %fd1, %fd1;
+mul.f64 %fd3, %fd1, %fd2;
+st.global.f64 [%rd4], %fd3;
+ret;
+}
+
+

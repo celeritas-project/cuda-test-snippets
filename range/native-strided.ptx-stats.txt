@@ -1,0 +1,9 @@
+add           3
+cvta          1
+ld            4
+mad           1
+mov           4
+mul           2
+setp          2
+st            1
+TOTAL        18

@@ -1,0 +1,10 @@
+add          23
+and           1
+cvta          1
+ld           10
+mad           2
+mov           5
+mul           8
+setp          6
+st            7
+TOTAL        63

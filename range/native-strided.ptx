@@ -1,0 +1,72 @@
+
+Fatbin elf code:
+================
+arch = sm_35
+code version = [1,7]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_35
+code version = [6,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed
+
+
+
+
+
+
+
+
+.version 6.5
+.target sm_35
+.address_size 64
+
+
+
+.visible .entry _Z4moveidPd(
+.param .u32 _Z4moveidPd_param_0,
+.param .f64 _Z4moveidPd_param_1,
+.param .u64 _Z4moveidPd_param_2
+)
+{
+.reg .pred %p<3>;
+.reg .b32 %r<11>;
+.reg .f64 %fd<4>;
+.reg .b64 %rd<5>;
+
+
+ld.param.u32 %r6, [_Z4moveidPd_param_0];
+ld.param.f64 %fd1, [_Z4moveidPd_param_1];
+ld.param.u64 %rd2, [_Z4moveidPd_param_2];
+mov.u32 %r1, %ntid.x;
+mov.u32 %r7, %ctaid.x;
+mov.u32 %r8, %tid.x;
+mad.lo.s32 %r10, %r1, %r7, %r8;
+setp.ge.s32	%p1, %r10, %r6;
+@%p1 bra BB0_3;
+
+cvta.to.global.u64 %rd1, %rd2;
+mov.u32 %r9, %nctaid.x;
+mul.lo.s32 %r3, %r9, %r1;
+
+BB0_2:
+mul.wide.s32 %rd3, %r10, 8;
+add.s64 %rd4, %rd1, %rd3;
+ld.global.f64 %fd2, [%rd4];
+add.f64 %fd3, %fd2, %fd1;
+st.global.f64 [%rd4], %fd3;
+add.s32 %r10, %r3, %r10;
+setp.lt.s32	%p2, %r10, %r6;
+@%p2 bra BB0_2;
+
+BB0_3:
+ret;
+}
+
+

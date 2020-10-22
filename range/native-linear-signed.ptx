@@ -1,0 +1,131 @@
+
+Fatbin elf code:
+================
+arch = sm_35
+code version = [1,7]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_35
+code version = [6,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed
+
+
+
+
+
+
+
+
+.version 6.5
+.target sm_35
+.address_size 64
+
+
+
+.visible .entry _Z4moveidPd(
+.param .u32 _Z4moveidPd_param_0,
+.param .f64 _Z4moveidPd_param_1,
+.param .u64 _Z4moveidPd_param_2
+)
+{
+.reg .pred %p<7>;
+.reg .b32 %r<33>;
+.reg .f64 %fd<16>;
+.reg .b64 %rd<17>;
+
+
+ld.param.u32 %r15, [_Z4moveidPd_param_0];
+ld.param.f64 %fd1, [_Z4moveidPd_param_1];
+ld.param.u64 %rd2, [_Z4moveidPd_param_2];
+cvta.to.global.u64 %rd1, %rd2;
+mov.u32 %r1, %ntid.x;
+mov.u32 %r2, %ctaid.x;
+mov.u32 %r3, %tid.x;
+mad.lo.s32 %r16, %r1, %r2, %r3;
+mul.lo.s32 %r4, %r16, %r15;
+setp.lt.s32	%p1, %r15, 1;
+@%p1 bra BB0_10;
+
+and.b32 %r20, %r15, 3;
+mov.u32 %r28, 0;
+setp.eq.s32	%p2, %r20, 0;
+@%p2 bra BB0_7;
+
+setp.eq.s32	%p3, %r20, 1;
+@%p3 bra BB0_6;
+
+setp.eq.s32	%p4, %r20, 2;
+@%p4 bra BB0_5;
+
+mul.wide.u32 %rd3, %r4, 8;
+add.s64 %rd4, %rd1, %rd3;
+ld.global.f64 %fd2, [%rd4];
+add.f64 %fd3, %fd2, %fd1;
+st.global.f64 [%rd4], %fd3;
+mov.u32 %r28, 1;
+
+BB0_5:
+add.s32 %r22, %r28, %r4;
+mul.wide.u32 %rd5, %r22, 8;
+add.s64 %rd6, %rd1, %rd5;
+ld.global.f64 %fd4, [%rd6];
+add.f64 %fd5, %fd4, %fd1;
+st.global.f64 [%rd6], %fd5;
+add.s32 %r28, %r28, 1;
+
+BB0_6:
+add.s32 %r23, %r28, %r4;
+mul.wide.u32 %rd7, %r23, 8;
+add.s64 %rd8, %rd1, %rd7;
+ld.global.f64 %fd6, [%rd8];
+add.f64 %fd7, %fd6, %fd1;
+st.global.f64 [%rd8], %fd7;
+add.s32 %r28, %r28, 1;
+
+BB0_7:
+setp.lt.u32	%p5, %r15, 4;
+@%p5 bra BB0_10;
+
+mad.lo.s32 %r31, %r15, %r16, %r28;
+
+BB0_9:
+mul.wide.u32 %rd9, %r31, 8;
+add.s64 %rd10, %rd1, %rd9;
+ld.global.f64 %fd8, [%rd10];
+add.f64 %fd9, %fd8, %fd1;
+st.global.f64 [%rd10], %fd9;
+add.s32 %r25, %r31, 1;
+mul.wide.u32 %rd11, %r25, 8;
+add.s64 %rd12, %rd1, %rd11;
+ld.global.f64 %fd10, [%rd12];
+add.f64 %fd11, %fd10, %fd1;
+st.global.f64 [%rd12], %fd11;
+add.s32 %r26, %r31, 2;
+mul.wide.u32 %rd13, %r26, 8;
+add.s64 %rd14, %rd1, %rd13;
+ld.global.f64 %fd12, [%rd14];
+add.f64 %fd13, %fd12, %fd1;
+st.global.f64 [%rd14], %fd13;
+add.s32 %r27, %r31, 3;
+mul.wide.u32 %rd15, %r27, 8;
+add.s64 %rd16, %rd1, %rd15;
+ld.global.f64 %fd14, [%rd16];
+add.f64 %fd15, %fd14, %fd1;
+st.global.f64 [%rd16], %fd15;
+add.s32 %r31, %r31, 4;
+add.s32 %r28, %r28, 4;
+setp.lt.s32	%p6, %r28, %r15;
+@%p6 bra BB0_9;
+
+BB0_10:
+ret;
+}
+
+

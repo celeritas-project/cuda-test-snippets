@@ -1,0 +1,12 @@
+add          10
+cvt           1
+cvta          8
+fma           1
+ld           13
+mad           1
+mov           7
+mul           4
+setp          3
+shl           1
+st            1
+TOTAL        50

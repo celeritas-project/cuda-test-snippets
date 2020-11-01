@@ -1,0 +1,199 @@
+
+Fatbin elf code:
+================
+arch = sm_70
+code version = [1,7]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_70
+code version = [6,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed
+
+
+
+
+
+
+
+
+.version 6.5
+.target sm_70
+.address_size 64
+
+
+
+.visible .entry _Z6selectPKdS0_PKiPPdS4_Pi(
+.param .u64 _Z6selectPKdS0_PKiPPdS4_Pi_param_0,
+.param .u64 _Z6selectPKdS0_PKiPPdS4_Pi_param_1,
+.param .u64 _Z6selectPKdS0_PKiPPdS4_Pi_param_2,
+.param .u64 _Z6selectPKdS0_PKiPPdS4_Pi_param_3,
+.param .u64 _Z6selectPKdS0_PKiPPdS4_Pi_param_4,
+.param .u64 _Z6selectPKdS0_PKiPPdS4_Pi_param_5
+)
+{
+.reg .pred %p<14>;
+.reg .b32 %r<29>;
+.reg .f64 %fd<36>;
+.reg .b64 %rd<40>;
+
+
+ld.param.u64 %rd10, [_Z6selectPKdS0_PKiPPdS4_Pi_param_0];
+ld.param.u64 %rd11, [_Z6selectPKdS0_PKiPPdS4_Pi_param_1];
+ld.param.u64 %rd12, [_Z6selectPKdS0_PKiPPdS4_Pi_param_2];
+ld.param.u64 %rd13, [_Z6selectPKdS0_PKiPPdS4_Pi_param_3];
+ld.param.u64 %rd14, [_Z6selectPKdS0_PKiPPdS4_Pi_param_4];
+ld.param.u64 %rd15, [_Z6selectPKdS0_PKiPPdS4_Pi_param_5];
+cvta.to.global.u64 %rd16, %rd15;
+mov.u32 %r10, %ntid.x;
+mov.u32 %r11, %ctaid.x;
+mov.u32 %r12, %tid.x;
+mad.lo.s32 %r13, %r10, %r11, %r12;
+cvta.to.global.u64 %rd17, %rd11;
+mul.wide.u32 %rd18, %r13, 8;
+add.s64 %rd19, %rd17, %rd18;
+cvta.to.global.u64 %rd20, %rd10;
+add.s64 %rd21, %rd20, %rd18;
+ld.global.f64 %fd13, [%rd21];
+ld.global.f64 %fd14, [%rd19];
+mul.f64 %fd1, %fd14, %fd13;
+cvta.to.global.u64 %rd22, %rd13;
+add.s64 %rd23, %rd22, %rd18;
+ld.global.u64 %rd24, [%rd23];
+cvta.to.global.u64 %rd1, %rd24;
+cvta.to.global.u64 %rd25, %rd14;
+add.s64 %rd26, %rd25, %rd18;
+ld.global.u64 %rd27, [%rd26];
+cvta.to.global.u64 %rd2, %rd27;
+cvta.to.global.u64 %rd28, %rd12;
+mul.wide.u32 %rd29, %r13, 4;
+add.s64 %rd30, %rd28, %rd29;
+ld.global.u32 %r14, [%rd30];
+add.s32 %r1, %r14, -1;
+add.s64 %rd3, %rd16, %rd29;
+setp.lt.s32	%p1, %r1, 1;
+@%p1 bra BB0_23;
+
+and.b32 %r2, %r1, 3;
+setp.eq.s32	%p2, %r2, 0;
+mov.f64 %fd35, 0d0000000000000000;
+mov.u32 %r28, 0;
+@%p2 bra BB0_12;
+
+setp.eq.s32	%p3, %r2, 1;
+mov.f64 %fd33, 0d0000000000000000;
+mov.u32 %r26, 0;
+@%p3 bra BB0_9;
+
+setp.eq.s32	%p4, %r2, 2;
+mov.f64 %fd32, 0d0000000000000000;
+mov.u32 %r25, 0;
+@%p4 bra BB0_6;
+
+ld.global.f64 %fd18, [%rd1];
+ld.global.f64 %fd19, [%rd2];
+fma.rn.f64 %fd32, %fd18, %fd19, 0d0000000000000000;
+setp.ltu.f64	%p5, %fd32, %fd1;
+mov.u32 %r25, 1;
+@%p5 bra BB0_6;
+
+mov.u32 %r20, 0;
+st.global.u32 [%rd3], %r20;
+
+BB0_6:
+mul.wide.u32 %rd31, %r25, 8;
+add.s64 %rd32, %rd1, %rd31;
+add.s64 %rd33, %rd2, %rd31;
+ld.global.f64 %fd20, [%rd33];
+ld.global.f64 %fd21, [%rd32];
+fma.rn.f64 %fd33, %fd21, %fd20, %fd32;
+setp.ltu.f64	%p6, %fd33, %fd1;
+@%p6 bra BB0_8;
+
+st.global.u32 [%rd3], %r25;
+
+BB0_8:
+add.s32 %r26, %r25, 1;
+
+BB0_9:
+mul.wide.s32 %rd34, %r26, 8;
+add.s64 %rd35, %rd1, %rd34;
+add.s64 %rd36, %rd2, %rd34;
+ld.global.f64 %fd22, [%rd36];
+ld.global.f64 %fd23, [%rd35];
+fma.rn.f64 %fd35, %fd23, %fd22, %fd33;
+setp.ltu.f64	%p7, %fd35, %fd1;
+@%p7 bra BB0_11;
+
+st.global.u32 [%rd3], %r26;
+
+BB0_11:
+add.s32 %r28, %r26, 1;
+
+BB0_12:
+setp.lt.u32	%p8, %r1, 4;
+@%p8 bra BB0_23;
+
+mul.wide.s32 %rd37, %r28, 8;
+add.s64 %rd38, %rd1, %rd37;
+add.s64 %rd39, %rd2, %rd37;
+
+BB0_14:
+ld.global.f64 %fd24, [%rd39];
+ld.global.f64 %fd25, [%rd38];
+fma.rn.f64 %fd9, %fd25, %fd24, %fd35;
+setp.ltu.f64	%p9, %fd9, %fd1;
+@%p9 bra BB0_16;
+
+st.global.u32 [%rd3], %r28;
+
+BB0_16:
+ld.global.f64 %fd26, [%rd39+8];
+ld.global.f64 %fd27, [%rd38+8];
+fma.rn.f64 %fd10, %fd27, %fd26, %fd9;
+setp.ltu.f64	%p10, %fd10, %fd1;
+@%p10 bra BB0_18;
+
+add.s32 %r21, %r28, 1;
+st.global.u32 [%rd3], %r21;
+
+BB0_18:
+ld.global.f64 %fd28, [%rd39+16];
+ld.global.f64 %fd29, [%rd38+16];
+fma.rn.f64 %fd11, %fd29, %fd28, %fd10;
+setp.ltu.f64	%p11, %fd11, %fd1;
+@%p11 bra BB0_20;
+
+add.s32 %r22, %r28, 2;
+st.global.u32 [%rd3], %r22;
+
+BB0_20:
+ld.global.f64 %fd30, [%rd39+24];
+ld.global.f64 %fd31, [%rd38+24];
+fma.rn.f64 %fd35, %fd31, %fd30, %fd11;
+setp.ltu.f64	%p12, %fd35, %fd1;
+@%p12 bra BB0_22;
+
+add.s32 %r23, %r28, 3;
+st.global.u32 [%rd3], %r23;
+
+BB0_22:
+add.s32 %r28, %r28, 4;
+setp.lt.s32	%p13, %r28, %r1;
+add.s64 %rd38, %rd38, 32;
+add.s64 %rd39, %rd39, 32;
+@%p13 bra BB0_14;
+
+BB0_23:
+add.s32 %r24, %r14, -1;
+st.global.u32 [%rd3], %r24;
+ret;
+}
+
+

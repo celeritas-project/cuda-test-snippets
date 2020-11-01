@@ -1,0 +1,104 @@
+
+Fatbin elf code:
+================
+arch = sm_70
+code version = [1,7]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_70
+code version = [6,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed
+
+
+
+
+
+
+
+
+.version 6.5
+.target sm_70
+.address_size 64
+
+
+
+.visible .entry _Z6selectPKdS0_PKiPPdS4_Pi(
+.param .u64 _Z6selectPKdS0_PKiPPdS4_Pi_param_0,
+.param .u64 _Z6selectPKdS0_PKiPPdS4_Pi_param_1,
+.param .u64 _Z6selectPKdS0_PKiPPdS4_Pi_param_2,
+.param .u64 _Z6selectPKdS0_PKiPPdS4_Pi_param_3,
+.param .u64 _Z6selectPKdS0_PKiPPdS4_Pi_param_4,
+.param .u64 _Z6selectPKdS0_PKiPPdS4_Pi_param_5
+)
+{
+.reg .pred %p<3>;
+.reg .b32 %r<12>;
+.reg .f64 %fd<10>;
+.reg .b64 %rd<30>;
+
+
+ld.param.u64 %rd5, [_Z6selectPKdS0_PKiPPdS4_Pi_param_0];
+ld.param.u64 %rd6, [_Z6selectPKdS0_PKiPPdS4_Pi_param_1];
+ld.param.u64 %rd7, [_Z6selectPKdS0_PKiPPdS4_Pi_param_2];
+ld.param.u64 %rd8, [_Z6selectPKdS0_PKiPPdS4_Pi_param_3];
+ld.param.u64 %rd9, [_Z6selectPKdS0_PKiPPdS4_Pi_param_4];
+ld.param.u64 %rd10, [_Z6selectPKdS0_PKiPPdS4_Pi_param_5];
+cvta.to.global.u64 %rd1, %rd10;
+mov.u32 %r5, %ntid.x;
+mov.u32 %r6, %ctaid.x;
+mov.u32 %r7, %tid.x;
+mad.lo.s32 %r8, %r5, %r6, %r7;
+cvt.u64.u32	%rd2, %r8;
+cvta.to.global.u64 %rd11, %rd6;
+mul.wide.u32 %rd12, %r8, 8;
+add.s64 %rd13, %rd11, %rd12;
+cvta.to.global.u64 %rd14, %rd5;
+add.s64 %rd15, %rd14, %rd12;
+ld.global.f64 %fd4, [%rd15];
+ld.global.f64 %fd5, [%rd13];
+mul.f64 %fd9, %fd5, %fd4;
+cvta.to.global.u64 %rd16, %rd8;
+add.s64 %rd17, %rd16, %rd12;
+ld.global.u64 %rd18, [%rd17];
+cvta.to.global.u64 %rd3, %rd18;
+cvta.to.global.u64 %rd19, %rd9;
+add.s64 %rd20, %rd19, %rd12;
+ld.global.u64 %rd21, [%rd20];
+cvta.to.global.u64 %rd4, %rd21;
+cvta.to.global.u64 %rd22, %rd7;
+mul.wide.u32 %rd23, %r8, 4;
+add.s64 %rd24, %rd22, %rd23;
+ld.global.u32 %r10, [%rd24];
+
+BB0_1:
+add.s32 %r10, %r10, -1;
+setp.eq.s32	%p1, %r10, 0;
+mov.u32 %r11, 0;
+@%p1 bra BB0_3;
+
+mul.wide.u32 %rd25, %r10, 8;
+add.s64 %rd26, %rd3, %rd25;
+add.s64 %rd27, %rd4, %rd25;
+ld.global.f64 %fd6, [%rd27];
+ld.global.f64 %fd7, [%rd26];
+mul.f64 %fd8, %fd7, %fd6;
+sub.f64 %fd9, %fd9, %fd8;
+setp.gtu.f64	%p2, %fd9, 0d0000000000000000;
+mov.u32 %r11, %r10;
+@%p2 bra BB0_1;
+
+BB0_3:
+shl.b64 %rd28, %rd2, 2;
+add.s64 %rd29, %rd1, %rd28;
+st.global.u32 [%rd29], %r11;
+ret;
+}
+
+

@@ -1,0 +1,11 @@
+add          22
+and           1
+cvta          8
+fma           7
+ld           25
+mad           1
+mov          11
+mul           6
+setp         13
+st            8
+TOTAL       102

@@ -1,0 +1,59 @@
+
+Fatbin elf code:
+================
+arch = sm_35
+code version = [1,7]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_35
+code version = [6,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed
+
+
+
+
+
+
+
+
+.version 6.5
+.target sm_35
+.address_size 64
+
+
+
+.visible .entry _Z8call_minPdPKd(
+.param .u64 _Z8call_minPdPKd_param_0,
+.param .u64 _Z8call_minPdPKd_param_1
+)
+{
+.reg .pred %p<2>;
+.reg .b32 %r<2>;
+.reg .f64 %fd<4>;
+.reg .b64 %rd<8>;
+
+
+ld.param.u64 %rd1, [_Z8call_minPdPKd_param_0];
+ld.param.u64 %rd2, [_Z8call_minPdPKd_param_1];
+cvta.to.global.u64 %rd3, %rd1;
+cvta.to.global.u64 %rd4, %rd2;
+mov.u32 %r1, %tid.x;
+mul.wide.u32 %rd5, %r1, 8;
+add.s64 %rd6, %rd3, %rd5;
+add.s64 %rd7, %rd4, %rd5;
+ld.global.f64 %fd1, [%rd7];
+ld.global.f64 %fd2, [%rd6];
+setp.gt.f64	%p1, %fd1, %fd2;
+selp.f64	%fd3, %fd2, %fd1, %p1;
+st.global.f64 [%rd6], %fd3;
+ret;
+}
+
+

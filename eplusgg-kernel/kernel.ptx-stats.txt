@@ -15,7 +15,7 @@ ld           69
 mad           7
 madc          8
 min           1
-mov         171
+mov         167
 mul          71
 neg          11
 or            7
@@ -29,4 +29,4 @@ st           61
 sub          25
 subc          3
 xor          47
-TOTAL       851
+TOTAL       847

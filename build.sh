@@ -6,11 +6,12 @@
 tempdirname=$(mktemp -d)
 
 PTXSTATS=$(dirname $0)/ptx-stats.py
-ARCH=35
+ARCH=70
 CELERITAS=${HOME}/.local/src/celeritas
 if [ -e ${CELERITAS} ]; then
-  CUDA_FLAGS="${CUDA_FLAGS} -I ${CELERITAS}/src -I ${CELERITAS}/build/src"
+  CUDA_FLAGS="${CUDA_FLAGS} -I ${CELERITAS}/src -I ${CELERITAS}/build-opt/src"
 fi
+CUDA_FLAGS="${CUDA_FLAGS} -use_fast_math -O3"
 
 for filename in $*; do
   basename="${filename%.*}"
@@ -18,7 +19,6 @@ for filename in $*; do
   time nvcc -std=c++14 \
      -gencode arch=compute_${ARCH},code=compute_${ARCH} \
      -gencode arch=compute_${ARCH},code=sm_${ARCH} \
-     -use_fast_math \
      ${CUDA_FLAGS} \
      -c \
      -o ${tempname} \

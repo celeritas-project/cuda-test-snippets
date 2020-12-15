@@ -1,0 +1,9 @@
+and           1
+bra           1
+cvta          1
+ld            2
+mov           1
+neg           1
+setp          1
+st            1
+TOTAL         9

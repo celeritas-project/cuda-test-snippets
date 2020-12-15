@@ -1,0 +1,8 @@
+cvta          1
+ld            2
+mov           1
+mul           1
+selp          1
+setp          1
+st            1
+TOTAL         8

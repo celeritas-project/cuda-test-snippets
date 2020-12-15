@@ -1,0 +1,59 @@
+
+Fatbin elf code:
+================
+arch = sm_70
+code version = [1,7]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_70
+code version = [6,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed
+
+
+
+
+
+
+
+
+.version 6.5
+.target sm_70
+.address_size 64
+
+
+
+.visible .entry _Z11my_copysignPd(
+.param .u64 _Z11my_copysignPd_param_0
+)
+{
+.reg .pred %p<2>;
+.reg .b32 %r<3>;
+.reg .f64 %fd<3>;
+.reg .b64 %rd<3>;
+
+
+ld.param.u64 %rd1, [_Z11my_copysignPd_param_0];
+mov.u32 %r1, %tid.x;
+and.b32 %r2, %r1, 1;
+setp.eq.b32	%p1, %r2, 1;
+@!%p1 bra BB0_2;
+bra.uni BB0_1;
+
+BB0_1:
+cvta.to.global.u64 %rd2, %rd1;
+ld.global.f64 %fd1, [%rd2];
+neg.f64 %fd2, %fd1;
+st.global.f64 [%rd2], %fd2;
+
+BB0_2:
+ret;
+}
+
+

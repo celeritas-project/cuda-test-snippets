@@ -1,0 +1,9 @@
+add           1
+cvt           1
+cvta          1
+ld            2
+mov           1
+mul           1
+shl           1
+st            1
+TOTAL         9

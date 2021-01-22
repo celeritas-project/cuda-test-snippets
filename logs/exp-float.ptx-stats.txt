@@ -1,0 +1,8 @@
+add           1
+cvta          1
+ex2           1
+ld            2
+mov           1
+mul           2
+st            1
+TOTAL         9

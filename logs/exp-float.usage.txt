@@ -1,8 +1,8 @@
 Resource usage:
  Common:
   GLOBAL:0
- Function _Z5mylogPd:
-  REG:22 STACK:0 SHARED:0 LOCAL:0 CONSTANT[0]:360 CONSTANT[2]:80 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _Z5myexpPf:
+  REG:8 STACK:0 SHARED:0 LOCAL:0 CONSTANT[0]:360 TEXTURE:0 SURFACE:0 SAMPLER:0
 
 Fatbin ptx code:
 ================

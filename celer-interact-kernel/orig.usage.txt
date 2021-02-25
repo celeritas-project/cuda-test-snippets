@@ -1,0 +1,14 @@
+Resource usage:
+ Common:
+  GLOBAL:64448 CONSTANT[3]:344
+ Function _ZN15demo_interactor14iterate_kernelENS_10ParamsDataILN9celeritas9OwnershipE2ELNS1_8MemSpaceE1EEENS_9StateDataILS2_1ELS3_1EEENS1_22StackAllocatorPointersINS1_9SecondaryEEENS1_16DetectorPointersE:
+  REG:68 STACK:48 SHARED:0 LOCAL:0 CONSTANT[0]:648 CONSTANT[2]:248 TEXTURE:0 SURFACE:0 SAMPLER:0
+
+Fatbin ptx code:
+================
+arch = sm_70
+code version = [6,4]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed

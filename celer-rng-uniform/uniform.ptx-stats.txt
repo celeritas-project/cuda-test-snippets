@@ -1,0 +1,13 @@
+add          14
+cvt           6
+cvta          2
+fma           4
+ld           11
+mad           1
+mov           3
+mul           7
+shl          12
+shr           6
+st           12
+xor          27
+TOTAL       105

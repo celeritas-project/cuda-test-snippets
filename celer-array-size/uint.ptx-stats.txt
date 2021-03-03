@@ -1,0 +1,7 @@
+add           2
+cvta          2
+ld            6
+mov           1
+mul           2
+st            4
+TOTAL        17

@@ -1,0 +1,14 @@
+Resource usage:
+ Common:
+  GLOBAL:64448 CONSTANT[3]:344
+ Function _Z11test_kernelN9celeritas6detail13RayleighGroupILNS_9OwnershipE2ELNS_8MemSpaceE1EEENS_21ModelInteractPointersE:
+  REG:46 STACK:104 SHARED:0 LOCAL:0 CONSTANT[0]:968 CONSTANT[2]:264 TEXTURE:0 SURFACE:0 SAMPLER:0
+
+Fatbin ptx code:
+================
+arch = sm_70
+code version = [6,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed

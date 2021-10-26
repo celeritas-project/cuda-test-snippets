@@ -2,12 +2,12 @@ add          15
 cvt           6
 cvta          2
 fma           5
-ld           17
+ld            8
 mad           1
 mov           3
 mul           6
 shl          12
 shr           6
-st           18
+st            9
 xor          27
-TOTAL       118
+TOTAL       100

@@ -1,9 +1,9 @@
-#include "random/cuda/RngEngine.hh"
+#include "random/RngEngine.hh"
 #include "base/KernelParamCalculator.cuda.hh"
 
 using namespace celeritas;
 
-__global__ void sample(RngStatePointers const states, double* result)
+__global__ void sample(RngEngine::StateRef const states, double* result)
 {
     auto thread_id = KernelParamCalculator::thread_id();
     RngEngine rng(states, thread_id);

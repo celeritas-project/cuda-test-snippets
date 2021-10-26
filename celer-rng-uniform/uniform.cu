@@ -1,4 +1,4 @@
-#include "random/cuda/RngEngine.hh"
+#include "random/RngEngine.hh"
 #include "random/distributions/UniformRealDistribution.hh"
 #include "base/KernelParamCalculator.cuda.hh"
 
@@ -10,7 +10,7 @@ __device__ __forceinline__ double sample(RngEngine& r, double lower, double
     return UniformRealDistribution<double>(lower, upper)(r);
 }
 
-__global__ void sample(RngStatePointers const states, double* result)
+__global__ void sample(RngEngine::StateRef const states, double* result)
 {
     auto thread_id = KernelParamCalculator::thread_id();
     RngEngine rng(states, thread_id);

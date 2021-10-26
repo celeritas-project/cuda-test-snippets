@@ -1,13 +1,13 @@
 Resource usage:
  Common:
   GLOBAL:64448 CONSTANT[3]:72
- Function _Z6sampleN9celeritas16RngStatePointersEPd:
+ Function _Z6sampleN9celeritas12RngStateDataILNS_9OwnershipE1ELNS_8MemSpaceE1EEEPd:
   REG:26 STACK:0 SHARED:0 LOCAL:0 CONSTANT[0]:376 TEXTURE:0 SURFACE:0 SAMPLER:0
 
 Fatbin ptx code:
 ================
 arch = sm_70
-code version = [6,4]
+code version = [6,5]
 producer = <unknown>
 host = linux
 compile_size = 64bit

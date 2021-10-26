@@ -1,7 +1,7 @@
 abs           1
 add          38
-and           4
-bra          56
+and           3
+bra          54
 cvt          11
 cvta          7
 div           3
@@ -14,10 +14,10 @@ neg          10
 rcp           4
 rem           1
 selp         22
-setp         69
+setp         67
 shr           7
 sqrt          5
 st           14
 sub          37
 xor          14
-TOTAL       513
+TOTAL       508

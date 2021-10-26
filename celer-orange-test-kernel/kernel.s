@@ -68,2091 +68,2059 @@ compile_size = 64bit
 
         /*01c0*/                   IMAD.MOV.U32 R41, RZ, RZ, 0x18 ;
 
-        /*01d0*/                   BMOV.32.CLEAR RZ, B0 ;
+        /*01d0*/                   IMAD.MOV.U32 R19, RZ, RZ, 0x4 ;
 
-        /*01e0*/                   IMAD.MOV.U32 R19, RZ, RZ, 0x4 ;
+        /*01e0*/                   IMAD.X R35, RZ, RZ, c[0x0][0x1b4], P0 ;
 
-        /*01f0*/                   BSSY B0, 0x2880 ;
+        /*01f0*/                   IMAD.MOV.U32 R5, RZ, RZ, 0x8 ;
 
-        /*0200*/                   IMAD.X R35, RZ, RZ, c[0x0][0x1b4], P0 ;
+        /*0200*/                   IMAD.WIDE.U32 R38, R0, R41, c[0x0][0x190] ;
 
-        /*0210*/                   IMAD.MOV.U32 R5, RZ, RZ, 0x8 ;
+        /*0210*/                   IMAD.WIDE.U32 R40, R0, R41, c[0x0][0x1a0] ;
 
-        /*0220*/                   IMAD.WIDE.U32 R38, R0, R41, c[0x0][0x190] ;
+        /*0220*/                   IMAD.WIDE.U32 R2, R0, R5, c[0x0][0x1c0] ;
 
-        /*0230*/                   IMAD.WIDE.U32 R40, R0, R41, c[0x0][0x1a0] ;
+        /*0230*/                   IMAD.WIDE.U32 R18, R18, R19, c[0x0][0x170] ;
 
-        /*0240*/                   IMAD.WIDE.U32 R2, R0, R5, c[0x0][0x1c0] ;
+        /*0240*/                   ISETP.GT.AND P0, PT, R6, 0x2, PT ;
 
-        /*0250*/                   IMAD.WIDE.U32 R18, R18, R19, c[0x0][0x170] ;
+        /*0250*/               @P0 BRA 0xdb0 ;
 
-        /*0260*/                   ISETP.GT.AND P0, PT, R6, 0x3, PT ;
+        /*0260*/                   LOP3.LUT R6, R6, 0xff, RZ, 0xc0, !PT ;
 
-        /*0270*/               @P0 BRA 0x16a0 ;
+        /*0270*/                   ISETP.NE.AND P0, PT, R6, RZ, PT ;
 
-        /*0280*/                   ISETP.GT.AND P0, PT, R6, 0x1, PT ;
+        /*0280*/              @!P0 BRA 0xa90 ;
 
-        /*0290*/               @P0 BRA 0x9f0 ;
+        /*0290*/                   PRMT R4, R6, 0x9910, RZ ;
 
-        /*02a0*/                   LOP3.LUT R6, R6, 0xff, RZ, 0xc0, !PT ;
+        /*02a0*/                   ISETP.NE.AND P0, PT, R4, 0x1, PT ;
 
-        /*02b0*/                   ISETP.NE.AND P0, PT, R6, RZ, PT ;
+        /*02b0*/              @!P0 BRA 0x6b0 ;
 
-        /*02c0*/              @!P0 BRA 0x6d0 ;
+        /*02c0*/                   ISETP.NE.AND P0, PT, R4, 0x2, PT ;
 
-        /*02d0*/                   PRMT R4, R6, 0x9910, RZ ;
+        /*02d0*/               @P0 EXIT ;
 
-        /*02e0*/                   ISETP.NE.AND P0, PT, R4, 0x1, PT ;
+        /*02e0*/                   LDG.E.SYS R4, [R18] ;
 
-        /*02f0*/               @P0 BRA 0x2870 ;
+        /*02f0*/                   MOV R6, c[0x0][0x190] ;
 
-        /*0300*/                   LDG.E.SYS R4, [R18] ;
+        /*0300*/                   IMAD.MOV.U32 R7, RZ, RZ, c[0x0][0x194] ;
 
-        /*0310*/                   MOV R6, c[0x0][0x190] ;
+        /*0310*/                   IMAD.MOV.U32 R13, RZ, RZ, RZ ;
 
-        /*0320*/                   IMAD.MOV.U32 R7, RZ, RZ, c[0x0][0x194] ;
+        /*0320*/                   IMAD.WIDE.U32 R6, R0, 0x18, R6 ;
 
-        /*0330*/                   IMAD.MOV.U32 R13, RZ, RZ, RZ ;
+        /*0330*/                   IMAD.IADD R7, R7, 0x1, R13 ;
 
-        /*0340*/                   IMAD.WIDE.U32 R6, R0, 0x18, R6 ;
+        /*0340*/                   LDG.E.64.SYS R8, [R6+0x10] ;
 
-        /*0350*/                   IMAD.IADD R7, R7, 0x1, R13 ;
+        /*0350*/                   IMAD.WIDE.U32 R4, R4, R5, c[0x0][0x180] ;
 
-        /*0360*/                   LDG.E.64.SYS R8, [R6+0x8] ;
+        /*0360*/                   LDG.E.64.SYS R4, [R4] ;
 
-        /*0370*/                   IMAD.WIDE.U32 R4, R4, R5, c[0x0][0x180] ;
+        /*0370*/                   BMOV.32.CLEAR RZ, B0 ;
 
-        /*0380*/                   LDG.E.64.SYS R4, [R4] ;
+        /*0380*/                   BSSY B0, 0x690 ;
 
-        /*0390*/                   BMOV.32.CLEAR RZ, B1 ;
+        /*0390*/                   DADD R8, R8, -R4 ;
 
-        /*03a0*/                   BSSY B1, 0x6b0 ;
+        /*03a0*/                   DSETP.GTU.AND P1, PT, R8, RZ, PT ;
 
-        /*03b0*/                   DADD R8, R8, -R4 ;
+        /*03b0*/                   DSETP.GEU.AND P0, PT, R8, RZ, PT ;
 
-        /*03c0*/                   DSETP.GTU.AND P1, PT, R8, RZ, PT ;
+        /*03c0*/                   SEL R10, RZ, 0x1, !P1 ;
 
-        /*03d0*/                   DSETP.GEU.AND P0, PT, R8, RZ, PT ;
+        /*03d0*/                   SEL R11, RZ, 0x1, P0 ;
 
-        /*03e0*/                   SEL R10, RZ, 0x1, !P1 ;
+        /*03e0*/                   IMAD.IADD R10, R10, 0x1, -R11 ;
 
-        /*03f0*/                   SEL R11, RZ, 0x1, P0 ;
+        /*03f0*/                   SHF.R.U32.HI R10, RZ, 0x1f, R10 ;
 
-        /*0400*/                   IMAD.IADD R10, R10, 0x1, -R11 ;
+        /*0400*/                   LOP3.LUT R11, R10, 0x1, RZ, 0x3c, !PT ;
 
-        /*0410*/                   SHF.R.U32.HI R10, RZ, 0x1f, R10 ;
+        /*0410*/                   DSETP.GTU.XOR P0, PT, R8, RZ, !P0 ;
 
-        /*0420*/                   LOP3.LUT R11, R10, 0x1, RZ, 0x3c, !PT ;
+        /*0420*/                   STG.E.U8.SYS [R34], R11 ;
 
-        /*0430*/                   DSETP.GTU.XOR P0, PT, R8, RZ, !P0 ;
+        /*0430*/              @!P0 BRA 0x660 ;
 
-        /*0440*/                   STG.E.U8.SYS [R34], R11 ;
+        /*0440*/                   MOV R8, c[0x0][0x1a0] ;
 
-        /*0450*/              @!P0 BRA 0x680 ;
+        /*0450*/                   IMAD.MOV.U32 R9, RZ, RZ, c[0x0][0x1a4] ;
 
-        /*0460*/                   MOV R8, c[0x0][0x1a0] ;
+        /*0460*/                   IMAD.WIDE.U32 R8, R0, 0x18, R8 ;
 
-        /*0470*/                   IMAD.MOV.U32 R9, RZ, RZ, c[0x0][0x1a4] ;
+        /*0470*/                   IMAD.IADD R9, R13, 0x1, R9 ;
 
-        /*0480*/                   IMAD.WIDE.U32 R8, R0, 0x18, R8 ;
+        /*0480*/                   LDG.E.64.SYS R8, [R8+0x10] ;
 
-        /*0490*/                   IMAD.IADD R9, R13, 0x1, R9 ;
+        /*0490*/                   DSETP.NEU.AND P0, PT, R8, RZ, PT ;
 
-        /*04a0*/                   LDG.E.64.SYS R8, [R8+0x8] ;
+        /*04a0*/              @!P0 BRA 0x660 ;
 
-        /*04b0*/                   DSETP.NEU.AND P0, PT, R8, RZ, PT ;
+        /*04b0*/                   LDG.E.64.SYS R6, [R6+0x10] ;
 
-        /*04c0*/              @!P0 BRA 0x680 ;
+        /*04c0*/                   MUFU.RCP64H R11, R9 ;
 
-        /*04d0*/                   LDG.E.64.SYS R6, [R6+0x8] ;
+        /*04d0*/                   IMAD.MOV.U32 R10, RZ, RZ, 0x1 ;
 
-        /*04e0*/                   MUFU.RCP64H R11, R9 ;
+        /*04e0*/                   BMOV.32.CLEAR RZ, B1 ;
 
-        /*04f0*/                   IMAD.MOV.U32 R10, RZ, RZ, 0x1 ;
+        /*04f0*/                   BSSY B1, 0x640 ;
 
-        /*0500*/                   BMOV.32.CLEAR RZ, B2 ;
+        /*0500*/                   DFMA R12, -R8, R10, 1 ;
 
-        /*0510*/                   BSSY B2, 0x660 ;
+        /*0510*/                   DFMA R12, R12, R12, R12 ;
 
-        /*0520*/                   DFMA R12, -R8, R10, 1 ;
+        /*0520*/                   DFMA R12, R10, R12, R10 ;
 
-        /*0530*/                   DFMA R12, R12, R12, R12 ;
+        /*0530*/                   DADD R4, R4, -R6 ;
 
-        /*0540*/                   DFMA R12, R10, R12, R10 ;
+        /*0540*/                   DMUL R10, R4, R12 ;
 
-        /*0550*/                   DADD R4, R4, -R6 ;
+        /*0550*/                   FSETP.GTU.AND P1, PT, |R5|, 6.4490557925156731238e-37, PT ;
 
-        /*0560*/                   DMUL R10, R4, R12 ;
+        /*0560*/                   DFMA R14, -R8, R10, R4 ;
 
-        /*0570*/                   FSETP.GTU.AND P1, PT, |R5|, 6.4490557925156731238e-37, PT ;
+        /*0570*/                   DFMA R10, R12, R14, R10 ;
 
-        /*0580*/                   DFMA R14, -R8, R10, R4 ;
+        /*0580*/                   FFMA R0, RZ, R9, R11 ;
 
-        /*0590*/                   DFMA R10, R12, R14, R10 ;
+        /*0590*/                   FSETP.GT.AND P0, PT, |R0|, 4.8978884574313168671e-40, PT ;
 
-        /*05a0*/                   FFMA R0, RZ, R9, R11 ;
+        /*05a0*/               @P0 BRA P1, 0x630 ;
 
-        /*05b0*/                   FSETP.GT.AND P0, PT, |R0|, 4.8978884574313168671e-40, PT ;
+        /*05b0*/                   IMAD.MOV.U32 R10, RZ, RZ, R4 ;
 
-        /*05c0*/               @P0 BRA P1, 0x650 ;
+        /*05c0*/                   MOV R19, R5 ;
 
-        /*05d0*/                   IMAD.MOV.U32 R10, RZ, RZ, R4 ;
+        /*05d0*/                   IMAD.MOV.U32 R4, RZ, RZ, R8 ;
 
-        /*05e0*/                   MOV R19, R5 ;
+        /*05e0*/                   MOV R0, 0x610 ;
 
-        /*05f0*/                   IMAD.MOV.U32 R4, RZ, RZ, R8 ;
+        /*05f0*/                   IMAD.MOV.U32 R5, RZ, RZ, R9 ;
 
-        /*0600*/                   MOV R0, 0x630 ;
+        /*0600*/                   CALL.REL.NOINC 0x3990 ;
 
-        /*0610*/                   IMAD.MOV.U32 R5, RZ, RZ, R9 ;
+        /*0610*/                   IMAD.MOV.U32 R10, RZ, RZ, R6 ;
 
-        /*0620*/                   CALL.REL.NOINC 0x3a50 ;
+        /*0620*/                   IMAD.MOV.U32 R11, RZ, RZ, R7 ;
 
-        /*0630*/                   IMAD.MOV.U32 R10, RZ, RZ, R6 ;
+        /*0630*/                   BSYNC B1 ;
 
-        /*0640*/                   IMAD.MOV.U32 R11, RZ, RZ, R7 ;
+        /*0640*/                   DSETP.GT.AND P0, PT, R10, RZ, PT ;
 
-        /*0650*/                   BSYNC B2 ;
+        /*0650*/               @P0 BRA 0x680 ;
 
-        /*0660*/                   DSETP.GT.AND P0, PT, R10, RZ, PT ;
+        /*0660*/                   MOV R10, 0x0 ;
 
-        /*0670*/               @P0 BRA 0x6a0 ;
+        /*0670*/                   IMAD.MOV.U32 R11, RZ, RZ, 0x7ff00000 ;
 
-        /*0680*/                   MOV R10, 0x0 ;
+        /*0680*/                   BSYNC B0 ;
 
-        /*0690*/                   IMAD.MOV.U32 R11, RZ, RZ, 0x7ff00000 ;
+        /*0690*/                   STG.E.64.SYS [R2], R10 ;
 
-        /*06a0*/                   BSYNC B1 ;
+        /*06a0*/                   EXIT ;
 
-        /*06b0*/                   STG.E.64.SYS [R2], R10 ;
+        /*06b0*/                   LDG.E.SYS R4, [R18] ;
 
-        /*06c0*/                   EXIT ;
+        /*06c0*/                   IMAD.MOV.U32 R6, RZ, RZ, c[0x0][0x190] ;
 
-        /*06d0*/                   LDG.E.SYS R4, [R18] ;
+        /*06d0*/                   IMAD.MOV.U32 R7, RZ, RZ, c[0x0][0x194] ;
 
-        /*06e0*/                   LDG.E.64.SYS R6, [R38] ;
+        /*06e0*/                   IMAD.MOV.U32 R11, RZ, RZ, RZ ;
 
-        /*06f0*/                   IMAD.WIDE.U32 R4, R4, R5, c[0x0][0x180] ;
+        /*06f0*/                   IMAD.WIDE.U32 R6, R0, 0x18, R6 ;
 
-        /*0700*/                   LDG.E.64.SYS R4, [R4] ;
+        /*0700*/                   IMAD.MOV.U32 R14, RZ, RZ, R6 ;
 
-        /*0710*/                   BMOV.32.CLEAR RZ, B1 ;
+        /*0710*/                   IADD3 R15, R7, R11, RZ ;
 
-        /*0720*/                   BSSY B1, 0x9d0 ;
+        /*0720*/                   LDG.E.64.SYS R6, [R14+0x8] ;
 
-        /*0730*/                   DADD R6, R6, -R4 ;
+        /*0730*/                   IMAD.WIDE.U32 R4, R4, R5, c[0x0][0x180] ;
 
-        /*0740*/                   DSETP.GTU.AND P1, PT, R6, RZ, PT ;
+        /*0740*/                   LDG.E.64.SYS R4, [R4] ;
 
-        /*0750*/                   DSETP.GEU.AND P0, PT, R6, RZ, PT ;
+        /*0750*/                   BMOV.32.CLEAR RZ, B0 ;
 
-        /*0760*/                   SEL R0, RZ, 0x1, !P1 ;
+        /*0760*/                   BSSY B0, 0xa70 ;
 
-        /*0770*/                   SEL R9, RZ, 0x1, P0 ;
+        /*0770*/                   DADD R6, R6, -R4 ;
 
-        /*0780*/                   IMAD.IADD R0, R0, 0x1, -R9 ;
+        /*0780*/                   DSETP.GTU.AND P1, PT, R6, RZ, PT ;
 
-        /*0790*/                   SHF.R.U32.HI R0, RZ, 0x1f, R0 ;
+        /*0790*/                   DSETP.GEU.AND P0, PT, R6, RZ, PT ;
 
-        /*07a0*/                   LOP3.LUT R9, R0, 0x1, RZ, 0x3c, !PT ;
+        /*07a0*/                   SEL R8, RZ, 0x1, !P1 ;
 
-        /*07b0*/                   DSETP.GTU.XOR P0, PT, R6, RZ, !P0 ;
+        /*07b0*/                   SEL R9, RZ, 0x1, P0 ;
 
-        /*07c0*/                   STG.E.U8.SYS [R34], R9 ;
+        /*07c0*/                   IMAD.IADD R8, R8, 0x1, -R9 ;
 
-        /*07d0*/              @!P0 BRA 0x9a0 ;
+        /*07d0*/                   SHF.R.U32.HI R8, RZ, 0x1f, R8 ;
 
-        /*07e0*/                   LDG.E.64.SYS R40, [R40] ;
+        /*07e0*/                   LOP3.LUT R9, R8, 0x1, RZ, 0x3c, !PT ;
 
-        /*07f0*/                   DSETP.NEU.AND P0, PT, R40, RZ, PT ;
+        /*07f0*/                   DSETP.GTU.XOR P0, PT, R6, RZ, !P0 ;
 
-        /*0800*/              @!P0 BRA 0x9a0 ;
+        /*0800*/                   STG.E.U8.SYS [R34], R9 ;
 
-        /*0810*/                   LDG.E.64.SYS R38, [R38] ;
+        /*0810*/              @!P0 BRA 0xa40 ;
 
-        /*0820*/                   MUFU.RCP64H R7, R41 ;
+        /*0820*/                   IMAD.MOV.U32 R6, RZ, RZ, c[0x0][0x1a0] ;
 
-        /*0830*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x1 ;
+        /*0830*/                   IMAD.MOV.U32 R7, RZ, RZ, c[0x0][0x1a4] ;
 
-        /*0840*/                   BMOV.32.CLEAR RZ, B2 ;
+        /*0840*/                   IMAD.WIDE.U32 R6, R0, 0x18, R6 ;
 
-        /*0850*/                   BSSY B2, 0x980 ;
+        /*0850*/                   IADD3 R7, R11, R7, RZ ;
 
-        /*0860*/                   DFMA R8, -R40, R6, 1 ;
+        /*0860*/                   LDG.E.64.SYS R6, [R6+0x8] ;
 
-        /*0870*/                   DFMA R8, R8, R8, R8 ;
+        /*0870*/                   DSETP.NEU.AND P0, PT, R6, RZ, PT ;
 
-        /*0880*/                   DFMA R8, R6, R8, R6 ;
+        /*0880*/              @!P0 BRA 0xa40 ;
 
-        /*0890*/                   DADD R4, R4, -R38 ;
+        /*0890*/                   LDG.E.64.SYS R8, [R14+0x8] ;
 
-        /*08a0*/                   DMUL R6, R4, R8 ;
+        /*08a0*/                   MUFU.RCP64H R11, R7 ;
 
-        /*08b0*/                   FSETP.GTU.AND P1, PT, |R5|, 6.4490557925156731238e-37, PT ;
+        /*08b0*/                   IMAD.MOV.U32 R10, RZ, RZ, 0x1 ;
 
-        /*08c0*/                   DFMA R10, -R40, R6, R4 ;
+        /*08c0*/                   BMOV.32.CLEAR RZ, B1 ;
 
-        /*08d0*/                   DFMA R6, R8, R10, R6 ;
+        /*08d0*/                   BSSY B1, 0xa20 ;
 
-        /*08e0*/                   FFMA R0, RZ, R41, R7 ;
+        /*08e0*/                   DFMA R12, -R6, R10, 1 ;
 
-        /*08f0*/                   FSETP.GT.AND P0, PT, |R0|, 4.8978884574313168671e-40, PT ;
+        /*08f0*/                   DFMA R12, R12, R12, R12 ;
 
-        /*0900*/               @P0 BRA P1, 0x970 ;
+        /*0900*/                   DFMA R12, R10, R12, R10 ;
 
-        /*0910*/                   IMAD.MOV.U32 R10, RZ, RZ, R4 ;
+        /*0910*/                   DADD R8, R4, -R8 ;
 
-        /*0920*/                   MOV R19, R5 ;
+        /*0920*/                   DMUL R4, R8, R12 ;
 
-        /*0930*/                   IMAD.MOV.U32 R4, RZ, RZ, R40 ;
+        /*0930*/                   FSETP.GTU.AND P1, PT, |R9|, 6.4490557925156731238e-37, PT ;
 
-        /*0940*/                   MOV R0, 0x970 ;
+        /*0940*/                   DFMA R10, -R6, R4, R8 ;
 
-        /*0950*/                   IMAD.MOV.U32 R5, RZ, RZ, R41 ;
+        /*0950*/                   DFMA R4, R12, R10, R4 ;
 
-        /*0960*/                   CALL.REL.NOINC 0x3a50 ;
+        /*0960*/                   FFMA R0, RZ, R7, R5 ;
 
-        /*0970*/                   BSYNC B2 ;
+        /*0970*/                   FSETP.GT.AND P0, PT, |R0|, 4.8978884574313168671e-40, PT ;
 
-        /*0980*/                   DSETP.GT.AND P0, PT, R6, RZ, PT ;
+        /*0980*/               @P0 BRA P1, 0xa10 ;
 
-        /*0990*/               @P0 BRA 0x9c0 ;
+        /*0990*/                   IMAD.MOV.U32 R10, RZ, RZ, R8 ;
 
-        /*09a0*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*09a0*/                   MOV R5, R7 ;
 
-        /*09b0*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*09b0*/                   IMAD.MOV.U32 R19, RZ, RZ, R9 ;
 
-        /*09c0*/                   BSYNC B1 ;
+        /*09c0*/                   MOV R0, 0x9f0 ;
 
-        /*09d0*/                   STG.E.64.SYS [R2], R6 ;
+        /*09d0*/                   IMAD.MOV.U32 R4, RZ, RZ, R6 ;
 
-        /*09e0*/                   EXIT ;
+        /*09e0*/                   CALL.REL.NOINC 0x3990 ;
 
-        /*09f0*/                   LOP3.LUT R6, R6, 0xff, RZ, 0xc0, !PT ;
+        /*09f0*/                   IMAD.MOV.U32 R4, RZ, RZ, R6 ;
 
-        /*0a00*/                   PRMT R4, R6, 0x9910, RZ ;
+        /*0a00*/                   IMAD.MOV.U32 R5, RZ, RZ, R7 ;
 
-        /*0a10*/                   ISETP.NE.AND P0, PT, R4, 0x2, PT ;
+        /*0a10*/                   BSYNC B1 ;
 
-        /*0a20*/              @!P0 BRA 0x12c0 ;
+        /*0a20*/                   DSETP.GT.AND P0, PT, R4, RZ, PT ;
 
-        /*0a30*/                   ISETP.NE.AND P0, PT, R4, 0x3, PT ;
+        /*0a30*/               @P0 BRA 0xa60 ;
 
-        /*0a40*/               @P0 BRA 0x2870 ;
+        /*0a40*/                   IMAD.MOV.U32 R4, RZ, RZ, 0x0 ;
 
-        /*0a50*/                   LDG.E.SYS R14, [R18] ;
+        /*0a50*/                   IMAD.MOV.U32 R5, RZ, RZ, 0x7ff00000 ;
 
-        /*0a60*/                   MOV R6, c[0x0][0x190] ;
+        /*0a60*/                   BSYNC B0 ;
 
-        /*0a70*/                   IMAD.MOV.U32 R7, RZ, RZ, c[0x0][0x194] ;
+        /*0a70*/                   STG.E.64.SYS [R2], R4 ;
 
-        /*0a80*/                   IMAD.MOV.U32 R27, RZ, RZ, RZ ;
+        /*0a80*/                   EXIT ;
 
-        /*0a90*/                   IMAD.WIDE.U32 R6, R0, 0x18, R6 ;
+        /*0a90*/                   LDG.E.SYS R4, [R18] ;
 
-        /*0aa0*/                   IMAD.IADD R7, R7, 0x1, R27 ;
+        /*0aa0*/                   LDG.E.64.SYS R6, [R38] ;
 
-        /*0ab0*/                   LDG.E.64.SYS R8, [R6+0x10] ;
+        /*0ab0*/                   IMAD.WIDE.U32 R4, R4, R5, c[0x0][0x180] ;
 
-        /*0ac0*/                   IMAD.WIDE.U32 R14, R14, R5, c[0x0][0x180] ;
+        /*0ac0*/                   LDG.E.64.SYS R4, [R4] ;
 
-        /*0ad0*/                   LDG.E.64.SYS R4, [R6+0x8] ;
+        /*0ad0*/                   BMOV.32.CLEAR RZ, B0 ;
 
-        /*0ae0*/                   LDG.E.64.SYS R14, [R14] ;
+        /*0ae0*/                   BSSY B0, 0xd90 ;
 
-        /*0af0*/                   DMUL R8, R8, R8 ;
+        /*0af0*/                   DADD R6, R6, -R4 ;
 
-        /*0b00*/                   DFMA R8, R4, R4, R8 ;
+        /*0b00*/                   DSETP.GTU.AND P1, PT, R6, RZ, PT ;
 
-        /*0b10*/                   DADD R8, R8, -R14 ;
+        /*0b10*/                   DSETP.GEU.AND P0, PT, R6, RZ, PT ;
 
-        /*0b20*/                   DSETP.GTU.AND P1, PT, R8, RZ, PT ;
+        /*0b20*/                   SEL R0, RZ, 0x1, !P1 ;
 
-        /*0b30*/                   DSETP.GEU.AND P0, PT, R8, RZ, PT ;
+        /*0b30*/                   SEL R9, RZ, 0x1, P0 ;
 
-        /*0b40*/                   SEL R4, RZ, 0x1, !P1 ;
+        /*0b40*/                   IADD3 R0, R0, -R9, RZ ;
 
-        /*0b50*/                   SEL R5, RZ, 0x1, P0 ;
+        /*0b50*/                   SHF.R.U32.HI R0, RZ, 0x1f, R0 ;
 
-        /*0b60*/                   IMAD.IADD R4, R4, 0x1, -R5 ;
+        /*0b60*/                   LOP3.LUT R9, R0, 0x1, RZ, 0x3c, !PT ;
 
-        /*0b70*/                   SHF.R.U32.HI R4, RZ, 0x1f, R4 ;
+        /*0b70*/                   DSETP.GTU.XOR P0, PT, R6, RZ, !P0 ;
 
-        /*0b80*/                   LOP3.LUT R11, R4, 0x1, RZ, 0x3c, !PT ;
+        /*0b80*/                   STG.E.U8.SYS [R34], R9 ;
 
-        /*0b90*/                   STG.E.U8.SYS [R34], R11 ;
+        /*0b90*/              @!P0 BRA 0xd60 ;
 
-        /*0ba0*/                   LDG.E.64.SYS R4, [R40] ;
+        /*0ba0*/                   LDG.E.64.SYS R40, [R40] ;
 
-        /*0bb0*/                   BMOV.32.CLEAR RZ, B1 ;
+        /*0bb0*/                   DSETP.NEU.AND P0, PT, R40, RZ, PT ;
 
-        /*0bc0*/                   BSSY B1, 0x1270 ;
+        /*0bc0*/              @!P0 BRA 0xd60 ;
 
-        /*0bd0*/                   MOV R12, 0x0 ;
+        /*0bd0*/                   LDG.E.64.SYS R38, [R38] ;
 
-        /*0be0*/                   IMAD.MOV.U32 R13, RZ, RZ, 0x7ff00000 ;
+        /*0be0*/                   MUFU.RCP64H R7, R41 ;
 
-        /*0bf0*/                   DFMA R4, -R4, R4, 1 ;
+        /*0bf0*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x1 ;
 
-        /*0c00*/                   DSETP.NEU.AND P1, PT, R4, RZ, PT ;
+        /*0c00*/                   BMOV.32.CLEAR RZ, B1 ;
 
-        /*0c10*/              @!P1 BRA 0x1240 ;
+        /*0c10*/                   BSSY B1, 0xd40 ;
 
-        /*0c20*/                   IMAD.MOV.U32 R10, RZ, RZ, c[0x0][0x1a0] ;
+        /*0c20*/                   DFMA R8, -R40, R6, 1 ;
 
-        /*0c30*/                   LDG.E.64.SYS R16, [R6+0x10] ;
+        /*0c30*/                   DFMA R8, R8, R8, R8 ;
 
-        /*0c40*/                   IMAD.MOV.U32 R11, RZ, RZ, c[0x0][0x1a4] ;
+        /*0c40*/                   DFMA R8, R6, R8, R6 ;
 
-        /*0c50*/                   LDG.E.64.SYS R18, [R6+0x8] ;
+        /*0c50*/                   DADD R4, R4, -R38 ;
 
-        /*0c60*/                   IMAD.WIDE.U32 R10, R0, 0x18, R10 ;
+        /*0c60*/                   DMUL R6, R4, R8 ;
 
-        /*0c70*/                   IMAD.IADD R27, R27, 0x1, R11 ;
+        /*0c70*/                   FSETP.GTU.AND P1, PT, |R5|, 6.4490557925156731238e-37, PT ;
 
-        /*0c80*/                   MOV R26, R10 ;
+        /*0c80*/                   DFMA R10, -R40, R6, R4 ;
 
-        /*0c90*/                   LDG.E.64.SYS R10, [R26+0x10] ;
+        /*0c90*/                   DFMA R6, R8, R10, R6 ;
 
-        /*0ca0*/                   LDG.E.64.SYS R20, [R26+0x8] ;
+        /*0ca0*/                   FFMA R0, RZ, R41, R7 ;
 
-        /*0cb0*/                   MUFU.RCP64H R23, R5 ;
+        /*0cb0*/                   FSETP.GT.AND P0, PT, |R0|, 4.8978884574313168671e-40, PT ;
 
-        /*0cc0*/                   IADD3 R22, R5, 0x300402, RZ ;
+        /*0cc0*/               @P0 BRA P1, 0xd30 ;
 
-        /*0cd0*/                   DFMA R24, -R4, R22, 1 ;
+        /*0cd0*/                   IMAD.MOV.U32 R10, RZ, RZ, R4 ;
 
-        /*0ce0*/                   DFMA R24, R24, R24, R24 ;
+        /*0ce0*/                   MOV R0, 0xd30 ;
 
-        /*0cf0*/                   FSETP.GEU.AND P1, PT, |R22|, 5.8789094863358348022e-39, PT ;
+        /*0cf0*/                   IMAD.MOV.U32 R19, RZ, RZ, R5 ;
 
-        /*0d00*/                   DFMA R24, R22, R24, R22 ;
+        /*0d00*/                   MOV R5, R41 ;
 
-        /*0d10*/                   DSETP.GTU.XOR P0, PT, R8, RZ, !P0 ;
+        /*0d10*/                   IMAD.MOV.U32 R4, RZ, RZ, R40 ;
 
-        /*0d20*/                   DFMA R8, -R4, R24, 1 ;
+        /*0d20*/                   CALL.REL.NOINC 0x3990 ;
 
-        /*0d30*/                   BMOV.32.CLEAR RZ, B2 ;
+        /*0d30*/                   BSYNC B1 ;
 
-        /*0d40*/                   BSSY B2, 0xde0 ;
+        /*0d40*/                   DSETP.GT.AND P0, PT, R6, RZ, PT ;
 
-        /*0d50*/                   DFMA R8, R24, R8, R24 ;
+        /*0d50*/               @P0 BRA 0xd80 ;
 
-        /*0d60*/                   DMUL R10, R10, R16 ;
+        /*0d60*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*0d70*/                   DFMA R20, R20, R18, R10 ;
+        /*0d70*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*0d80*/               @P1 BRA 0xdd0 ;
+        /*0d80*/                   BSYNC B0 ;
 
-        /*0d90*/                   LOP3.LUT R8, R5, 0x7fffffff, RZ, 0xc0, !PT ;
+        /*0d90*/                   STG.E.64.SYS [R2], R6 ;
 
-        /*0da0*/                   MOV R0, 0xdd0 ;
+        /*0da0*/                   EXIT ;
 
-        /*0db0*/                   IADD3 R8, R8, -0x100000, RZ ;
+        /*0db0*/                   ISETP.GT.AND P0, PT, R6, 0x4, PT ;
 
-        /*0dc0*/                   CALL.REL.NOINC 0x3750 ;
+        /*0dc0*/               @P0 BRA 0x1f10 ;
 
-        /*0dd0*/                   BSYNC B2 ;
+        /*0dd0*/                   LOP3.LUT R6, R6, 0xff, RZ, 0xc0, !PT ;
 
-        /*0de0*/                   DMUL R4, R20, R8 ;
+        /*0de0*/                   PRMT R4, R6, 0x9910, RZ ;
 
-        /*0df0*/              @!P0 DMUL R6, R4, -2 ;
+        /*0df0*/                   ISETP.NE.AND P0, PT, R4, 0x3, PT ;
 
-        /*0e00*/              @!P0 DSETP.GTU.AND P1, PT, R6, RZ, PT ;
+        /*0e00*/              @!P0 BRA 0x16a0 ;
 
-        /*0e10*/              @!P0 FSEL R6, R6, RZ, P1 ;
+        /*0e10*/                   ISETP.NE.AND P0, PT, R4, 0x4, PT ;
 
-        /*0e20*/              @!P0 FSEL R7, R7, +QNAN , P1 ;
+        /*0e20*/               @P0 EXIT ;
 
-        /*0e30*/              @!P0 BRA 0x1260 ;
+        /*0e30*/                   LDG.E.SYS R12, [R18] ;
 
-        /*0e40*/                   DMUL R16, R16, R16 ;
+        /*0e40*/                   LDG.E.64.SYS R6, [R38+0x10] ;
 
-        /*0e50*/                   DMUL R6, R4, R4 ;
+        /*0e50*/                   IMAD.WIDE.U32 R12, R12, R5, c[0x0][0x180] ;
 
-        /*0e60*/                   DFMA R16, R18, R18, R16 ;
+        /*0e60*/                   LDG.E.64.SYS R4, [R38] ;
 
-        /*0e70*/                   DADD R16, -R14, R16 ;
+        /*0e70*/                   LDG.E.64.SYS R12, [R12] ;
 
-        /*0e80*/                   DMUL R16, R16, R8 ;
+        /*0e80*/                   DMUL R6, R6, R6 ;
 
-        /*0e90*/                   DSETP.GT.AND P0, PT, R6, R16, PT ;
+        /*0e90*/                   IMAD.MOV.U32 R9, RZ, RZ, RZ ;
 
-        /*0ea0*/               @P0 BRA 0xf60 ;
+        /*0ea0*/                   DFMA R4, R4, R4, R6 ;
 
-        /*0eb0*/                   DSETP.NEU.AND P0, PT, R6, R16, PT ;
+        /*0eb0*/                   DADD R4, R4, -R12 ;
 
-        /*0ec0*/               @P0 BRA 0xf30 ;
+        /*0ec0*/                   DSETP.GTU.AND P1, PT, R4, RZ, PT ;
 
-        /*0ed0*/                   DSETP.GT.AND P0, PT, R4, RZ, PT ;
+        /*0ed0*/                   DSETP.GEU.AND P0, PT, R4, RZ, PT ;
 
-        /*0ee0*/                   DADD R6, -RZ, -R4 ;
+        /*0ee0*/                   SEL R6, RZ, 0x1, !P1 ;
 
-        /*0ef0*/              @!P0 BRA 0x1260 ;
+        /*0ef0*/                   SEL R7, RZ, 0x1, P0 ;
 
-        /*0f00*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*0f00*/                   IMAD.IADD R8, R6, 0x1, -R7 ;
 
-        /*0f10*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*0f10*/                   MOV R7, c[0x0][0x1a4] ;
 
-        /*0f20*/                   BRA 0x1260 ;
+        /*0f20*/                   IMAD.MOV.U32 R6, RZ, RZ, c[0x0][0x1a0] ;
 
-        /*0f30*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*0f30*/                   SHF.R.U32.HI R8, RZ, 0x1f, R8 ;
 
-        /*0f40*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*0f40*/                   IMAD.WIDE.U32 R6, R0, 0x18, R6 ;
 
-        /*0f50*/                   BRA 0x1260 ;
+        /*0f50*/                   LOP3.LUT R11, R8, 0x1, RZ, 0x3c, !PT ;
 
-        /*0f60*/                   DADD R16, -R16, R6 ;
+        /*0f60*/                   IMAD.IADD R9, R9, 0x1, R7 ;
 
-        /*0f70*/                   MOV R10, 0x0 ;
+        /*0f70*/                   IMAD.MOV.U32 R8, RZ, RZ, R6 ;
 
-        /*0f80*/                   IMAD.MOV.U32 R11, RZ, RZ, 0x3fd80000 ;
+        /*0f80*/                   STG.E.U8.SYS [R34], R11 ;
 
-        /*0f90*/                   BMOV.32.CLEAR RZ, B2 ;
+        /*0f90*/                   LDG.E.64.SYS R6, [R8+0x8] ;
 
-        /*0fa0*/                   BSSY B2, 0x1150 ;
+        /*0fa0*/                   BMOV.32.CLEAR RZ, B0 ;
 
-        /*0fb0*/                   MUFU.RSQ64H R7, R17 ;
+        /*0fb0*/                   BSSY B0, 0x1650 ;
 
-        /*0fc0*/                   IADD3 R6, R17, -0x3500000, RZ ;
+        /*0fc0*/                   IMAD.MOV.U32 R14, RZ, RZ, 0x0 ;
 
-        /*0fd0*/                   ISETP.GE.U32.AND P0, PT, R6, 0x7ca00000, PT ;
+        /*0fd0*/                   MOV R15, 0x7ff00000 ;
 
-        /*0fe0*/                   DMUL R8, R6, R6 ;
+        /*0fe0*/                   DFMA R6, -R6, R6, 1 ;
 
-        /*0ff0*/                   DFMA R8, R16, -R8, 1 ;
+        /*0ff0*/                   DSETP.NEU.AND P1, PT, R6, RZ, PT ;
 
-        /*1000*/                   DFMA R10, R8, R10, 0.5 ;
+        /*1000*/              @!P1 BRA 0x1620 ;
 
-        /*1010*/                   DMUL R8, R6, R8 ;
+        /*1010*/                   LDG.E.64.SYS R8, [R40+0x10] ;
 
-        /*1020*/                   DFMA R10, R10, R8, R6 ;
+        /*1020*/                   LDG.E.64.SYS R16, [R38+0x10] ;
 
-        /*1030*/                   DMUL R18, R16, R10 ;
+        /*1030*/                   LDG.E.64.SYS R20, [R40] ;
 
-        /*1040*/                   IADD3 R15, R11, -0x100000, RZ ;
+        /*1040*/                   LDG.E.64.SYS R18, [R38] ;
 
-        /*1050*/                   IMAD.MOV.U32 R14, RZ, RZ, R10 ;
+        /*1050*/                   MUFU.RCP64H R11, R7 ;
 
-        /*1060*/                   DFMA R20, R18, -R18, R16 ;
+        /*1060*/                   IADD3 R10, R7, 0x300402, RZ ;
 
-        /*1070*/                   DFMA R8, R20, R14, R18 ;
+        /*1070*/                   DSETP.GTU.XOR P0, PT, R4, RZ, !P0 ;
 
-        /*1080*/              @!P0 BRA 0x1140 ;
+        /*1080*/                   BMOV.32.CLEAR RZ, B1 ;
 
-        /*1090*/                   IMAD.MOV.U32 R0, RZ, RZ, R10 ;
+        /*1090*/                   BSSY B1, 0x11c0 ;
 
-        /*10a0*/                   MOV R11, R17 ;
+        /*10a0*/                   FSETP.GEU.AND P1, PT, |R10|, 5.8789094863358348022e-39, PT ;
 
-        /*10b0*/                   IMAD.MOV.U32 R10, RZ, RZ, R16 ;
+        /*10b0*/                   DFMA R22, -R6, R10, 1 ;
 
-        /*10c0*/                   MOV R8, 0x1120 ;
+        /*10c0*/                   DFMA R22, R22, R22, R22 ;
 
-        /*10d0*/                   IMAD.MOV.U32 R16, RZ, RZ, R20 ;
+        /*10d0*/                   DFMA R22, R10, R22, R10 ;
 
-        /*10e0*/                   IMAD.MOV.U32 R17, RZ, RZ, R21 ;
+        /*10e0*/                   DFMA R4, -R6, R22, 1 ;
 
-        /*10f0*/                   IMAD.MOV.U32 R20, RZ, RZ, R6 ;
+        /*10f0*/                   DFMA R22, R22, R4, R22 ;
 
-        /*1100*/                   IMAD.MOV.U32 R21, RZ, RZ, R15 ;
+        /*1100*/                   DMUL R8, R8, R16 ;
 
-        /*1110*/                   CALL.REL.NOINC 0x3fe0 ;
+        /*1110*/                   DFMA R20, R20, R18, R8 ;
 
-        /*1120*/                   MOV R8, R16 ;
+        /*1120*/               @P1 BRA 0x11b0 ;
 
-        /*1130*/                   IMAD.MOV.U32 R9, RZ, RZ, R17 ;
+        /*1130*/                   LOP3.LUT R8, R7, 0x7fffffff, RZ, 0xc0, !PT ;
 
-        /*1140*/                   BSYNC B2 ;
+        /*1140*/                   IMAD.MOV.U32 R4, RZ, RZ, R6 ;
 
-        /*1150*/                   DADD R10, -R4, R8 ;
+        /*1150*/                   MOV R0, 0x1190 ;
 
-        /*1160*/                   DADD R4, -R4, -R8 ;
+        /*1160*/                   IMAD.MOV.U32 R5, RZ, RZ, R7 ;
 
-        /*1170*/                   DSETP.GEU.AND P0, PT, R10, RZ, PT ;
+        /*1170*/                   IADD3 R8, R8, -0x100000, RZ ;
 
-        /*1180*/              @!P0 BRA 0x1210 ;
+        /*1180*/                   CALL.REL.NOINC 0x3690 ;
 
-        /*1190*/                   IMAD.MOV.U32 R6, RZ, RZ, R4 ;
+        /*1190*/                   IMAD.MOV.U32 R22, RZ, RZ, R8 ;
 
-        /*11a0*/                   MOV R13, R11 ;
+        /*11a0*/                   IMAD.MOV.U32 R23, RZ, RZ, R9 ;
 
-        /*11b0*/                   IMAD.MOV.U32 R7, RZ, RZ, R5 ;
+        /*11b0*/                   BSYNC B1 ;
 
-        /*11c0*/                   IMAD.MOV.U32 R12, RZ, RZ, R10 ;
+        /*11c0*/                   DMUL R4, R20, R22 ;
 
-        /*11d0*/                   DSETP.GEU.AND P0, PT, R6, RZ, PT ;
+        /*11d0*/              @!P0 DMUL R6, R4, -2 ;
 
-        /*11e0*/              @!P0 IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*11e0*/              @!P0 DSETP.GTU.AND P1, PT, R6, RZ, PT ;
 
-        /*11f0*/              @!P0 IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*11f0*/              @!P0 FSEL R6, R6, RZ, P1 ;
 
-        /*1200*/                   BRA 0x1260 ;
+        /*1200*/              @!P0 FSEL R7, R7, +QNAN , P1 ;
 
-        /*1210*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*1210*/              @!P0 BRA 0x1640 ;
 
-        /*1220*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*1220*/                   DMUL R16, R16, R16 ;
 
-        /*1230*/                   BRA 0x1260 ;
+        /*1230*/                   DMUL R6, R4, R4 ;
 
-        /*1240*/                   MOV R6, 0x0 ;
+        /*1240*/                   DFMA R16, R18, R18, R16 ;
 
-        /*1250*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*1250*/                   DADD R16, -R12, R16 ;
 
-        /*1260*/                   BSYNC B1 ;
+        /*1260*/                   DMUL R16, R16, R22 ;
 
-        /*1270*/                   DSETP.GEU.AND P0, PT, R12, R6, PT ;
+        /*1270*/                   DSETP.GT.AND P0, PT, R6, R16, PT ;
 
-        /*1280*/                   FSEL R4, R12, R6, !P0 ;
+        /*1280*/               @P0 BRA 0x1340 ;
 
-        /*1290*/                   FSEL R5, R13, R7, !P0 ;
+        /*1290*/                   DSETP.NEU.AND P0, PT, R6, R16, PT ;
 
-        /*12a0*/                   STG.E.64.SYS [R2], R4 ;
+        /*12a0*/               @P0 BRA 0x1310 ;
 
-        /*12b0*/                   EXIT ;
+        /*12b0*/                   DSETP.GT.AND P0, PT, R4, RZ, PT ;
 
-        /*12c0*/                   LDG.E.SYS R4, [R18] ;
+        /*12c0*/                   DADD R6, -RZ, -R4 ;
 
-        /*12d0*/                   IMAD.MOV.U32 R6, RZ, RZ, c[0x0][0x190] ;
+        /*12d0*/              @!P0 BRA 0x1640 ;
 
-        /*12e0*/                   IMAD.MOV.U32 R7, RZ, RZ, c[0x0][0x194] ;
+        /*12e0*/                   MOV R6, 0x0 ;
 
-        /*12f0*/                   IMAD.MOV.U32 R11, RZ, RZ, RZ ;
+        /*12f0*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*1300*/                   IMAD.WIDE.U32 R6, R0, 0x18, R6 ;
+        /*1300*/                   BRA 0x1640 ;
 
-        /*1310*/                   IMAD.MOV.U32 R14, RZ, RZ, R6 ;
+        /*1310*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*1320*/                   IADD3 R15, R7, R11, RZ ;
+        /*1320*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*1330*/                   LDG.E.64.SYS R6, [R14+0x10] ;
+        /*1330*/                   BRA 0x1640 ;
 
-        /*1340*/                   IMAD.WIDE.U32 R4, R4, R5, c[0x0][0x180] ;
+        /*1340*/                   DADD R16, -R16, R6 ;
 
-        /*1350*/                   LDG.E.64.SYS R4, [R4] ;
+        /*1350*/                   IMAD.MOV.U32 R10, RZ, RZ, 0x0 ;
 
-        /*1360*/                   BMOV.32.CLEAR RZ, B1 ;
+        /*1360*/                   MOV R11, 0x3fd80000 ;
 
-        /*1370*/                   BSSY B1, 0x1680 ;
+        /*1370*/                   BMOV.32.CLEAR RZ, B1 ;
 
-        /*1380*/                   DADD R6, R6, -R4 ;
+        /*1380*/                   BSSY B1, 0x1530 ;
 
-        /*1390*/                   DSETP.GTU.AND P1, PT, R6, RZ, PT ;
+        /*1390*/                   MUFU.RSQ64H R7, R17 ;
 
-        /*13a0*/                   DSETP.GEU.AND P0, PT, R6, RZ, PT ;
+        /*13a0*/                   IADD3 R6, R17, -0x3500000, RZ ;
 
-        /*13b0*/                   SEL R8, RZ, 0x1, !P1 ;
+        /*13b0*/                   ISETP.GE.U32.AND P0, PT, R6, 0x7ca00000, PT ;
 
-        /*13c0*/                   SEL R9, RZ, 0x1, P0 ;
+        /*13c0*/                   DMUL R8, R6, R6 ;
 
-        /*13d0*/                   IMAD.IADD R8, R8, 0x1, -R9 ;
+        /*13d0*/                   DFMA R8, R16, -R8, 1 ;
 
-        /*13e0*/                   SHF.R.U32.HI R8, RZ, 0x1f, R8 ;
+        /*13e0*/                   DFMA R10, R8, R10, 0.5 ;
 
-        /*13f0*/                   LOP3.LUT R9, R8, 0x1, RZ, 0x3c, !PT ;
+        /*13f0*/                   DMUL R8, R6, R8 ;
 
-        /*1400*/                   DSETP.GTU.XOR P0, PT, R6, RZ, !P0 ;
+        /*1400*/                   DFMA R10, R10, R8, R6 ;
 
-        /*1410*/                   STG.E.U8.SYS [R34], R9 ;
+        /*1410*/                   DMUL R18, R16, R10 ;
 
-        /*1420*/              @!P0 BRA 0x1650 ;
+        /*1420*/                   IADD3 R13, R11, -0x100000, RZ ;
 
-        /*1430*/                   IMAD.MOV.U32 R6, RZ, RZ, c[0x0][0x1a0] ;
+        /*1430*/                   IMAD.MOV.U32 R12, RZ, RZ, R10 ;
 
-        /*1440*/                   IMAD.MOV.U32 R7, RZ, RZ, c[0x0][0x1a4] ;
+        /*1440*/                   DFMA R20, R18, -R18, R16 ;
 
-        /*1450*/                   IMAD.WIDE.U32 R6, R0, 0x18, R6 ;
+        /*1450*/                   DFMA R8, R20, R12, R18 ;
 
-        /*1460*/                   IADD3 R7, R11, R7, RZ ;
+        /*1460*/              @!P0 BRA 0x1520 ;
 
-        /*1470*/                   LDG.E.64.SYS R6, [R6+0x10] ;
+        /*1470*/                   IMAD.MOV.U32 R0, RZ, RZ, R10 ;
 
-        /*1480*/                   DSETP.NEU.AND P0, PT, R6, RZ, PT ;
+        /*1480*/                   MOV R8, 0x1500 ;
 
-        /*1490*/              @!P0 BRA 0x1650 ;
+        /*1490*/                   IMAD.MOV.U32 R10, RZ, RZ, R16 ;
 
-        /*14a0*/                   LDG.E.64.SYS R8, [R14+0x10] ;
+        /*14a0*/                   MOV R16, R20 ;
 
-        /*14b0*/                   MUFU.RCP64H R11, R7 ;
+        /*14b0*/                   IMAD.MOV.U32 R11, RZ, RZ, R17 ;
 
-        /*14c0*/                   IMAD.MOV.U32 R10, RZ, RZ, 0x1 ;
+        /*14c0*/                   IMAD.MOV.U32 R17, RZ, RZ, R21 ;
 
-        /*14d0*/                   BMOV.32.CLEAR RZ, B2 ;
+        /*14d0*/                   IMAD.MOV.U32 R20, RZ, RZ, R6 ;
 
-        /*14e0*/                   BSSY B2, 0x1630 ;
+        /*14e0*/                   IMAD.MOV.U32 R21, RZ, RZ, R13 ;
 
-        /*14f0*/                   DFMA R12, -R6, R10, 1 ;
+        /*14f0*/                   CALL.REL.NOINC 0x3f20 ;
 
-        /*1500*/                   DFMA R12, R12, R12, R12 ;
+        /*1500*/                   IMAD.MOV.U32 R8, RZ, RZ, R16 ;
 
-        /*1510*/                   DFMA R12, R10, R12, R10 ;
+        /*1510*/                   MOV R9, R17 ;
 
-        /*1520*/                   DADD R8, R4, -R8 ;
+        /*1520*/                   BSYNC B1 ;
 
-        /*1530*/                   DMUL R4, R8, R12 ;
+        /*1530*/                   DADD R10, -R4, R8 ;
 
-        /*1540*/                   FSETP.GTU.AND P1, PT, |R9|, 6.4490557925156731238e-37, PT ;
+        /*1540*/                   DADD R4, -R4, -R8 ;
 
-        /*1550*/                   DFMA R10, -R6, R4, R8 ;
+        /*1550*/                   DSETP.GEU.AND P0, PT, R10, RZ, PT ;
 
-        /*1560*/                   DFMA R4, R12, R10, R4 ;
+        /*1560*/              @!P0 BRA 0x15f0 ;
 
-        /*1570*/                   FFMA R0, RZ, R7, R5 ;
+        /*1570*/                   IMAD.MOV.U32 R6, RZ, RZ, R4 ;
 
-        /*1580*/                   FSETP.GT.AND P0, PT, |R0|, 4.8978884574313168671e-40, PT ;
+        /*1580*/                   IMAD.MOV.U32 R7, RZ, RZ, R5 ;
 
-        /*1590*/               @P0 BRA P1, 0x1620 ;
+        /*1590*/                   IMAD.MOV.U32 R14, RZ, RZ, R10 ;
 
-        /*15a0*/                   IMAD.MOV.U32 R10, RZ, RZ, R8 ;
+        /*15a0*/                   IMAD.MOV.U32 R15, RZ, RZ, R11 ;
 
-        /*15b0*/                   MOV R5, R7 ;
+        /*15b0*/                   DSETP.GEU.AND P0, PT, R6, RZ, PT ;
 
-        /*15c0*/                   IMAD.MOV.U32 R19, RZ, RZ, R9 ;
+        /*15c0*/              @!P0 MOV R6, 0x0 ;
 
-        /*15d0*/                   MOV R0, 0x1600 ;
+        /*15d0*/              @!P0 IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*15e0*/                   IMAD.MOV.U32 R4, RZ, RZ, R6 ;
+        /*15e0*/                   BRA 0x1640 ;
 
-        /*15f0*/                   CALL.REL.NOINC 0x3a50 ;
+        /*15f0*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*1600*/                   IMAD.MOV.U32 R4, RZ, RZ, R6 ;
+        /*1600*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*1610*/                   IMAD.MOV.U32 R5, RZ, RZ, R7 ;
+        /*1610*/                   BRA 0x1640 ;
 
-        /*1620*/                   BSYNC B2 ;
+        /*1620*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*1630*/                   DSETP.GT.AND P0, PT, R4, RZ, PT ;
+        /*1630*/                   MOV R7, 0x7ff00000 ;
 
-        /*1640*/               @P0 BRA 0x1670 ;
+        /*1640*/                   BSYNC B0 ;
 
-        /*1650*/                   IMAD.MOV.U32 R4, RZ, RZ, 0x0 ;
+        /*1650*/                   DSETP.GEU.AND P0, PT, R14, R6, PT ;
 
-        /*1660*/                   IMAD.MOV.U32 R5, RZ, RZ, 0x7ff00000 ;
+        /*1660*/                   FSEL R4, R14, R6, !P0 ;
 
-        /*1670*/                   BSYNC B1 ;
+        /*1670*/                   FSEL R5, R15, R7, !P0 ;
 
         /*1680*/                   STG.E.64.SYS [R2], R4 ;
 
         /*1690*/                   EXIT ;
 
-        /*16a0*/                   ISETP.GT.AND P0, PT, R6, 0x5, PT ;
+        /*16a0*/                   LDG.E.SYS R14, [R18] ;
 
-        /*16b0*/               @P0 BRA 0x2800 ;
+        /*16b0*/                   IMAD.MOV.U32 R6, RZ, RZ, c[0x0][0x190] ;
 
-        /*16c0*/                   LOP3.LUT R6, R6, 0xff, RZ, 0xc0, !PT ;
+        /*16c0*/                   IMAD.MOV.U32 R7, RZ, RZ, c[0x0][0x194] ;
 
-        /*16d0*/                   PRMT R4, R6, 0x9910, RZ ;
+        /*16d0*/                   IMAD.MOV.U32 R27, RZ, RZ, RZ ;
 
-        /*16e0*/                   ISETP.NE.AND P0, PT, R4, 0x4, PT ;
+        /*16e0*/                   IMAD.WIDE.U32 R6, R0, 0x18, R6 ;
 
-        /*16f0*/              @!P0 BRA 0x1f90 ;
+        /*16f0*/                   IMAD.IADD R7, R7, 0x1, R27 ;
 
-        /*1700*/                   ISETP.NE.AND P0, PT, R4, 0x5, PT ;
+        /*1700*/                   LDG.E.64.SYS R8, [R6+0x10] ;
 
-        /*1710*/               @P0 BRA 0x2870 ;
+        /*1710*/                   IMAD.WIDE.U32 R14, R14, R5, c[0x0][0x180] ;
 
-        /*1720*/                   LDG.E.SYS R12, [R18] ;
+        /*1720*/                   LDG.E.64.SYS R4, [R6+0x8] ;
 
-        /*1730*/                   LDG.E.64.SYS R6, [R38+0x8] ;
+        /*1730*/                   LDG.E.64.SYS R14, [R14] ;
 
-        /*1740*/                   IMAD.WIDE.U32 R12, R12, R5, c[0x0][0x180] ;
+        /*1740*/                   DMUL R8, R8, R8 ;
 
-        /*1750*/                   LDG.E.64.SYS R4, [R38] ;
+        /*1750*/                   DFMA R8, R4, R4, R8 ;
 
-        /*1760*/                   LDG.E.64.SYS R12, [R12] ;
+        /*1760*/                   DADD R8, R8, -R14 ;
 
-        /*1770*/                   DMUL R6, R6, R6 ;
+        /*1770*/                   DSETP.GTU.AND P1, PT, R8, RZ, PT ;
 
-        /*1780*/                   IMAD.MOV.U32 R9, RZ, RZ, RZ ;
+        /*1780*/                   DSETP.GEU.AND P0, PT, R8, RZ, PT ;
 
-        /*1790*/                   DFMA R4, R4, R4, R6 ;
+        /*1790*/                   SEL R4, RZ, 0x1, !P1 ;
 
-        /*17a0*/                   DADD R4, R4, -R12 ;
+        /*17a0*/                   SEL R5, RZ, 0x1, P0 ;
 
-        /*17b0*/                   DSETP.GTU.AND P1, PT, R4, RZ, PT ;
+        /*17b0*/                   IADD3 R4, R4, -R5, RZ ;
 
-        /*17c0*/                   DSETP.GEU.AND P0, PT, R4, RZ, PT ;
+        /*17c0*/                   SHF.R.U32.HI R4, RZ, 0x1f, R4 ;
 
-        /*17d0*/                   SEL R6, RZ, 0x1, !P1 ;
+        /*17d0*/                   LOP3.LUT R11, R4, 0x1, RZ, 0x3c, !PT ;
 
-        /*17e0*/                   SEL R7, RZ, 0x1, P0 ;
+        /*17e0*/                   STG.E.U8.SYS [R34], R11 ;
 
-        /*17f0*/                   IADD3 R8, R6, -R7, RZ ;
+        /*17f0*/                   LDG.E.64.SYS R4, [R40] ;
 
-        /*1800*/                   IMAD.MOV.U32 R6, RZ, RZ, c[0x0][0x1a0] ;
+        /*1800*/                   BMOV.32.CLEAR RZ, B0 ;
 
-        /*1810*/                   IMAD.MOV.U32 R7, RZ, RZ, c[0x0][0x1a4] ;
+        /*1810*/                   BSSY B0, 0x1ec0 ;
 
-        /*1820*/                   SHF.R.U32.HI R8, RZ, 0x1f, R8 ;
+        /*1820*/                   IMAD.MOV.U32 R12, RZ, RZ, 0x0 ;
 
-        /*1830*/                   IMAD.WIDE.U32 R6, R0, 0x18, R6 ;
+        /*1830*/                   IMAD.MOV.U32 R13, RZ, RZ, 0x7ff00000 ;
 
-        /*1840*/                   LOP3.LUT R11, R8, 0x1, RZ, 0x3c, !PT ;
+        /*1840*/                   DFMA R4, -R4, R4, 1 ;
 
-        /*1850*/                   IMAD.IADD R9, R9, 0x1, R7 ;
+        /*1850*/                   DSETP.NEU.AND P1, PT, R4, RZ, PT ;
 
-        /*1860*/                   MOV R8, R6 ;
+        /*1860*/              @!P1 BRA 0x1e90 ;
 
-        /*1870*/                   STG.E.U8.SYS [R34], R11 ;
+        /*1870*/                   MOV R11, c[0x0][0x1a4] ;
 
-        /*1880*/                   LDG.E.64.SYS R6, [R8+0x10] ;
+        /*1880*/                   IMAD.MOV.U32 R10, RZ, RZ, c[0x0][0x1a0] ;
 
-        /*1890*/                   BMOV.32.CLEAR RZ, B1 ;
+        /*1890*/                   LDG.E.64.SYS R16, [R6+0x10] ;
 
-        /*18a0*/                   BSSY B1, 0x1f40 ;
+        /*18a0*/                   IMAD.WIDE.U32 R10, R0, 0x18, R10 ;
 
-        /*18b0*/                   IMAD.MOV.U32 R14, RZ, RZ, 0x0 ;
+        /*18b0*/                   LDG.E.64.SYS R18, [R6+0x8] ;
 
-        /*18c0*/                   IMAD.MOV.U32 R15, RZ, RZ, 0x7ff00000 ;
+        /*18c0*/                   IMAD.IADD R27, R27, 0x1, R11 ;
 
-        /*18d0*/                   DFMA R6, -R6, R6, 1 ;
+        /*18d0*/                   IMAD.MOV.U32 R26, RZ, RZ, R10 ;
 
-        /*18e0*/                   DSETP.NEU.AND P1, PT, R6, RZ, PT ;
+        /*18e0*/                   LDG.E.64.SYS R10, [R26+0x10] ;
 
-        /*18f0*/              @!P1 BRA 0x1f10 ;
+        /*18f0*/                   LDG.E.64.SYS R20, [R26+0x8] ;
 
-        /*1900*/                   LDG.E.64.SYS R8, [R40+0x8] ;
+        /*1900*/                   MUFU.RCP64H R23, R5 ;
 
-        /*1910*/                   LDG.E.64.SYS R16, [R38+0x8] ;
+        /*1910*/                   IADD3 R22, R5, 0x300402, RZ ;
 
-        /*1920*/                   LDG.E.64.SYS R20, [R40] ;
+        /*1920*/                   DFMA R24, -R4, R22, 1 ;
 
-        /*1930*/                   LDG.E.64.SYS R18, [R38] ;
+        /*1930*/                   DFMA R24, R24, R24, R24 ;
 
-        /*1940*/                   MUFU.RCP64H R11, R7 ;
+        /*1940*/                   FSETP.GEU.AND P1, PT, |R22|, 5.8789094863358348022e-39, PT ;
 
-        /*1950*/                   IADD3 R10, R7, 0x300402, RZ ;
+        /*1950*/                   DFMA R24, R22, R24, R22 ;
 
-        /*1960*/                   DSETP.GTU.XOR P0, PT, R4, RZ, !P0 ;
+        /*1960*/                   DSETP.GTU.XOR P0, PT, R8, RZ, !P0 ;
 
-        /*1970*/                   BMOV.32.CLEAR RZ, B2 ;
+        /*1970*/                   DFMA R8, -R4, R24, 1 ;
 
-        /*1980*/                   BSSY B2, 0x1ab0 ;
+        /*1980*/                   BMOV.32.CLEAR RZ, B1 ;
 
-        /*1990*/                   FSETP.GEU.AND P1, PT, |R10|, 5.8789094863358348022e-39, PT ;
+        /*1990*/                   BSSY B1, 0x1a30 ;
 
-        /*19a0*/                   DFMA R22, -R6, R10, 1 ;
+        /*19a0*/                   DFMA R8, R24, R8, R24 ;
 
-        /*19b0*/                   DFMA R22, R22, R22, R22 ;
+        /*19b0*/                   DMUL R10, R10, R16 ;
 
-        /*19c0*/                   DFMA R22, R10, R22, R10 ;
+        /*19c0*/                   DFMA R20, R20, R18, R10 ;
 
-        /*19d0*/                   DFMA R4, -R6, R22, 1 ;
+        /*19d0*/               @P1 BRA 0x1a20 ;
 
-        /*19e0*/                   DFMA R22, R22, R4, R22 ;
+        /*19e0*/                   LOP3.LUT R8, R5, 0x7fffffff, RZ, 0xc0, !PT ;
 
-        /*19f0*/                   DMUL R8, R8, R16 ;
+        /*19f0*/                   MOV R0, 0x1a20 ;
 
-        /*1a00*/                   DFMA R20, R20, R18, R8 ;
+        /*1a00*/                   IADD3 R8, R8, -0x100000, RZ ;
 
-        /*1a10*/               @P1 BRA 0x1aa0 ;
+        /*1a10*/                   CALL.REL.NOINC 0x3690 ;
 
-        /*1a20*/                   LOP3.LUT R8, R7, 0x7fffffff, RZ, 0xc0, !PT ;
+        /*1a20*/                   BSYNC B1 ;
 
-        /*1a30*/                   IMAD.MOV.U32 R4, RZ, RZ, R6 ;
+        /*1a30*/                   DMUL R4, R20, R8 ;
 
-        /*1a40*/                   MOV R0, 0x1a80 ;
+        /*1a40*/              @!P0 DMUL R6, R4, -2 ;
 
-        /*1a50*/                   IMAD.MOV.U32 R5, RZ, RZ, R7 ;
+        /*1a50*/              @!P0 DSETP.GTU.AND P1, PT, R6, RZ, PT ;
 
-        /*1a60*/                   IADD3 R8, R8, -0x100000, RZ ;
+        /*1a60*/              @!P0 FSEL R6, R6, RZ, P1 ;
 
-        /*1a70*/                   CALL.REL.NOINC 0x3750 ;
+        /*1a70*/              @!P0 FSEL R7, R7, +QNAN , P1 ;
 
-        /*1a80*/                   MOV R22, R8 ;
+        /*1a80*/              @!P0 BRA 0x1eb0 ;
 
-        /*1a90*/                   IMAD.MOV.U32 R23, RZ, RZ, R9 ;
+        /*1a90*/                   DMUL R16, R16, R16 ;
 
-        /*1aa0*/                   BSYNC B2 ;
+        /*1aa0*/                   DMUL R6, R4, R4 ;
 
-        /*1ab0*/                   DMUL R4, R20, R22 ;
+        /*1ab0*/                   DFMA R16, R18, R18, R16 ;
 
-        /*1ac0*/              @!P0 DMUL R6, R4, -2 ;
+        /*1ac0*/                   DADD R16, -R14, R16 ;
 
-        /*1ad0*/              @!P0 DSETP.GTU.AND P1, PT, R6, RZ, PT ;
+        /*1ad0*/                   DMUL R16, R16, R8 ;
 
-        /*1ae0*/              @!P0 FSEL R6, R6, RZ, P1 ;
+        /*1ae0*/                   DSETP.GT.AND P0, PT, R6, R16, PT ;
 
-        /*1af0*/              @!P0 FSEL R7, R7, +QNAN , P1 ;
+        /*1af0*/               @P0 BRA 0x1bb0 ;
 
-        /*1b00*/              @!P0 BRA 0x1f30 ;
+        /*1b00*/                   DSETP.NEU.AND P0, PT, R6, R16, PT ;
 
-        /*1b10*/                   DMUL R16, R16, R16 ;
+        /*1b10*/               @P0 BRA 0x1b80 ;
 
-        /*1b20*/                   DMUL R6, R4, R4 ;
+        /*1b20*/                   DSETP.GT.AND P0, PT, R4, RZ, PT ;
 
-        /*1b30*/                   DFMA R16, R18, R18, R16 ;
+        /*1b30*/                   DADD R6, -RZ, -R4 ;
 
-        /*1b40*/                   DADD R16, -R12, R16 ;
+        /*1b40*/              @!P0 BRA 0x1eb0 ;
 
-        /*1b50*/                   DMUL R16, R16, R22 ;
+        /*1b50*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*1b60*/                   DSETP.GT.AND P0, PT, R6, R16, PT ;
+        /*1b60*/                   MOV R7, 0x7ff00000 ;
 
-        /*1b70*/               @P0 BRA 0x1c30 ;
+        /*1b70*/                   BRA 0x1eb0 ;
 
-        /*1b80*/                   DSETP.NEU.AND P0, PT, R6, R16, PT ;
+        /*1b80*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*1b90*/               @P0 BRA 0x1c00 ;
+        /*1b90*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*1ba0*/                   DSETP.GT.AND P0, PT, R4, RZ, PT ;
+        /*1ba0*/                   BRA 0x1eb0 ;
 
-        /*1bb0*/                   DADD R6, -RZ, -R4 ;
+        /*1bb0*/                   DADD R16, -R16, R6 ;
 
-        /*1bc0*/              @!P0 BRA 0x1f30 ;
+        /*1bc0*/                   IMAD.MOV.U32 R10, RZ, RZ, 0x0 ;
 
-        /*1bd0*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*1bd0*/                   MOV R11, 0x3fd80000 ;
 
-        /*1be0*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*1be0*/                   BMOV.32.CLEAR RZ, B1 ;
 
-        /*1bf0*/                   BRA 0x1f30 ;
+        /*1bf0*/                   BSSY B1, 0x1da0 ;
 
-        /*1c00*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*1c00*/                   MUFU.RSQ64H R7, R17 ;
 
-        /*1c10*/                   MOV R7, 0x7ff00000 ;
+        /*1c10*/                   IADD3 R6, R17, -0x3500000, RZ ;
 
-        /*1c20*/                   BRA 0x1f30 ;
+        /*1c20*/                   ISETP.GE.U32.AND P0, PT, R6, 0x7ca00000, PT ;
 
-        /*1c30*/                   DADD R16, -R16, R6 ;
+        /*1c30*/                   DMUL R8, R6, R6 ;
 
-        /*1c40*/                   IMAD.MOV.U32 R10, RZ, RZ, 0x0 ;
+        /*1c40*/                   DFMA R8, R16, -R8, 1 ;
 
-        /*1c50*/                   BMOV.32.CLEAR RZ, B2 ;
+        /*1c50*/                   DFMA R10, R8, R10, 0.5 ;
 
-        /*1c60*/                   IMAD.MOV.U32 R11, RZ, RZ, 0x3fd80000 ;
+        /*1c60*/                   DMUL R8, R6, R8 ;
 
-        /*1c70*/                   BSSY B2, 0x1e20 ;
+        /*1c70*/                   DFMA R10, R10, R8, R6 ;
 
-        /*1c80*/                   MUFU.RSQ64H R7, R17 ;
+        /*1c80*/                   DMUL R18, R16, R10 ;
 
-        /*1c90*/                   IADD3 R6, R17, -0x3500000, RZ ;
+        /*1c90*/                   IADD3 R15, R11, -0x100000, RZ ;
 
-        /*1ca0*/                   ISETP.GE.U32.AND P0, PT, R6, 0x7ca00000, PT ;
+        /*1ca0*/                   IMAD.MOV.U32 R14, RZ, RZ, R10 ;
 
-        /*1cb0*/                   DMUL R8, R6, R6 ;
+        /*1cb0*/                   DFMA R20, R18, -R18, R16 ;
 
-        /*1cc0*/                   DFMA R8, R16, -R8, 1 ;
+        /*1cc0*/                   DFMA R8, R20, R14, R18 ;
 
-        /*1cd0*/                   DFMA R10, R8, R10, 0.5 ;
+        /*1cd0*/              @!P0 BRA 0x1d90 ;
 
-        /*1ce0*/                   DMUL R8, R6, R8 ;
+        /*1ce0*/                   IMAD.MOV.U32 R0, RZ, RZ, R10 ;
 
-        /*1cf0*/                   DFMA R10, R10, R8, R6 ;
+        /*1cf0*/                   MOV R11, R17 ;
 
-        /*1d00*/                   DMUL R18, R16, R10 ;
+        /*1d00*/                   IMAD.MOV.U32 R10, RZ, RZ, R16 ;
 
-        /*1d10*/                   IADD3 R13, R11, -0x100000, RZ ;
+        /*1d10*/                   MOV R8, 0x1d70 ;
 
-        /*1d20*/                   IMAD.MOV.U32 R12, RZ, RZ, R10 ;
+        /*1d20*/                   IMAD.MOV.U32 R16, RZ, RZ, R20 ;
 
-        /*1d30*/                   DFMA R20, R18, -R18, R16 ;
+        /*1d30*/                   IMAD.MOV.U32 R17, RZ, RZ, R21 ;
 
-        /*1d40*/                   DFMA R8, R20, R12, R18 ;
+        /*1d40*/                   MOV R21, R15 ;
 
-        /*1d50*/              @!P0 BRA 0x1e10 ;
+        /*1d50*/                   IMAD.MOV.U32 R20, RZ, RZ, R6 ;
 
-        /*1d60*/                   IMAD.MOV.U32 R0, RZ, RZ, R10 ;
+        /*1d60*/                   CALL.REL.NOINC 0x3f20 ;
 
-        /*1d70*/                   MOV R10, R16 ;
+        /*1d70*/                   IMAD.MOV.U32 R8, RZ, RZ, R16 ;
 
-        /*1d80*/                   IMAD.MOV.U32 R11, RZ, RZ, R17 ;
+        /*1d80*/                   IMAD.MOV.U32 R9, RZ, RZ, R17 ;
 
-        /*1d90*/                   MOV R8, 0x1df0 ;
+        /*1d90*/                   BSYNC B1 ;
 
-        /*1da0*/                   IMAD.MOV.U32 R16, RZ, RZ, R20 ;
+        /*1da0*/                   DADD R10, -R4, R8 ;
 
-        /*1db0*/                   IMAD.MOV.U32 R17, RZ, RZ, R21 ;
+        /*1db0*/                   DADD R4, -R4, -R8 ;
 
-        /*1dc0*/                   MOV R21, R13 ;
+        /*1dc0*/                   DSETP.GEU.AND P0, PT, R10, RZ, PT ;
 
-        /*1dd0*/                   IMAD.MOV.U32 R20, RZ, RZ, R6 ;
+        /*1dd0*/              @!P0 BRA 0x1e60 ;
 
-        /*1de0*/                   CALL.REL.NOINC 0x3fe0 ;
+        /*1de0*/                   IMAD.MOV.U32 R6, RZ, RZ, R4 ;
 
-        /*1df0*/                   IMAD.MOV.U32 R8, RZ, RZ, R16 ;
+        /*1df0*/                   MOV R7, R5 ;
 
-        /*1e00*/                   IMAD.MOV.U32 R9, RZ, RZ, R17 ;
+        /*1e00*/                   IMAD.MOV.U32 R12, RZ, RZ, R10 ;
 
-        /*1e10*/                   BSYNC B2 ;
+        /*1e10*/                   IMAD.MOV.U32 R13, RZ, RZ, R11 ;
 
-        /*1e20*/                   DADD R10, -R4, R8 ;
+        /*1e20*/                   DSETP.GEU.AND P0, PT, R6, RZ, PT ;
 
-        /*1e30*/                   DADD R4, -R4, -R8 ;
+        /*1e30*/              @!P0 IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*1e40*/                   DSETP.GEU.AND P0, PT, R10, RZ, PT ;
+        /*1e40*/              @!P0 MOV R7, 0x7ff00000 ;
 
-        /*1e50*/              @!P0 BRA 0x1ee0 ;
+        /*1e50*/                   BRA 0x1eb0 ;
 
-        /*1e60*/                   IMAD.MOV.U32 R6, RZ, RZ, R4 ;
+        /*1e60*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*1e70*/                   MOV R14, R10 ;
+        /*1e70*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*1e80*/                   IMAD.MOV.U32 R7, RZ, RZ, R5 ;
+        /*1e80*/                   BRA 0x1eb0 ;
 
-        /*1e90*/                   IMAD.MOV.U32 R15, RZ, RZ, R11 ;
+        /*1e90*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*1ea0*/                   DSETP.GEU.AND P0, PT, R6, RZ, PT ;
+        /*1ea0*/                   MOV R7, 0x7ff00000 ;
 
-        /*1eb0*/              @!P0 IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*1eb0*/                   BSYNC B0 ;
 
-        /*1ec0*/              @!P0 IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*1ec0*/                   DSETP.GEU.AND P0, PT, R12, R6, PT ;
 
-        /*1ed0*/                   BRA 0x1f30 ;
+        /*1ed0*/                   FSEL R4, R12, R6, !P0 ;
 
-        /*1ee0*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*1ee0*/                   FSEL R5, R13, R7, !P0 ;
 
-        /*1ef0*/                   MOV R7, 0x7ff00000 ;
+        /*1ef0*/                   STG.E.64.SYS [R2], R4 ;
 
-        /*1f00*/                   BRA 0x1f30 ;
+        /*1f00*/                   EXIT ;
 
-        /*1f10*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*1f10*/                   LOP3.LUT R6, R6, 0xff, RZ, 0xc0, !PT ;
 
-        /*1f20*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*1f20*/                   PRMT R4, R6, 0x9910, RZ ;
 
-        /*1f30*/                   BSYNC B1 ;
+        /*1f30*/                   ISETP.NE.AND P0, PT, R4, 0x5, PT ;
 
-        /*1f40*/                   DSETP.GEU.AND P0, PT, R14, R6, PT ;
+        /*1f40*/              @!P0 BRA 0x2e20 ;
 
-        /*1f50*/                   FSEL R4, R14, R6, !P0 ;
+        /*1f50*/                   ISETP.NE.AND P0, PT, R4, 0x6, PT ;
 
-        /*1f60*/                   FSEL R5, R15, R7, !P0 ;
+        /*1f60*/               @P0 EXIT ;
 
-        /*1f70*/                   STG.E.64.SYS [R2], R4 ;
+        /*1f70*/                   LDG.E.SYS R26, [R18] ;
 
-        /*1f80*/                   EXIT ;
+        /*1f80*/                   LDG.E.64.SYS R16, [R38+0x8] ;
 
-        /*1f90*/                   LDG.E.SYS R12, [R18] ;
+        /*1f90*/                   LDG.E.64.SYS R8, [R38] ;
 
-        /*1fa0*/                   LDG.E.64.SYS R6, [R38+0x10] ;
+        /*1fa0*/                   IMAD.WIDE.U32 R26, R26, R5, c[0x0][0x180] ;
 
-        /*1fb0*/                   IMAD.WIDE.U32 R12, R12, R5, c[0x0][0x180] ;
+        /*1fb0*/                   LDG.E.64.SYS R4, [R38+0x10] ;
 
-        /*1fc0*/                   LDG.E.64.SYS R4, [R38] ;
+        /*1fc0*/                   LDG.E.64.SYS R32, [R26+0x20] ;
 
-        /*1fd0*/                   LDG.E.64.SYS R12, [R12] ;
+        /*1fd0*/                   LDG.E.64.SYS R14, [R26+0x18] ;
 
-        /*1fe0*/                   DMUL R6, R6, R6 ;
+        /*1fe0*/                   LDG.E.64.SYS R42, [R26+0x8] ;
 
-        /*1ff0*/                   IMAD.MOV.U32 R9, RZ, RZ, RZ ;
+        /*1ff0*/                   LDG.E.64.SYS R10, [R26] ;
 
-        /*2000*/                   DFMA R4, R4, R4, R6 ;
+        /*2000*/                   LDG.E.64.SYS R24, [R26+0x38] ;
 
-        /*2010*/                   DADD R4, R4, -R12 ;
+        /*2010*/                   LDG.E.64.SYS R20, [R26+0x28] ;
 
-        /*2020*/                   DSETP.GTU.AND P1, PT, R4, RZ, PT ;
+        /*2020*/                   LDG.E.64.SYS R22, [R26+0x30] ;
 
-        /*2030*/                   DSETP.GEU.AND P0, PT, R4, RZ, PT ;
+        /*2030*/                   LDG.E.64.SYS R12, [R26+0x10] ;
 
-        /*2040*/                   SEL R6, RZ, 0x1, !P1 ;
+        /*2040*/                   LDG.E.64.SYS R18, [R26+0x40] ;
 
-        /*2050*/                   SEL R7, RZ, 0x1, P0 ;
+        /*2050*/                   LDG.E.64.SYS R6, [R26+0x48] ;
 
-        /*2060*/                   IMAD.IADD R8, R6, 0x1, -R7 ;
+        /*2060*/                   DMUL R30, R4, R32 ;
 
-        /*2070*/                   MOV R7, c[0x0][0x1a4] ;
+        /*2070*/                   DMUL R28, R16, R14 ;
 
-        /*2080*/                   IMAD.MOV.U32 R6, RZ, RZ, c[0x0][0x1a0] ;
+        /*2080*/                   DFMA R30, R16, R42, R30 ;
 
-        /*2090*/                   SHF.R.U32.HI R8, RZ, 0x1f, R8 ;
+        /*2090*/                   DFMA R28, R8, R10, R28 ;
 
-        /*20a0*/                   IMAD.WIDE.U32 R6, R0, 0x18, R6 ;
+        /*20a0*/                   DADD R30, R30, R24 ;
 
-        /*20b0*/                   LOP3.LUT R11, R8, 0x1, RZ, 0x3c, !PT ;
+        /*20b0*/                   DFMA R28, R4, R20, R28 ;
 
-        /*20c0*/                   IMAD.IADD R9, R9, 0x1, R7 ;
+        /*20c0*/                   DMUL R30, R16, R30 ;
 
-        /*20d0*/                   IMAD.MOV.U32 R8, RZ, RZ, R6 ;
+        /*20d0*/                   DADD R28, R28, R22 ;
 
-        /*20e0*/                   STG.E.U8.SYS [R34], R11 ;
+        /*20e0*/                   DFMA R16, R4, R12, R18 ;
 
-        /*20f0*/                   LDG.E.64.SYS R6, [R8+0x8] ;
+        /*20f0*/                   DFMA R28, R8, R28, R30 ;
 
-        /*2100*/                   BMOV.32.CLEAR RZ, B1 ;
+        /*2100*/                   DFMA R4, R4, R16, R28 ;
 
-        /*2110*/                   BSSY B1, 0x27b0 ;
+        /*2110*/                   DADD R4, R4, R6 ;
 
-        /*2120*/                   IMAD.MOV.U32 R14, RZ, RZ, 0x0 ;
+        /*2120*/                   DSETP.GTU.AND P1, PT, R4, RZ, PT ;
 
-        /*2130*/                   MOV R15, 0x7ff00000 ;
+        /*2130*/                   DSETP.GEU.AND P0, PT, R4, RZ, PT ;
 
-        /*2140*/                   DFMA R6, -R6, R6, 1 ;
+        /*2140*/                   SEL R0, RZ, 0x1, !P1 ;
 
-        /*2150*/                   DSETP.NEU.AND P1, PT, R6, RZ, PT ;
+        /*2150*/                   SEL R9, RZ, 0x1, P0 ;
 
-        /*2160*/              @!P1 BRA 0x2780 ;
+        /*2160*/                   IMAD.IADD R0, R0, 0x1, -R9 ;
 
-        /*2170*/                   LDG.E.64.SYS R8, [R40+0x10] ;
+        /*2170*/                   SHF.R.U32.HI R0, RZ, 0x1f, R0 ;
 
-        /*2180*/                   LDG.E.64.SYS R16, [R38+0x10] ;
+        /*2180*/                   LOP3.LUT R0, R0, 0x1, RZ, 0x3c, !PT ;
 
-        /*2190*/                   LDG.E.64.SYS R20, [R40] ;
+        /*2190*/                   STG.E.U8.SYS [R34], R0 ;
 
-        /*21a0*/                   LDG.E.64.SYS R18, [R38] ;
+        /*21a0*/                   LDG.E.64.SYS R8, [R40+0x10] ;
 
-        /*21b0*/                   MUFU.RCP64H R11, R7 ;
+        /*21b0*/                   LDG.E.64.SYS R16, [R40+0x8] ;
 
-        /*21c0*/                   IADD3 R10, R7, 0x300402, RZ ;
+        /*21c0*/                   LDG.E.64.SYS R26, [R40] ;
 
-        /*21d0*/                   DSETP.GTU.XOR P0, PT, R4, RZ, !P0 ;
+        /*21d0*/                   LDG.E.64.SYS R30, [R38+0x8] ;
 
-        /*21e0*/                   BMOV.32.CLEAR RZ, B2 ;
+        /*21e0*/                   LDG.E.64.SYS R28, [R38] ;
 
-        /*21f0*/                   BSSY B2, 0x2320 ;
+        /*21f0*/                   LDG.E.64.SYS R36, [R38+0x10] ;
 
-        /*2200*/                   FSETP.GEU.AND P1, PT, |R10|, 5.8789094863358348022e-39, PT ;
+        /*2200*/                   DSETP.GTU.XOR P0, PT, R4, RZ, !P0 ;
 
-        /*2210*/                   DFMA R22, -R6, R10, 1 ;
+        /*2210*/                   BMOV.32.CLEAR RZ, B0 ;
 
-        /*2220*/                   DFMA R22, R22, R22, R22 ;
+        /*2220*/                   BSSY B0, 0x2dd0 ;
 
-        /*2230*/                   DFMA R22, R10, R22, R10 ;
+        /*2230*/                   DMUL R34, R32, R8 ;
 
-        /*2240*/                   DFMA R4, -R6, R22, 1 ;
+        /*2240*/                   DMUL R44, R14, R16 ;
 
-        /*2250*/                   DFMA R22, R22, R4, R22 ;
+        /*2250*/                   DFMA R34, R42, R16, R34 ;
 
-        /*2260*/                   DMUL R8, R8, R16 ;
+        /*2260*/                   DFMA R44, R10, R26, R44 ;
 
-        /*2270*/                   DFMA R20, R20, R18, R8 ;
+        /*2270*/                   DMUL R34, R16, R34 ;
 
-        /*2280*/               @P1 BRA 0x2310 ;
+        /*2280*/                   DFMA R34, R26, R44, R34 ;
 
-        /*2290*/                   LOP3.LUT R8, R7, 0x7fffffff, RZ, 0xc0, !PT ;
+        /*2290*/                   DADD R44, R42, R42 ;
 
-        /*22a0*/                   IMAD.MOV.U32 R4, RZ, RZ, R6 ;
+        /*22a0*/                   DMUL R44, R30, R44 ;
 
-        /*22b0*/                   MOV R0, 0x22f0 ;
+        /*22b0*/                   DMUL R40, R32, R36 ;
 
-        /*22c0*/                   IMAD.MOV.U32 R5, RZ, RZ, R7 ;
+        /*22c0*/                   DFMA R44, R14, R28, R44 ;
 
-        /*22d0*/                   IADD3 R8, R8, -0x100000, RZ ;
+        /*22d0*/                   DFMA R42, R42, R30, R40 ;
 
-        /*22e0*/                   CALL.REL.NOINC 0x3750 ;
+        /*22e0*/                   DADD R38, R44, R40 ;
 
-        /*22f0*/                   IMAD.MOV.U32 R22, RZ, RZ, R8 ;
+        /*22f0*/                   DADD R40, R12, R12 ;
 
-        /*2300*/                   MOV R23, R9 ;
+        /*2300*/                   DMUL R40, R36, R40 ;
 
-        /*2310*/                   BSYNC B2 ;
+        /*2310*/                   DFMA R32, R32, R30, R40 ;
 
-        /*2320*/                   DMUL R4, R20, R22 ;
+        /*2320*/                   DMUL R40, R14, R30 ;
 
-        /*2330*/              @!P0 DMUL R6, R4, -2 ;
+        /*2330*/                   DADD R14, R10, R10 ;
 
-        /*2340*/              @!P0 DSETP.GTU.AND P1, PT, R6, RZ, PT ;
+        /*2340*/                   DFMA R14, R14, R28, R40 ;
 
-        /*2350*/              @!P0 FSEL R6, R6, RZ, P1 ;
+        /*2350*/                   DFMA R10, R10, R28, R40 ;
 
-        /*2360*/              @!P0 FSEL R7, R7, +QNAN , P1 ;
+        /*2360*/                   DFMA R14, R20, R36, R14 ;
 
-        /*2370*/              @!P0 BRA 0x27a0 ;
+        /*2370*/                   DADD R10, R22, R10 ;
 
-        /*2380*/                   DMUL R16, R16, R16 ;
+        /*2380*/                   DADD R14, R22, R14 ;
 
-        /*2390*/                   DMUL R6, R4, R4 ;
+        /*2390*/                   DMUL R22, R12, R36 ;
 
-        /*23a0*/                   DFMA R16, R18, R18, R16 ;
+        /*23a0*/                   DMUL R12, R12, R8 ;
 
-        /*23b0*/                   DADD R16, -R12, R16 ;
+        /*23b0*/                   DADD R42, R24, R42 ;
 
-        /*23c0*/                   DMUL R16, R16, R22 ;
+        /*23c0*/                   DADD R38, R24, R38 ;
 
-        /*23d0*/                   DSETP.GT.AND P0, PT, R6, R16, PT ;
+        /*23d0*/                   DFMA R12, R20, R26, R12 ;
 
-        /*23e0*/               @P0 BRA 0x24a0 ;
+        /*23e0*/                   DMUL R30, R30, R42 ;
 
-        /*23f0*/                   DSETP.NEU.AND P0, PT, R6, R16, PT ;
+        /*23f0*/                   DMUL R38, R16, R38 ;
 
-        /*2400*/               @P0 BRA 0x2470 ;
+        /*2400*/                   DFMA R22, R20, R28, R22 ;
 
-        /*2410*/                   DSETP.GT.AND P0, PT, R4, RZ, PT ;
+        /*2410*/                   DFMA R32, R20, R28, R32 ;
 
-        /*2420*/                   DADD R6, -RZ, -R4 ;
+        /*2420*/                   DFMA R34, R8, R12, R34 ;
 
-        /*2430*/              @!P0 BRA 0x27a0 ;
+        /*2430*/                   DADD R22, R18, R22 ;
 
-        /*2440*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*2440*/                   DADD R32, R18, R32 ;
 
-        /*2450*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*2450*/                   DFMA R10, R28, R10, R30 ;
 
-        /*2460*/                   BRA 0x27a0 ;
+        /*2460*/                   DFMA R14, R26, R14, R38 ;
 
-        /*2470*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*2470*/                   DSETP.GE.AND P1, PT, |R34|, c[0x2][0x0], PT ;
 
-        /*2480*/                   MOV R7, 0x7ff00000 ;
+        /*2480*/                   DFMA R10, R36, R22, R10 ;
 
-        /*2490*/                   BRA 0x27a0 ;
+        /*2490*/                   DFMA R14, R8, R32, R14 ;
 
-        /*24a0*/                   DADD R16, -R16, R6 ;
+        /*24a0*/                   DADD R12, R6, R10 ;
 
-        /*24b0*/                   IMAD.MOV.U32 R10, RZ, RZ, 0x0 ;
+        /*24b0*/                   DMUL R14, R14, 0.5 ;
 
-        /*24c0*/                   BMOV.32.CLEAR RZ, B2 ;
+        /*24c0*/              @!P1 BRA 0x2a10 ;
 
-        /*24d0*/                   IMAD.MOV.U32 R11, RZ, RZ, 0x3fd80000 ;
+        /*24d0*/                   MUFU.RCP64H R5, R35 ;
 
-        /*24e0*/                   BSSY B2, 0x2690 ;
+        /*24e0*/                   IADD3 R4, R35, 0x300402, RZ ;
 
-        /*24f0*/                   MUFU.RSQ64H R7, R17 ;
+        /*24f0*/                   BMOV.32.CLEAR RZ, B1 ;
 
-        /*2500*/                   IADD3 R6, R17, -0x3500000, RZ ;
+        /*2500*/                   BSSY B1, 0x25f0 ;
 
-        /*2510*/                   ISETP.GE.U32.AND P0, PT, R6, 0x7ca00000, PT ;
+        /*2510*/                   FSETP.GEU.AND P1, PT, |R4|, 5.8789094863358348022e-39, PT ;
 
-        /*2520*/                   DMUL R8, R6, R6 ;
+        /*2520*/                   DFMA R6, -R34, R4, 1 ;
 
-        /*2530*/                   DFMA R8, R16, -R8, 1 ;
+        /*2530*/                   DFMA R6, R6, R6, R6 ;
 
-        /*2540*/                   DFMA R10, R8, R10, 0.5 ;
+        /*2540*/                   DFMA R6, R4, R6, R4 ;
 
-        /*2550*/                   DMUL R8, R6, R8 ;
+        /*2550*/                   DFMA R8, -R34, R6, 1 ;
 
-        /*2560*/                   DFMA R10, R10, R8, R6 ;
+        /*2560*/                   DFMA R8, R6, R8, R6 ;
 
-        /*2570*/                   DMUL R18, R16, R10 ;
+        /*2570*/               @P1 BRA 0x25e0 ;
 
-        /*2580*/                   IADD3 R13, R11, -0x100000, RZ ;
+        /*2580*/                   LOP3.LUT R8, R35, 0x7fffffff, RZ, 0xc0, !PT ;
 
-        /*2590*/                   IMAD.MOV.U32 R12, RZ, RZ, R10 ;
+        /*2590*/                   IMAD.MOV.U32 R4, RZ, RZ, R34 ;
 
-        /*25a0*/                   DFMA R20, R18, -R18, R16 ;
+        /*25a0*/                   MOV R0, 0x25e0 ;
 
-        /*25b0*/                   DFMA R8, R20, R12, R18 ;
+        /*25b0*/                   IMAD.MOV.U32 R5, RZ, RZ, R35 ;
 
-        /*25c0*/              @!P0 BRA 0x2680 ;
+        /*25c0*/                   IADD3 R8, R8, -0x100000, RZ ;
 
-        /*25d0*/                   MOV R0, R10 ;
+        /*25d0*/                   CALL.REL.NOINC 0x3690 ;
 
-        /*25e0*/                   IMAD.MOV.U32 R10, RZ, RZ, R16 ;
+        /*25e0*/                   BSYNC B1 ;
 
-        /*25f0*/                   MOV R8, 0x2660 ;
+        /*25f0*/                   DMUL R14, R14, R8 ;
 
-        /*2600*/                   IMAD.MOV.U32 R11, RZ, RZ, R17 ;
+        /*2600*/              @!P0 DMUL R4, R14, -2 ;
 
-        /*2610*/                   MOV R17, R21 ;
+        /*2610*/              @!P0 DSETP.GTU.AND P1, PT, R4, RZ, PT ;
 
-        /*2620*/                   IMAD.MOV.U32 R16, RZ, RZ, R20 ;
+        /*2620*/              @!P0 FSEL R6, R4, RZ, P1 ;
 
-        /*2630*/                   IMAD.MOV.U32 R20, RZ, RZ, R6 ;
+        /*2630*/              @!P0 FSEL R7, R5, +QNAN , P1 ;
 
-        /*2640*/                   IMAD.MOV.U32 R21, RZ, RZ, R13 ;
+        /*2640*/              @!P0 IMAD.MOV.U32 R5, RZ, RZ, 0x7ff00000 ;
 
-        /*2650*/                   CALL.REL.NOINC 0x3fe0 ;
+        /*2650*/              @!P0 MOV R4, 0x0 ;
 
-        /*2660*/                   IMAD.MOV.U32 R8, RZ, RZ, R16 ;
+        /*2660*/              @!P0 BRA 0x2dc0 ;
 
-        /*2670*/                   MOV R9, R17 ;
+        /*2670*/                   DMUL R8, R12, R8 ;
 
-        /*2680*/                   BSYNC B2 ;
+        /*2680*/                   DMUL R4, R14, R14 ;
 
-        /*2690*/                   DADD R10, -R4, R8 ;
+        /*2690*/                   DSETP.GT.AND P0, PT, R4, R8, PT ;
 
-        /*26a0*/                   DADD R4, -R4, -R8 ;
+        /*26a0*/               @P0 BRA 0x2780 ;
 
-        /*26b0*/                   DSETP.GEU.AND P0, PT, R10, RZ, PT ;
+        /*26b0*/                   DSETP.NEU.AND P0, PT, R4, R8, PT ;
 
-        /*26c0*/              @!P0 BRA 0x2750 ;
+        /*26c0*/                   IMAD.MOV.U32 R4, RZ, RZ, 0x0 ;
 
-        /*26d0*/                   IMAD.MOV.U32 R6, RZ, RZ, R4 ;
+        /*26d0*/                   IMAD.MOV.U32 R5, RZ, RZ, 0x7ff00000 ;
 
-        /*26e0*/                   MOV R15, R11 ;
+        /*26e0*/               @P0 BRA 0x2750 ;
 
-        /*26f0*/                   IMAD.MOV.U32 R7, RZ, RZ, R5 ;
+        /*26f0*/                   DSETP.GT.AND P0, PT, R14, RZ, PT ;
 
-        /*2700*/                   IMAD.MOV.U32 R14, RZ, RZ, R10 ;
+        /*2700*/                   DADD R6, -RZ, -R14 ;
 
-        /*2710*/                   DSETP.GEU.AND P0, PT, R6, RZ, PT ;
+        /*2710*/              @!P0 BRA 0x2dc0 ;
 
-        /*2720*/              @!P0 IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*2720*/                   MOV R6, 0x0 ;
 
-        /*2730*/              @!P0 IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*2730*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*2740*/                   BRA 0x27a0 ;
+        /*2740*/                   BRA 0x2dc0 ;
 
         /*2750*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*2760*/                   MOV R7, 0x7ff00000 ;
+        /*2760*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*2770*/                   BRA 0x27a0 ;
+        /*2770*/                   BRA 0x2dc0 ;
 
-        /*2780*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*2780*/                   DADD R10, -R8, R4 ;
 
-        /*2790*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*2790*/                   MOV R8, 0x0 ;
 
-        /*27a0*/                   BSYNC B1 ;
+        /*27a0*/                   IMAD.MOV.U32 R9, RZ, RZ, 0x3fd80000 ;
 
-        /*27b0*/                   DSETP.GEU.AND P0, PT, R14, R6, PT ;
+        /*27b0*/                   BMOV.32.CLEAR RZ, B1 ;
 
-        /*27c0*/                   FSEL R4, R14, R6, !P0 ;
+        /*27c0*/                   BSSY B1, 0x2930 ;
 
-        /*27d0*/                   FSEL R5, R15, R7, !P0 ;
+        /*27d0*/                   MUFU.RSQ64H R5, R11 ;
 
-        /*27e0*/                   STG.E.64.SYS [R2], R4 ;
+        /*27e0*/                   IADD3 R4, R11, -0x3500000, RZ ;
 
-        /*27f0*/                   EXIT ;
+        /*27f0*/                   ISETP.GE.U32.AND P0, PT, R4, 0x7ca00000, PT ;
 
-        /*2800*/                   LOP3.LUT R6, R6, 0xff, RZ, 0xc0, !PT ;
+        /*2800*/                   DMUL R6, R4, R4 ;
 
-        /*2810*/                   PRMT R0, R6, 0x9910, RZ ;
+        /*2810*/                   DFMA R6, R10, -R6, 1 ;
 
-        /*2820*/                   ISETP.NE.AND P0, PT, R0, 0x6, PT ;
+        /*2820*/                   DFMA R8, R6, R8, 0.5 ;
 
-        /*2830*/              @!P0 BRA 0x28a0 ;
+        /*2830*/                   DMUL R6, R4, R6 ;
 
-        /*2840*/                   ISETP.NE.AND P0, PT, R0, 0x7, PT ;
+        /*2840*/                   DFMA R12, R8, R6, R4 ;
 
-        /*2850*/               @P0 BRA 0x2870 ;
+        /*2850*/                   DMUL R18, R10, R12 ;
 
-        /*2860*/                   BPT.TRAP 0x1 ;
+        /*2860*/                   IADD3 R9, R13, -0x100000, RZ ;
 
-        /*2870*/                   BSYNC B0 ;
+        /*2870*/                   IMAD.MOV.U32 R8, RZ, RZ, R12 ;
 
-        /*2880*/                   BPT.TRAP 0x1 ;
+        /*2880*/                   DFMA R16, R18, -R18, R10 ;
 
-        /*2890*/                   EXIT ;
+        /*2890*/                   DFMA R6, R16, R8, R18 ;
 
-        /*28a0*/                   LDG.E.SYS R26, [R18] ;
+        /*28a0*/              @!P0 BRA 0x2920 ;
 
-        /*28b0*/                   LDG.E.64.SYS R16, [R38+0x8] ;
+        /*28b0*/                   IMAD.MOV.U32 R0, RZ, RZ, R12 ;
 
-        /*28c0*/                   LDG.E.64.SYS R8, [R38] ;
+        /*28c0*/                   MOV R20, R4 ;
 
-        /*28d0*/                   IMAD.WIDE.U32 R26, R26, R5, c[0x0][0x180] ;
+        /*28d0*/                   IMAD.MOV.U32 R21, RZ, RZ, R9 ;
 
-        /*28e0*/                   LDG.E.64.SYS R4, [R38+0x10] ;
+        /*28e0*/                   MOV R8, 0x2900 ;
 
-        /*28f0*/                   LDG.E.64.SYS R32, [R26+0x20] ;
+        /*28f0*/                   CALL.REL.NOINC 0x3f20 ;
 
-        /*2900*/                   LDG.E.64.SYS R14, [R26+0x18] ;
+        /*2900*/                   IMAD.MOV.U32 R6, RZ, RZ, R16 ;
 
-        /*2910*/                   LDG.E.64.SYS R42, [R26+0x8] ;
+        /*2910*/                   IMAD.MOV.U32 R7, RZ, RZ, R17 ;
 
-        /*2920*/                   LDG.E.64.SYS R10, [R26] ;
+        /*2920*/                   BSYNC B1 ;
 
-        /*2930*/                   LDG.E.64.SYS R24, [R26+0x38] ;
+        /*2930*/                   DADD R4, -R14, R6 ;
 
-        /*2940*/                   LDG.E.64.SYS R20, [R26+0x28] ;
+        /*2940*/                   DADD R14, -R14, -R6 ;
 
-        /*2950*/                   LDG.E.64.SYS R22, [R26+0x30] ;
+        /*2950*/                   MOV R6, 0x0 ;
 
-        /*2960*/                   LDG.E.64.SYS R12, [R26+0x10] ;
+        /*2960*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*2970*/                   LDG.E.64.SYS R18, [R26+0x40] ;
+        /*2970*/                   DSETP.GEU.AND P0, PT, R4, RZ, PT ;
 
-        /*2980*/                   LDG.E.64.SYS R6, [R26+0x48] ;
+        /*2980*/              @!P0 BRA 0x29e0 ;
 
-        /*2990*/                   DMUL R30, R4, R32 ;
+        /*2990*/                   DSETP.GEU.AND P0, PT, R14, RZ, PT ;
 
-        /*29a0*/                   DMUL R28, R16, R14 ;
+        /*29a0*/              @!P0 BRA 0x2dc0 ;
 
-        /*29b0*/                   DFMA R30, R16, R42, R30 ;
+        /*29b0*/                   IMAD.MOV.U32 R6, RZ, RZ, R14 ;
 
-        /*29c0*/                   DFMA R28, R8, R10, R28 ;
+        /*29c0*/                   IMAD.MOV.U32 R7, RZ, RZ, R15 ;
 
-        /*29d0*/                   DADD R30, R30, R24 ;
+        /*29d0*/                   BRA 0x2dc0 ;
 
-        /*29e0*/                   DFMA R28, R4, R20, R28 ;
+        /*29e0*/                   MOV R4, 0x0 ;
 
-        /*29f0*/                   DMUL R30, R16, R30 ;
+        /*29f0*/                   IMAD.MOV.U32 R5, RZ, RZ, 0x7ff00000 ;
 
-        /*2a00*/                   DADD R28, R28, R22 ;
+        /*2a00*/                   BRA 0x2dc0 ;
 
-        /*2a10*/                   DFMA R16, R4, R12, R18 ;
+        /*2a10*/                   IMAD.MOV.U32 R4, RZ, RZ, 0x0 ;
 
-        /*2a20*/                   DFMA R28, R8, R28, R30 ;
+        /*2a20*/                   MOV R6, 0x0 ;
 
-        /*2a30*/                   DFMA R4, R4, R16, R28 ;
+        /*2a30*/                   IMAD.MOV.U32 R5, RZ, RZ, 0x7ff00000 ;
 
-        /*2a40*/                   DADD R4, R4, R6 ;
+        /*2a40*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*2a50*/                   DSETP.GTU.AND P1, PT, R4, RZ, PT ;
+        /*2a50*/              @!P0 BRA 0x2dc0 ;
 
-        /*2a60*/                   DSETP.GEU.AND P0, PT, R4, RZ, PT ;
+        /*2a60*/                   DMUL R6, R14, c[0x2][0x8] ;
 
-        /*2a70*/                   SEL R0, RZ, 0x1, !P1 ;
+        /*2a70*/                   DMUL R12, R12, c[0x2][0x8] ;
 
-        /*2a80*/                   SEL R9, RZ, 0x1, P0 ;
+        /*2a80*/                   DMUL R8, R6, R6 ;
 
-        /*2a90*/                   IMAD.IADD R0, R0, 0x1, -R9 ;
+        /*2a90*/                   DSETP.GT.AND P0, PT, R8, R12, PT ;
 
-        /*2aa0*/                   SHF.R.U32.HI R0, RZ, 0x1f, R0 ;
+        /*2aa0*/               @P0 BRA 0x2b60 ;
 
-        /*2ab0*/                   LOP3.LUT R0, R0, 0x1, RZ, 0x3c, !PT ;
+        /*2ab0*/                   DSETP.NEU.AND P0, PT, R8, R12, PT ;
 
-        /*2ac0*/                   STG.E.U8.SYS [R34], R0 ;
+        /*2ac0*/               @P0 BRA 0x2b30 ;
 
-        /*2ad0*/                   LDG.E.64.SYS R8, [R40+0x10] ;
+        /*2ad0*/                   DSETP.GT.AND P0, PT, R6, RZ, PT ;
 
-        /*2ae0*/                   LDG.E.64.SYS R16, [R40+0x8] ;
+        /*2ae0*/                   DADD R6, -RZ, -R6 ;
 
-        /*2af0*/                   LDG.E.64.SYS R26, [R40] ;
+        /*2af0*/              @!P0 BRA 0x2dc0 ;
 
-        /*2b00*/                   LDG.E.64.SYS R30, [R38+0x8] ;
+        /*2b00*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*2b10*/                   LDG.E.64.SYS R28, [R38] ;
+        /*2b10*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*2b20*/                   LDG.E.64.SYS R36, [R38+0x10] ;
+        /*2b20*/                   BRA 0x2dc0 ;
 
-        /*2b30*/                   DSETP.GTU.XOR P0, PT, R4, RZ, !P0 ;
+        /*2b30*/                   MOV R6, 0x0 ;
 
-        /*2b40*/                   BMOV.32.CLEAR RZ, B1 ;
+        /*2b40*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*2b50*/                   BSSY B1, 0x3700 ;
+        /*2b50*/                   BRA 0x2dc0 ;
 
-        /*2b60*/                   DMUL R34, R32, R8 ;
+        /*2b60*/                   DADD R10, R8, -R12 ;
 
-        /*2b70*/                   DMUL R44, R14, R16 ;
+        /*2b70*/                   IMAD.MOV.U32 R14, RZ, RZ, 0x0 ;
 
-        /*2b80*/                   DFMA R34, R42, R16, R34 ;
+        /*2b80*/                   BMOV.32.CLEAR RZ, B1 ;
 
-        /*2b90*/                   DFMA R44, R10, R26, R44 ;
+        /*2b90*/                   IMAD.MOV.U32 R15, RZ, RZ, 0x3fd80000 ;
 
-        /*2ba0*/                   DMUL R34, R16, R34 ;
+        /*2ba0*/                   BSSY B1, 0x2d00 ;
 
-        /*2bb0*/                   DFMA R34, R26, R44, R34 ;
+        /*2bb0*/                   MUFU.RSQ64H R9, R11 ;
 
-        /*2bc0*/                   DADD R44, R42, R42 ;
+        /*2bc0*/                   IADD3 R8, R11, -0x3500000, RZ ;
 
-        /*2bd0*/                   DMUL R44, R30, R44 ;
+        /*2bd0*/                   ISETP.GE.U32.AND P0, PT, R8, 0x7ca00000, PT ;
 
-        /*2be0*/                   DMUL R40, R32, R36 ;
+        /*2be0*/                   DMUL R12, R8, R8 ;
 
-        /*2bf0*/                   DFMA R44, R14, R28, R44 ;
+        /*2bf0*/                   DFMA R12, R10, -R12, 1 ;
 
-        /*2c00*/                   DFMA R42, R42, R30, R40 ;
+        /*2c00*/                   DFMA R14, R12, R14, 0.5 ;
 
-        /*2c10*/                   DADD R38, R44, R40 ;
+        /*2c10*/                   DMUL R12, R8, R12 ;
 
-        /*2c20*/                   DADD R40, R12, R12 ;
+        /*2c20*/                   DFMA R12, R14, R12, R8 ;
 
-        /*2c30*/                   DMUL R40, R36, R40 ;
+        /*2c30*/                   DMUL R18, R10, R12 ;
 
-        /*2c40*/                   DFMA R32, R32, R30, R40 ;
+        /*2c40*/                   IADD3 R21, R13, -0x100000, RZ ;
 
-        /*2c50*/                   DMUL R40, R14, R30 ;
+        /*2c50*/                   MOV R20, R12 ;
 
-        /*2c60*/                   DADD R14, R10, R10 ;
+        /*2c60*/                   DFMA R16, R18, -R18, R10 ;
 
-        /*2c70*/                   DFMA R14, R14, R28, R40 ;
+        /*2c70*/                   DFMA R14, R16, R20, R18 ;
 
-        /*2c80*/                   DFMA R10, R10, R28, R40 ;
+        /*2c80*/              @!P0 BRA 0x2cf0 ;
 
-        /*2c90*/                   DFMA R14, R20, R36, R14 ;
+        /*2c90*/                   IMAD.MOV.U32 R20, RZ, RZ, R8 ;
 
-        /*2ca0*/                   DADD R10, R22, R10 ;
+        /*2ca0*/                   MOV R8, 0x2cd0 ;
 
-        /*2cb0*/                   DADD R14, R22, R14 ;
+        /*2cb0*/                   IMAD.MOV.U32 R0, RZ, RZ, R12 ;
 
-        /*2cc0*/                   DMUL R22, R12, R36 ;
+        /*2cc0*/                   CALL.REL.NOINC 0x3f20 ;
 
-        /*2cd0*/                   DMUL R12, R12, R8 ;
+        /*2cd0*/                   IMAD.MOV.U32 R14, RZ, RZ, R16 ;
 
-        /*2ce0*/                   DADD R42, R24, R42 ;
+        /*2ce0*/                   MOV R15, R17 ;
 
-        /*2cf0*/                   DADD R38, R24, R38 ;
+        /*2cf0*/                   BSYNC B1 ;
 
-        /*2d00*/                   DFMA R12, R20, R26, R12 ;
+        /*2d00*/                   DADD R8, -R6, R14 ;
 
-        /*2d10*/                   DMUL R30, R30, R42 ;
+        /*2d10*/                   DADD R6, -R6, -R14 ;
 
-        /*2d20*/                   DMUL R38, R16, R38 ;
+        /*2d20*/                   DSETP.GEU.AND P0, PT, R8, RZ, PT ;
 
-        /*2d30*/                   DFMA R22, R20, R28, R22 ;
+        /*2d30*/              @!P0 BRA 0x2da0 ;
 
-        /*2d40*/                   DFMA R32, R20, R28, R32 ;
+        /*2d40*/                   DSETP.GEU.AND P0, PT, R6, RZ, PT ;
 
-        /*2d50*/                   DFMA R34, R8, R12, R34 ;
+        /*2d50*/                   IMAD.MOV.U32 R4, RZ, RZ, R8 ;
 
-        /*2d60*/                   DADD R22, R18, R22 ;
+        /*2d60*/                   IMAD.MOV.U32 R5, RZ, RZ, R9 ;
 
-        /*2d70*/                   DADD R32, R18, R32 ;
+        /*2d70*/              @!P0 IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*2d80*/                   DFMA R10, R28, R10, R30 ;
+        /*2d80*/              @!P0 MOV R7, 0x7ff00000 ;
 
-        /*2d90*/                   DFMA R14, R26, R14, R38 ;
+        /*2d90*/                   BRA 0x2dc0 ;
 
-        /*2da0*/                   DSETP.GE.AND P1, PT, |R34|, c[0x2][0x0], PT ;
+        /*2da0*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*2db0*/                   DFMA R10, R36, R22, R10 ;
+        /*2db0*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*2dc0*/                   DFMA R14, R8, R32, R14 ;
+        /*2dc0*/                   BSYNC B0 ;
 
-        /*2dd0*/                   DADD R12, R6, R10 ;
+        /*2dd0*/                   DSETP.GEU.AND P0, PT, R4, R6, PT ;
 
-        /*2de0*/                   DMUL R14, R14, 0.5 ;
+        /*2de0*/                   FSEL R4, R4, R6, !P0 ;
 
-        /*2df0*/              @!P1 BRA 0x3340 ;
+        /*2df0*/                   FSEL R5, R5, R7, !P0 ;
 
-        /*2e00*/                   MUFU.RCP64H R5, R35 ;
+        /*2e00*/                   STG.E.64.SYS [R2], R4 ;
 
-        /*2e10*/                   IADD3 R4, R35, 0x300402, RZ ;
+        /*2e10*/                   EXIT ;
 
-        /*2e20*/                   BMOV.32.CLEAR RZ, B2 ;
+        /*2e20*/                   LDG.E.SYS R12, [R18] ;
 
-        /*2e30*/                   BSSY B2, 0x2f20 ;
+        /*2e30*/                   LDG.E.64.SYS R6, [R38+0x8] ;
 
-        /*2e40*/                   FSETP.GEU.AND P1, PT, |R4|, 5.8789094863358348022e-39, PT ;
+        /*2e40*/                   IMAD.WIDE.U32 R12, R12, R5, c[0x0][0x180] ;
 
-        /*2e50*/                   DFMA R6, -R34, R4, 1 ;
+        /*2e50*/                   LDG.E.64.SYS R4, [R38] ;
 
-        /*2e60*/                   DFMA R6, R6, R6, R6 ;
+        /*2e60*/                   LDG.E.64.SYS R12, [R12] ;
 
-        /*2e70*/                   DFMA R6, R4, R6, R4 ;
+        /*2e70*/                   DMUL R6, R6, R6 ;
 
-        /*2e80*/                   DFMA R8, -R34, R6, 1 ;
+        /*2e80*/                   IMAD.MOV.U32 R9, RZ, RZ, RZ ;
 
-        /*2e90*/                   DFMA R8, R6, R8, R6 ;
+        /*2e90*/                   DFMA R4, R4, R4, R6 ;
 
-        /*2ea0*/               @P1 BRA 0x2f10 ;
+        /*2ea0*/                   DADD R4, R4, -R12 ;
 
-        /*2eb0*/                   LOP3.LUT R8, R35, 0x7fffffff, RZ, 0xc0, !PT ;
+        /*2eb0*/                   DSETP.GTU.AND P1, PT, R4, RZ, PT ;
 
-        /*2ec0*/                   IMAD.MOV.U32 R5, RZ, RZ, R35 ;
+        /*2ec0*/                   DSETP.GEU.AND P0, PT, R4, RZ, PT ;
 
-        /*2ed0*/                   MOV R4, R34 ;
+        /*2ed0*/                   SEL R6, RZ, 0x1, !P1 ;
 
-        /*2ee0*/                   IADD3 R8, R8, -0x100000, RZ ;
+        /*2ee0*/                   SEL R7, RZ, 0x1, P0 ;
 
-        /*2ef0*/                   MOV R0, 0x2f10 ;
+        /*2ef0*/                   IMAD.IADD R8, R6, 0x1, -R7 ;
 
-        /*2f00*/                   CALL.REL.NOINC 0x3750 ;
+        /*2f00*/                   MOV R6, c[0x0][0x1a0] ;
 
-        /*2f10*/                   BSYNC B2 ;
+        /*2f10*/                   IMAD.MOV.U32 R7, RZ, RZ, c[0x0][0x1a4] ;
 
-        /*2f20*/                   DMUL R14, R14, R8 ;
+        /*2f20*/                   SHF.R.U32.HI R8, RZ, 0x1f, R8 ;
 
-        /*2f30*/              @!P0 DMUL R4, R14, -2 ;
+        /*2f30*/                   IMAD.WIDE.U32 R6, R0, 0x18, R6 ;
 
-        /*2f40*/              @!P0 DSETP.GTU.AND P1, PT, R4, RZ, PT ;
+        /*2f40*/                   LOP3.LUT R11, R8, 0x1, RZ, 0x3c, !PT ;
 
-        /*2f50*/              @!P0 FSEL R6, R4, RZ, P1 ;
+        /*2f50*/                   IMAD.IADD R9, R9, 0x1, R7 ;
 
-        /*2f60*/              @!P0 IMAD.MOV.U32 R4, RZ, RZ, 0x0 ;
+        /*2f60*/                   MOV R8, R6 ;
 
-        /*2f70*/              @!P0 FSEL R7, R5, +QNAN , P1 ;
+        /*2f70*/                   STG.E.U8.SYS [R34], R11 ;
 
-        /*2f80*/              @!P0 IMAD.MOV.U32 R5, RZ, RZ, 0x7ff00000 ;
+        /*2f80*/                   LDG.E.64.SYS R6, [R8+0x10] ;
 
-        /*2f90*/              @!P0 BRA 0x36f0 ;
+        /*2f90*/                   BMOV.32.CLEAR RZ, B0 ;
 
-        /*2fa0*/                   DMUL R8, R12, R8 ;
+        /*2fa0*/                   BSSY B0, 0x3640 ;
 
-        /*2fb0*/                   DMUL R4, R14, R14 ;
+        /*2fb0*/                   IMAD.MOV.U32 R14, RZ, RZ, 0x0 ;
 
-        /*2fc0*/                   DSETP.GT.AND P0, PT, R4, R8, PT ;
+        /*2fc0*/                   IMAD.MOV.U32 R15, RZ, RZ, 0x7ff00000 ;
 
-        /*2fd0*/               @P0 BRA 0x30b0 ;
+        /*2fd0*/                   DFMA R6, -R6, R6, 1 ;
 
-        /*2fe0*/                   DSETP.NEU.AND P0, PT, R4, R8, PT ;
+        /*2fe0*/                   DSETP.NEU.AND P1, PT, R6, RZ, PT ;
 
-        /*2ff0*/                   MOV R4, 0x0 ;
+        /*2ff0*/              @!P1 BRA 0x3610 ;
 
-        /*3000*/                   IMAD.MOV.U32 R5, RZ, RZ, 0x7ff00000 ;
+        /*3000*/                   LDG.E.64.SYS R8, [R40+0x8] ;
 
-        /*3010*/               @P0 BRA 0x3080 ;
+        /*3010*/                   LDG.E.64.SYS R16, [R38+0x8] ;
 
-        /*3020*/                   DSETP.GT.AND P0, PT, R14, RZ, PT ;
+        /*3020*/                   LDG.E.64.SYS R20, [R40] ;
 
-        /*3030*/                   DADD R6, -RZ, -R14 ;
+        /*3030*/                   LDG.E.64.SYS R18, [R38] ;
 
-        /*3040*/              @!P0 BRA 0x36f0 ;
+        /*3040*/                   MUFU.RCP64H R11, R7 ;
 
-        /*3050*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*3050*/                   IADD3 R10, R7, 0x300402, RZ ;
 
-        /*3060*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*3060*/                   DSETP.GTU.XOR P0, PT, R4, RZ, !P0 ;
 
-        /*3070*/                   BRA 0x36f0 ;
+        /*3070*/                   BMOV.32.CLEAR RZ, B1 ;
 
-        /*3080*/                   MOV R6, 0x0 ;
+        /*3080*/                   BSSY B1, 0x31b0 ;
 
-        /*3090*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*3090*/                   FSETP.GEU.AND P1, PT, |R10|, 5.8789094863358348022e-39, PT ;
 
-        /*30a0*/                   BRA 0x36f0 ;
+        /*30a0*/                   DFMA R22, -R6, R10, 1 ;
 
-        /*30b0*/                   DADD R10, -R8, R4 ;
+        /*30b0*/                   DFMA R22, R22, R22, R22 ;
 
-        /*30c0*/                   IMAD.MOV.U32 R8, RZ, RZ, 0x0 ;
+        /*30c0*/                   DFMA R22, R10, R22, R10 ;
 
-        /*30d0*/                   BMOV.32.CLEAR RZ, B2 ;
+        /*30d0*/                   DFMA R4, -R6, R22, 1 ;
 
-        /*30e0*/                   IMAD.MOV.U32 R9, RZ, RZ, 0x3fd80000 ;
+        /*30e0*/                   DFMA R22, R22, R4, R22 ;
 
-        /*30f0*/                   BSSY B2, 0x3260 ;
+        /*30f0*/                   DMUL R8, R8, R16 ;
 
-        /*3100*/                   MUFU.RSQ64H R5, R11 ;
+        /*3100*/                   DFMA R20, R20, R18, R8 ;
 
-        /*3110*/                   IADD3 R4, R11, -0x3500000, RZ ;
+        /*3110*/               @P1 BRA 0x31a0 ;
 
-        /*3120*/                   ISETP.GE.U32.AND P0, PT, R4, 0x7ca00000, PT ;
+        /*3120*/                   LOP3.LUT R8, R7, 0x7fffffff, RZ, 0xc0, !PT ;
 
-        /*3130*/                   DMUL R6, R4, R4 ;
+        /*3130*/                   IMAD.MOV.U32 R4, RZ, RZ, R6 ;
 
-        /*3140*/                   DFMA R6, R10, -R6, 1 ;
+        /*3140*/                   MOV R5, R7 ;
 
-        /*3150*/                   DFMA R8, R6, R8, 0.5 ;
+        /*3150*/                   IADD3 R8, R8, -0x100000, RZ ;
 
-        /*3160*/                   DMUL R6, R4, R6 ;
+        /*3160*/                   MOV R0, 0x3180 ;
 
-        /*3170*/                   DFMA R12, R8, R6, R4 ;
+        /*3170*/                   CALL.REL.NOINC 0x3690 ;
 
-        /*3180*/                   DMUL R18, R10, R12 ;
+        /*3180*/                   IMAD.MOV.U32 R22, RZ, RZ, R8 ;
 
-        /*3190*/                   IADD3 R9, R13, -0x100000, RZ ;
+        /*3190*/                   IMAD.MOV.U32 R23, RZ, RZ, R9 ;
 
-        /*31a0*/                   MOV R8, R12 ;
+        /*31a0*/                   BSYNC B1 ;
 
-        /*31b0*/                   DFMA R16, R18, -R18, R10 ;
+        /*31b0*/                   DMUL R4, R20, R22 ;
 
-        /*31c0*/                   DFMA R6, R16, R8, R18 ;
+        /*31c0*/              @!P0 DMUL R6, R4, -2 ;
 
-        /*31d0*/              @!P0 BRA 0x3250 ;
+        /*31d0*/              @!P0 DSETP.GTU.AND P1, PT, R6, RZ, PT ;
 
-        /*31e0*/                   IMAD.MOV.U32 R0, RZ, RZ, R12 ;
+        /*31e0*/              @!P0 FSEL R6, R6, RZ, P1 ;
 
-        /*31f0*/                   MOV R8, 0x3230 ;
+        /*31f0*/              @!P0 FSEL R7, R7, +QNAN , P1 ;
 
-        /*3200*/                   IMAD.MOV.U32 R20, RZ, RZ, R4 ;
+        /*3200*/              @!P0 BRA 0x3630 ;
 
-        /*3210*/                   IMAD.MOV.U32 R21, RZ, RZ, R9 ;
+        /*3210*/                   DMUL R16, R16, R16 ;
 
-        /*3220*/                   CALL.REL.NOINC 0x3fe0 ;
+        /*3220*/                   DMUL R6, R4, R4 ;
 
-        /*3230*/                   MOV R6, R16 ;
+        /*3230*/                   DFMA R16, R18, R18, R16 ;
 
-        /*3240*/                   IMAD.MOV.U32 R7, RZ, RZ, R17 ;
+        /*3240*/                   DADD R16, -R12, R16 ;
 
-        /*3250*/                   BSYNC B2 ;
+        /*3250*/                   DMUL R16, R16, R22 ;
 
-        /*3260*/                   DADD R4, -R14, R6 ;
+        /*3260*/                   DSETP.GT.AND P0, PT, R6, R16, PT ;
 
-        /*3270*/                   DADD R14, -R14, -R6 ;
+        /*3270*/               @P0 BRA 0x3330 ;
 
-        /*3280*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*3280*/                   DSETP.NEU.AND P0, PT, R6, R16, PT ;
 
-        /*3290*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*3290*/               @P0 BRA 0x3300 ;
 
-        /*32a0*/                   DSETP.GEU.AND P0, PT, R4, RZ, PT ;
+        /*32a0*/                   DSETP.GT.AND P0, PT, R4, RZ, PT ;
 
-        /*32b0*/              @!P0 BRA 0x3310 ;
+        /*32b0*/                   DADD R6, -RZ, -R4 ;
 
-        /*32c0*/                   DSETP.GEU.AND P0, PT, R14, RZ, PT ;
+        /*32c0*/              @!P0 BRA 0x3630 ;
 
-        /*32d0*/              @!P0 BRA 0x36f0 ;
+        /*32d0*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*32e0*/                   MOV R6, R14 ;
+        /*32e0*/                   MOV R7, 0x7ff00000 ;
 
-        /*32f0*/                   IMAD.MOV.U32 R7, RZ, RZ, R15 ;
+        /*32f0*/                   BRA 0x3630 ;
 
-        /*3300*/                   BRA 0x36f0 ;
+        /*3300*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*3310*/                   IMAD.MOV.U32 R4, RZ, RZ, 0x0 ;
+        /*3310*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*3320*/                   IMAD.MOV.U32 R5, RZ, RZ, 0x7ff00000 ;
+        /*3320*/                   BRA 0x3630 ;
 
-        /*3330*/                   BRA 0x36f0 ;
+        /*3330*/                   DADD R16, -R16, R6 ;
 
-        /*3340*/                   MOV R4, 0x0 ;
+        /*3340*/                   IMAD.MOV.U32 R10, RZ, RZ, 0x0 ;
 
-        /*3350*/                   IMAD.MOV.U32 R5, RZ, RZ, 0x7ff00000 ;
+        /*3350*/                   MOV R11, 0x3fd80000 ;
 
-        /*3360*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*3360*/                   BMOV.32.CLEAR RZ, B1 ;
 
-        /*3370*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*3370*/                   BSSY B1, 0x3520 ;
 
-        /*3380*/              @!P0 BRA 0x36f0 ;
+        /*3380*/                   MUFU.RSQ64H R7, R17 ;
 
-        /*3390*/                   DMUL R6, R14, c[0x2][0x8] ;
+        /*3390*/                   IADD3 R6, R17, -0x3500000, RZ ;
 
-        /*33a0*/                   DMUL R12, R12, c[0x2][0x8] ;
+        /*33a0*/                   ISETP.GE.U32.AND P0, PT, R6, 0x7ca00000, PT ;
 
         /*33b0*/                   DMUL R8, R6, R6 ;
 
-        /*33c0*/                   DSETP.GT.AND P0, PT, R8, R12, PT ;
+        /*33c0*/                   DFMA R8, R16, -R8, 1 ;
 
-        /*33d0*/               @P0 BRA 0x3490 ;
+        /*33d0*/                   DFMA R10, R8, R10, 0.5 ;
 
-        /*33e0*/                   DSETP.NEU.AND P0, PT, R8, R12, PT ;
+        /*33e0*/                   DMUL R8, R6, R8 ;
 
-        /*33f0*/               @P0 BRA 0x3460 ;
+        /*33f0*/                   DFMA R10, R10, R8, R6 ;
 
-        /*3400*/                   DSETP.GT.AND P0, PT, R6, RZ, PT ;
+        /*3400*/                   DMUL R18, R16, R10 ;
 
-        /*3410*/                   DADD R6, -RZ, -R6 ;
+        /*3410*/                   IADD3 R13, R11, -0x100000, RZ ;
 
-        /*3420*/              @!P0 BRA 0x36f0 ;
+        /*3420*/                   IMAD.MOV.U32 R12, RZ, RZ, R10 ;
 
-        /*3430*/                   MOV R6, 0x0 ;
+        /*3430*/                   DFMA R20, R18, -R18, R16 ;
 
-        /*3440*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*3440*/                   DFMA R8, R20, R12, R18 ;
 
-        /*3450*/                   BRA 0x36f0 ;
+        /*3450*/              @!P0 BRA 0x3510 ;
 
-        /*3460*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*3460*/                   IMAD.MOV.U32 R0, RZ, RZ, R10 ;
 
-        /*3470*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*3470*/                   MOV R11, R17 ;
 
-        /*3480*/                   BRA 0x36f0 ;
+        /*3480*/                   IMAD.MOV.U32 R10, RZ, RZ, R16 ;
 
-        /*3490*/                   DADD R10, R8, -R12 ;
+        /*3490*/                   MOV R8, 0x34f0 ;
 
-        /*34a0*/                   MOV R14, 0x0 ;
+        /*34a0*/                   IMAD.MOV.U32 R16, RZ, RZ, R20 ;
 
-        /*34b0*/                   IMAD.MOV.U32 R15, RZ, RZ, 0x3fd80000 ;
+        /*34b0*/                   IMAD.MOV.U32 R17, RZ, RZ, R21 ;
 
-        /*34c0*/                   BMOV.32.CLEAR RZ, B2 ;
+        /*34c0*/                   MOV R21, R13 ;
 
-        /*34d0*/                   BSSY B2, 0x3630 ;
+        /*34d0*/                   IMAD.MOV.U32 R20, RZ, RZ, R6 ;
 
-        /*34e0*/                   MUFU.RSQ64H R9, R11 ;
+        /*34e0*/                   CALL.REL.NOINC 0x3f20 ;
 
-        /*34f0*/                   IADD3 R8, R11, -0x3500000, RZ ;
+        /*34f0*/                   IMAD.MOV.U32 R8, RZ, RZ, R16 ;
 
-        /*3500*/                   ISETP.GE.U32.AND P0, PT, R8, 0x7ca00000, PT ;
+        /*3500*/                   IMAD.MOV.U32 R9, RZ, RZ, R17 ;
 
-        /*3510*/                   DMUL R12, R8, R8 ;
+        /*3510*/                   BSYNC B1 ;
 
-        /*3520*/                   DFMA R12, R10, -R12, 1 ;
+        /*3520*/                   DADD R10, -R4, R8 ;
 
-        /*3530*/                   DFMA R14, R12, R14, 0.5 ;
+        /*3530*/                   DADD R4, -R4, -R8 ;
 
-        /*3540*/                   DMUL R12, R8, R12 ;
+        /*3540*/                   DSETP.GEU.AND P0, PT, R10, RZ, PT ;
 
-        /*3550*/                   DFMA R12, R14, R12, R8 ;
+        /*3550*/              @!P0 BRA 0x35e0 ;
 
-        /*3560*/                   DMUL R18, R10, R12 ;
+        /*3560*/                   IMAD.MOV.U32 R6, RZ, RZ, R4 ;
 
-        /*3570*/                   IADD3 R21, R13, -0x100000, RZ ;
+        /*3570*/                   MOV R7, R5 ;
 
-        /*3580*/                   IMAD.MOV.U32 R20, RZ, RZ, R12 ;
+        /*3580*/                   IMAD.MOV.U32 R14, RZ, RZ, R10 ;
 
-        /*3590*/                   DFMA R16, R18, -R18, R10 ;
+        /*3590*/                   IMAD.MOV.U32 R15, RZ, RZ, R11 ;
 
-        /*35a0*/                   DFMA R14, R16, R20, R18 ;
+        /*35a0*/                   DSETP.GEU.AND P0, PT, R6, RZ, PT ;
 
-        /*35b0*/              @!P0 BRA 0x3620 ;
+        /*35b0*/              @!P0 IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*35c0*/                   MOV R20, R8 ;
+        /*35c0*/              @!P0 MOV R7, 0x7ff00000 ;
 
-        /*35d0*/                   IMAD.MOV.U32 R0, RZ, RZ, R12 ;
+        /*35d0*/                   BRA 0x3630 ;
 
-        /*35e0*/                   MOV R8, 0x3600 ;
+        /*35e0*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*35f0*/                   CALL.REL.NOINC 0x3fe0 ;
+        /*35f0*/                   IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
 
-        /*3600*/                   IMAD.MOV.U32 R14, RZ, RZ, R16 ;
+        /*3600*/                   BRA 0x3630 ;
 
-        /*3610*/                   IMAD.MOV.U32 R15, RZ, RZ, R17 ;
+        /*3610*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
 
-        /*3620*/                   BSYNC B2 ;
+        /*3620*/                   MOV R7, 0x7ff00000 ;
 
-        /*3630*/                   DADD R8, -R6, R14 ;
+        /*3630*/                   BSYNC B0 ;
 
-        /*3640*/                   DADD R6, -R6, -R14 ;
+        /*3640*/                   DSETP.GEU.AND P0, PT, R14, R6, PT ;
 
-        /*3650*/                   DSETP.GEU.AND P0, PT, R8, RZ, PT ;
+        /*3650*/                   FSEL R4, R14, R6, !P0 ;
 
-        /*3660*/              @!P0 BRA 0x36d0 ;
+        /*3660*/                   FSEL R5, R15, R7, !P0 ;
 
-        /*3670*/                   DSETP.GEU.AND P0, PT, R6, RZ, PT ;
+        /*3670*/                   STG.E.64.SYS [R2], R4 ;
 
-        /*3680*/                   IMAD.MOV.U32 R4, RZ, RZ, R8 ;
+        /*3680*/                   EXIT ;
 
-        /*3690*/                   MOV R5, R9 ;
+        /*3690*/              @!PT SHFL.IDX PT, RZ, RZ, RZ, RZ ;
 
-        /*36a0*/              @!P0 IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*36a0*/                   DSETP.GTU.AND P1, PT, |R4|, +INF , PT ;
 
-        /*36b0*/              @!P0 IMAD.MOV.U32 R7, RZ, RZ, 0x7ff00000 ;
+        /*36b0*/                   BMOV.32.CLEAR RZ, B2 ;
 
-        /*36c0*/                   BRA 0x36f0 ;
+        /*36c0*/                   BSSY B2, 0x3940 ;
 
-        /*36d0*/                   IMAD.MOV.U32 R6, RZ, RZ, 0x0 ;
+        /*36d0*/                   BMOV.32.CLEAR RZ, B3 ;
 
-        /*36e0*/                   MOV R7, 0x7ff00000 ;
+        /*36e0*/                   BSSY B3, 0x3790 ;
 
-        /*36f0*/                   BSYNC B1 ;
+        /*36f0*/               @P1 BREAK B3 ;
 
-        /*3700*/                   DSETP.GEU.AND P0, PT, R4, R6, PT ;
+        /*3700*/               @P1 BRA 0x3910 ;
 
-        /*3710*/                   FSEL R4, R4, R6, !P0 ;
+        /*3710*/                   LOP3.LUT R9, R5, 0x7fffffff, RZ, 0xc0, !PT ;
 
-        /*3720*/                   FSEL R5, R5, R7, !P0 ;
+        /*3720*/                   IADD3 R6, R9, -0x1, RZ ;
 
-        /*3730*/                   STG.E.64.SYS [R2], R4 ;
+        /*3730*/                   ISETP.GE.U32.AND P1, PT, R6, 0x7fefffff, PT ;
 
-        /*3740*/                   EXIT ;
+        /*3740*/               @P1 BREAK B3 ;
 
-        /*3750*/              @!PT SHFL.IDX PT, RZ, RZ, RZ, RZ ;
+        /*3750*/               @P1 LOP3.LUT R7, R5, 0x7ff00000, RZ, 0x3c, !PT ;
 
-        /*3760*/                   DSETP.GTU.AND P1, PT, |R4|, +INF , PT ;
+        /*3760*/               @P1 IMAD.MOV.U32 R6, RZ, RZ, RZ ;
 
-        /*3770*/                   BMOV.32.CLEAR RZ, B3 ;
+        /*3770*/               @P1 BRA 0x3930 ;
 
-        /*3780*/                   BSSY B3, 0x3a00 ;
+        /*3780*/                   BSYNC B3 ;
 
-        /*3790*/                   BMOV.32.CLEAR RZ, B4 ;
+        /*3790*/                   ISETP.GE.U32.AND P1, PT, R9, 0x1000001, PT ;
 
-        /*37a0*/                   BSSY B4, 0x3850 ;
+        /*37a0*/              @!P1 BRA 0x3880 ;
 
-        /*37b0*/               @P1 BREAK B4 ;
+        /*37b0*/                   IADD3 R7, R5, -0x3fe00000, RZ ;
 
-        /*37c0*/               @P1 BRA 0x39d0 ;
+        /*37c0*/                   IMAD.MOV.U32 R6, RZ, RZ, R4 ;
 
-        /*37d0*/                   LOP3.LUT R9, R5, 0x7fffffff, RZ, 0xc0, !PT ;
+        /*37d0*/                   MUFU.RCP64H R9, R7 ;
 
-        /*37e0*/                   IADD3 R6, R9, -0x1, RZ ;
+        /*37e0*/                   DFMA R10, -R6, R8, 1 ;
 
-        /*37f0*/                   ISETP.GE.U32.AND P1, PT, R6, 0x7fefffff, PT ;
+        /*37f0*/                   DFMA R10, R10, R10, R10 ;
 
-        /*3800*/               @P1 BREAK B4 ;
+        /*3800*/                   DFMA R10, R8, R10, R8 ;
 
-        /*3810*/               @P1 LOP3.LUT R7, R5, 0x7ff00000, RZ, 0x3c, !PT ;
+        /*3810*/                   DFMA R8, -R6, R10, 1 ;
 
-        /*3820*/               @P1 IMAD.MOV.U32 R6, RZ, RZ, RZ ;
+        /*3820*/                   DFMA R8, R10, R8, R10 ;
 
-        /*3830*/               @P1 BRA 0x39f0 ;
+        /*3830*/                   DMUL R8, R8, 2.2250738585072013831e-308 ;
 
-        /*3840*/                   BSYNC B4 ;
+        /*3840*/                   DFMA R4, -R4, R8, 1 ;
 
-        /*3850*/                   ISETP.GE.U32.AND P1, PT, R9, 0x1000001, PT ;
+        /*3850*/                   DFMA R4, R4, R4, R4 ;
 
-        /*3860*/              @!P1 BRA 0x3940 ;
+        /*3860*/                   DFMA R6, R8, R4, R8 ;
 
-        /*3870*/                   IADD3 R7, R5, -0x3fe00000, RZ ;
+        /*3870*/                   BRA 0x3930 ;
 
-        /*3880*/                   IMAD.MOV.U32 R6, RZ, RZ, R4 ;
+        /*3880*/                   DMUL R4, R4, 8.11296384146066816958e+31 ;
 
-        /*3890*/                   MUFU.RCP64H R9, R7 ;
+        /*3890*/                   MUFU.RCP64H R9, R5 ;
 
-        /*38a0*/                   DFMA R10, -R6, R8, 1 ;
+        /*38a0*/                   DFMA R6, -R4, R8, 1 ;
 
-        /*38b0*/                   DFMA R10, R10, R10, R10 ;
+        /*38b0*/                   DFMA R6, R6, R6, R6 ;
 
-        /*38c0*/                   DFMA R10, R8, R10, R8 ;
+        /*38c0*/                   DFMA R6, R8, R6, R8 ;
 
-        /*38d0*/                   DFMA R8, -R6, R10, 1 ;
+        /*38d0*/                   DFMA R8, -R4, R6, 1 ;
 
-        /*38e0*/                   DFMA R8, R10, R8, R10 ;
+        /*38e0*/                   DFMA R6, R6, R8, R6 ;
 
-        /*38f0*/                   DMUL R8, R8, 2.2250738585072013831e-308 ;
+        /*38f0*/                   DMUL R6, R6, 8.11296384146066816958e+31 ;
 
-        /*3900*/                   DFMA R4, -R4, R8, 1 ;
+        /*3900*/                   BRA 0x3930 ;
 
-        /*3910*/                   DFMA R4, R4, R4, R4 ;
+        /*3910*/                   LOP3.LUT R7, R5, 0x80000, RZ, 0xfc, !PT ;
 
-        /*3920*/                   DFMA R6, R8, R4, R8 ;
+        /*3920*/                   IMAD.MOV.U32 R6, RZ, RZ, R4 ;
 
-        /*3930*/                   BRA 0x39f0 ;
+        /*3930*/                   BSYNC B2 ;
 
-        /*3940*/                   DMUL R4, R4, 8.11296384146066816958e+31 ;
+        /*3940*/                   IMAD.MOV.U32 R4, RZ, RZ, R0 ;
 
-        /*3950*/                   MUFU.RCP64H R9, R5 ;
+        /*3950*/                   MOV R8, R6 ;
 
-        /*3960*/                   DFMA R6, -R4, R8, 1 ;
+        /*3960*/                   IMAD.MOV.U32 R5, RZ, RZ, 0x0 ;
 
-        /*3970*/                   DFMA R6, R6, R6, R6 ;
+        /*3970*/                   IMAD.MOV.U32 R9, RZ, RZ, R7 ;
 
-        /*3980*/                   DFMA R6, R8, R6, R8 ;
+        /*3980*/                   RET.REL.NODEC R4 0x0 ;
 
-        /*3990*/                   DFMA R8, -R4, R6, 1 ;
+        /*3990*/              @!PT SHFL.IDX PT, RZ, RZ, RZ, RZ ;
 
-        /*39a0*/                   DFMA R6, R6, R8, R6 ;
+        /*39a0*/                   LOP3.LUT R6, R5, 0x40000000, RZ, 0xc0, !PT ;
 
-        /*39b0*/                   DMUL R6, R6, 8.11296384146066816958e+31 ;
+        /*39b0*/                   IMAD.MOV.U32 R8, RZ, RZ, RZ ;
 
-        /*39c0*/                   BRA 0x39f0 ;
+        /*39c0*/                   MOV R18, 0x5ff00000 ;
 
-        /*39d0*/                   LOP3.LUT R7, R5, 0x80000, RZ, 0xfc, !PT ;
+        /*39d0*/                   IMAD.MOV.U32 R14, RZ, RZ, 0x1 ;
 
-        /*39e0*/                   IMAD.MOV.U32 R6, RZ, RZ, R4 ;
+        /*39e0*/                   ISETP.GE.U32.AND P0, PT, R6, 0x40000000, PT ;
 
-        /*39f0*/                   BSYNC B3 ;
+        /*39f0*/                   BMOV.32.CLEAR RZ, B2 ;
 
-        /*3a00*/                   IMAD.MOV.U32 R4, RZ, RZ, R0 ;
+        /*3a00*/                   LOP3.LUT R20, R19, 0x7f800000, RZ, 0xc0, !PT ;
 
-        /*3a10*/                   MOV R8, R6 ;
+        /*3a10*/                   BSSY B2, 0x3ed0 ;
 
-        /*3a20*/                   IMAD.MOV.U32 R5, RZ, RZ, 0x0 ;
+        /*3a20*/                   SEL R9, R18, 0x1ff00000, !P0 ;
 
-        /*3a30*/                   IMAD.MOV.U32 R9, RZ, RZ, R7 ;
+        /*3a30*/                   ISETP.GE.U32.AND P0, PT, R20, 0x3e800000, PT ;
 
-        /*3a40*/                   RET.REL.NODEC R4 0x0 ;
+        /*3a40*/                   DMUL R12, R4, R8 ;
 
-        /*3a50*/              @!PT SHFL.IDX PT, RZ, RZ, RZ, RZ ;
+        /*3a50*/                   SEL R11, R18, 0x1ff00000, !P0 ;
 
-        /*3a60*/                   LOP3.LUT R6, R5, 0x40000000, RZ, 0xc0, !PT ;
+        /*3a60*/                   MUFU.RCP64H R15, R13 ;
 
-        /*3a70*/                   IMAD.MOV.U32 R8, RZ, RZ, RZ ;
+        /*3a70*/                   DFMA R6, -R12, R14, 1 ;
 
-        /*3a80*/                   MOV R18, 0x5ff00000 ;
+        /*3a80*/                   DFMA R16, R6, R6, R6 ;
 
-        /*3a90*/                   IMAD.MOV.U32 R14, RZ, RZ, 0x1 ;
+        /*3a90*/                   IMAD.MOV.U32 R6, RZ, RZ, R10 ;
 
-        /*3aa0*/                   ISETP.GE.U32.AND P0, PT, R6, 0x40000000, PT ;
+        /*3aa0*/                   MOV R7, R19 ;
 
-        /*3ab0*/                   BMOV.32.CLEAR RZ, B3 ;
+        /*3ab0*/                   IMAD.MOV.U32 R10, RZ, RZ, RZ ;
 
-        /*3ac0*/                   LOP3.LUT R20, R19, 0x7f800000, RZ, 0xc0, !PT ;
+        /*3ac0*/                   DFMA R16, R14, R16, R14 ;
 
-        /*3ad0*/                   BSSY B3, 0x3f90 ;
+        /*3ad0*/                   DMUL R10, R6, R10 ;
 
-        /*3ae0*/                   SEL R9, R18, 0x1ff00000, !P0 ;
+        /*3ae0*/                   DMUL R14, R10, R16 ;
 
-        /*3af0*/                   ISETP.GE.U32.AND P0, PT, R20, 0x3e800000, PT ;
+        /*3af0*/                   DFMA R10, -R12, R14, R10 ;
 
-        /*3b00*/                   DMUL R12, R4, R8 ;
+        /*3b00*/                   DFMA R14, R16, R10, R14 ;
 
-        /*3b10*/                   SEL R11, R18, 0x1ff00000, !P0 ;
+        /*3b10*/                   DSETP.GT.AND P0, PT, |R14|, RZ, PT ;
 
-        /*3b20*/                   MUFU.RCP64H R15, R13 ;
+        /*3b20*/              @!P0 BRA 0x3df0 ;
 
-        /*3b30*/                   DFMA R6, -R12, R14, 1 ;
+        /*3b30*/                   ISETP.GT.U32.AND P0, PT, R20, 0x3e7fffff, PT ;
 
-        /*3b40*/                   DFMA R16, R6, R6, R6 ;
+        /*3b40*/                   IMAD.MOV.U32 R10, RZ, RZ, RZ ;
 
-        /*3b50*/                   IMAD.MOV.U32 R6, RZ, RZ, R10 ;
+        /*3b50*/                   DMUL R12, R8, R14 ;
 
-        /*3b60*/                   MOV R7, R19 ;
+        /*3b60*/                   SEL R11, R18, 0x1ff00000, P0 ;
 
-        /*3b70*/                   IMAD.MOV.U32 R10, RZ, RZ, RZ ;
+        /*3b70*/                   DMUL R14, R14, R10 ;
 
-        /*3b80*/                   DFMA R16, R14, R16, R14 ;
+        /*3b80*/                   DMUL R12, R10, R12 ;
 
-        /*3b90*/                   DMUL R10, R6, R10 ;
+        /*3b90*/                   DMUL R8, R8, R14 ;
 
-        /*3ba0*/                   DMUL R14, R10, R16 ;
+        /*3ba0*/                   DFMA R10, R4, R12, -R6 ;
 
-        /*3bb0*/                   DFMA R10, -R12, R14, R10 ;
+        /*3bb0*/                   DFMA R14, R4, R8, -R6 ;
 
-        /*3bc0*/                   DFMA R14, R16, R10, R14 ;
+        /*3bc0*/                   DSETP.GT.AND P0, PT, |R10|, |R14|, PT ;
 
-        /*3bd0*/                   DSETP.GT.AND P0, PT, |R14|, RZ, PT ;
+        /*3bd0*/                   FSEL R11, R9, R13, P0 ;
 
-        /*3be0*/              @!P0 BRA 0x3eb0 ;
+        /*3be0*/                   FSEL R8, R8, R12, P0 ;
 
-        /*3bf0*/                   ISETP.GT.U32.AND P0, PT, R20, 0x3e7fffff, PT ;
+        /*3bf0*/                   FSETP.GTU.AND P1, PT, |R11|, 1.469367938527859385e-39, PT ;
 
-        /*3c00*/                   IMAD.MOV.U32 R10, RZ, RZ, RZ ;
+        /*3c00*/                   IMAD.MOV.U32 R9, RZ, RZ, R11 ;
 
-        /*3c10*/                   DMUL R12, R8, R14 ;
+        /*3c10*/               @P1 BRA 0x3ec0 ;
 
-        /*3c20*/                   SEL R11, R18, 0x1ff00000, P0 ;
+        /*3c20*/                   FSETP.GEU.AND P0, PT, |R7|, 1.5046327690525280102e-36, PT ;
 
-        /*3c30*/                   DMUL R14, R14, R10 ;
+        /*3c30*/                   IMAD.MOV.U32 R9, RZ, RZ, R11 ;
 
-        /*3c40*/                   DMUL R12, R10, R12 ;
+        /*3c40*/                   MOV R12, 0x58500000 ;
 
-        /*3c50*/                   DMUL R8, R8, R14 ;
+        /*3c50*/                   LOP3.LUT R10, R8, 0xfffffffe, RZ, 0xc0, !PT ;
 
-        /*3c60*/                   DFMA R10, R4, R12, -R6 ;
+        /*3c60*/                   SEL R13, R12, 0x3ff00000, !P0 ;
 
-        /*3c70*/                   DFMA R14, R4, R8, -R6 ;
+        /*3c70*/                   IMAD.MOV.U32 R12, RZ, RZ, RZ ;
 
-        /*3c80*/                   DSETP.GT.AND P0, PT, |R10|, |R14|, PT ;
+        /*3c80*/                   LOP3.LUT R8, R8, 0x1, RZ, 0xfc, !PT ;
 
-        /*3c90*/                   FSEL R11, R9, R13, P0 ;
+        /*3c90*/                   DMUL R4, R4, R12 ;
 
-        /*3ca0*/                   FSEL R8, R8, R12, P0 ;
+        /*3ca0*/                   DMUL R6, R6, R12 ;
 
-        /*3cb0*/                   FSETP.GTU.AND P1, PT, |R11|, 1.469367938527859385e-39, PT ;
+        /*3cb0*/                   DFMA R12, R10, R4, -R6 ;
 
-        /*3cc0*/                   IMAD.MOV.U32 R9, RZ, RZ, R11 ;
+        /*3cc0*/                   DFMA R14, R8, R4, -R6 ;
 
-        /*3cd0*/               @P1 BRA 0x3f80 ;
+        /*3cd0*/                   DSETP.GT.AND P0, PT, |R12|, |R14|, PT ;
 
-        /*3ce0*/                   FSETP.GEU.AND P0, PT, |R7|, 1.5046327690525280102e-36, PT ;
+        /*3ce0*/                   FSEL R15, R8, R10, P0 ;
 
-        /*3cf0*/                   IMAD.MOV.U32 R9, RZ, RZ, R11 ;
+        /*3cf0*/                   IADD3 R12, P1, R15.reuse, 0x1, RZ ;
 
-        /*3d00*/                   MOV R12, 0x58500000 ;
+        /*3d00*/                   LOP3.LUT R8, R15.reuse, 0x1, RZ, 0xc0, !PT ;
 
-        /*3d10*/                   LOP3.LUT R10, R8, 0xfffffffe, RZ, 0xc0, !PT ;
+        /*3d10*/                   IADD3 R10, P2, R15, -0x1, RZ ;
 
-        /*3d20*/                   SEL R13, R12, 0x3ff00000, !P0 ;
+        /*3d20*/                   IMAD.X R13, RZ, RZ, R11, P1 ;
 
-        /*3d30*/                   IMAD.MOV.U32 R12, RZ, RZ, RZ ;
+        /*3d30*/                   ISETP.NE.U32.AND P0, PT, R8, 0x1, PT ;
 
-        /*3d40*/                   LOP3.LUT R8, R8, 0x1, RZ, 0xfc, !PT ;
+        /*3d40*/                   IADD3.X R9, R11, -0x1, RZ, P2, !PT ;
 
-        /*3d50*/                   DMUL R4, R4, R12 ;
+        /*3d50*/                   FSEL R12, R15, R12, P0 ;
 
-        /*3d60*/                   DMUL R6, R6, R12 ;
+        /*3d60*/                   FSEL R13, R11, R13, P0 ;
 
-        /*3d70*/                   DFMA R12, R10, R4, -R6 ;
+        /*3d70*/                   FSEL R10, R10, R15, P0 ;
 
-        /*3d80*/                   DFMA R14, R8, R4, -R6 ;
+        /*3d80*/                   FSEL R11, R9, R11, P0 ;
 
-        /*3d90*/                   DSETP.GT.AND P0, PT, |R12|, |R14|, PT ;
+        /*3d90*/                   DFMA R8, R4, R12, -R6 ;
 
-        /*3da0*/                   FSEL R15, R8, R10, P0 ;
+        /*3da0*/                   DFMA R4, R4, R10, -R6 ;
 
-        /*3db0*/                   IADD3 R12, P1, R15.reuse, 0x1, RZ ;
+        /*3db0*/                   DSETP.GT.AND P0, PT, |R8|, |R4|, PT ;
 
-        /*3dc0*/                   LOP3.LUT R8, R15.reuse, 0x1, RZ, 0xc0, !PT ;
+        /*3dc0*/                   FSEL R8, R10, R12, P0 ;
 
-        /*3dd0*/                   IADD3 R10, P2, R15, -0x1, RZ ;
+        /*3dd0*/                   FSEL R9, R11, R13, P0 ;
 
-        /*3de0*/                   IMAD.X R13, RZ, RZ, R11, P1 ;
+        /*3de0*/                   BRA 0x3ec0 ;
 
-        /*3df0*/                   ISETP.NE.U32.AND P0, PT, R8, 0x1, PT ;
+        /*3df0*/                   DSETP.NEU.AND P0, PT, R14, RZ, PT ;
 
-        /*3e00*/                   IADD3.X R9, R11, -0x1, RZ, P2, !PT ;
+        /*3e00*/              @!P0 BRA 0x3eb0 ;
 
-        /*3e10*/                   FSEL R12, R15, R12, P0 ;
+        /*3e10*/                   MUFU.RCP64H R9, R5 ;
 
-        /*3e20*/                   FSEL R13, R11, R13, P0 ;
+        /*3e20*/                   MOV R8, RZ ;
 
-        /*3e30*/                   FSEL R10, R10, R15, P0 ;
+        /*3e30*/                   DSETP.GT.AND P1, PT, |R8|, RZ, PT ;
 
-        /*3e40*/                   FSEL R11, R9, R11, P0 ;
+        /*3e40*/              @!P1 DSETP.NEU.AND P0, PT, |R4|, +INF , PT ;
 
-        /*3e50*/                   DFMA R8, R4, R12, -R6 ;
+        /*3e50*/              @!P1 FSEL R4, R4, R8, P0 ;
 
-        /*3e60*/                   DFMA R4, R4, R10, -R6 ;
+        /*3e60*/              @!P1 FSEL R11, R5, R9, P0 ;
 
-        /*3e70*/                   DSETP.GT.AND P0, PT, |R8|, |R4|, PT ;
+        /*3e70*/              @!P1 IMAD.MOV.U32 R8, RZ, RZ, R4 ;
 
-        /*3e80*/                   FSEL R8, R10, R12, P0 ;
+        /*3e80*/              @!P1 IMAD.MOV.U32 R9, RZ, RZ, R11 ;
 
-        /*3e90*/                   FSEL R9, R11, R13, P0 ;
+        /*3e90*/                   DMUL R8, R6, R8 ;
 
-        /*3ea0*/                   BRA 0x3f80 ;
+        /*3ea0*/                   BRA 0x3ec0 ;
 
-        /*3eb0*/                   DSETP.NEU.AND P0, PT, R14, RZ, PT ;
+        /*3eb0*/                   DMUL R8, R6, R4 ;
 
-        /*3ec0*/              @!P0 BRA 0x3f70 ;
+        /*3ec0*/                   BSYNC B2 ;
 
-        /*3ed0*/                   MUFU.RCP64H R9, R5 ;
+        /*3ed0*/                   IMAD.MOV.U32 R4, RZ, RZ, R0 ;
 
-        /*3ee0*/                   MOV R8, RZ ;
+        /*3ee0*/                   MOV R7, R9 ;
 
-        /*3ef0*/                   DSETP.GT.AND P1, PT, |R8|, RZ, PT ;
+        /*3ef0*/                   IMAD.MOV.U32 R5, RZ, RZ, 0x0 ;
 
-        /*3f00*/              @!P1 DSETP.NEU.AND P0, PT, |R4|, +INF , PT ;
+        /*3f00*/                   IMAD.MOV.U32 R6, RZ, RZ, R8 ;
 
-        /*3f10*/              @!P1 FSEL R4, R4, R8, P0 ;
+        /*3f10*/                   RET.REL.NODEC R4 0x0 ;
 
-        /*3f20*/              @!P1 FSEL R11, R5, R9, P0 ;
+        /*3f20*/              @!PT SHFL.IDX PT, RZ, RZ, RZ, RZ ;
 
-        /*3f30*/              @!P1 IMAD.MOV.U32 R8, RZ, RZ, R4 ;
+        /*3f30*/                   ISETP.GE.U32.AND P0, PT, R20, -0x3400000, PT ;
 
-        /*3f40*/              @!P1 IMAD.MOV.U32 R9, RZ, RZ, R11 ;
+        /*3f40*/                   BMOV.32.CLEAR RZ, B2 ;
 
-        /*3f50*/                   DMUL R8, R6, R8 ;
+        /*3f50*/                   BSSY B2, 0x41a0 ;
 
-        /*3f60*/                   BRA 0x3f80 ;
+        /*3f60*/                   IMAD.MOV.U32 R20, RZ, RZ, R0 ;
 
-        /*3f70*/                   DMUL R8, R6, R4 ;
+        /*3f70*/              @!P0 BRA 0x4000 ;
 
-        /*3f80*/                   BSYNC B3 ;
+        /*3f80*/                   DFMA.RM R16, R16, R20, R18 ;
 
-        /*3f90*/                   IMAD.MOV.U32 R4, RZ, RZ, R0 ;
+        /*3f90*/                   IADD3 R18, P0, R16, 0x1, RZ ;
 
-        /*3fa0*/                   MOV R7, R9 ;
+        /*3fa0*/                   IADD3.X R19, RZ, R17, RZ, P0, !PT ;
 
-        /*3fb0*/                   IMAD.MOV.U32 R5, RZ, RZ, 0x0 ;
+        /*3fb0*/                   DFMA.RP R10, -R16, R18, R10 ;
 
-        /*3fc0*/                   IMAD.MOV.U32 R6, RZ, RZ, R8 ;
+        /*3fc0*/                   DSETP.GT.AND P0, PT, R10, RZ, PT ;
 
-        /*3fd0*/                   RET.REL.NODEC R4 0x0 ;
+        /*3fd0*/                   FSEL R16, R18, R16, P0 ;
 
-        /*3fe0*/              @!PT SHFL.IDX PT, RZ, RZ, RZ, RZ ;
+        /*3fe0*/                   FSEL R17, R19, R17, P0 ;
 
-        /*3ff0*/                   ISETP.GE.U32.AND P0, PT, R20, -0x3400000, PT ;
+        /*3ff0*/                   BRA 0x4190 ;
 
-        /*4000*/                   BMOV.32.CLEAR RZ, B3 ;
+        /*4000*/                   DSETP.NE.AND P0, PT, R10, RZ, PT ;
 
-        /*4010*/                   BSSY B3, 0x4260 ;
+        /*4010*/              @!P0 BRA 0x4180 ;
 
-        /*4020*/                   IMAD.MOV.U32 R20, RZ, RZ, R0 ;
+        /*4020*/                   ISETP.GE.AND P0, PT, R11, RZ, PT ;
 
-        /*4030*/              @!P0 BRA 0x40c0 ;
+        /*4030*/              @!P0 IMAD.MOV.U32 R16, RZ, RZ, 0x0 ;
 
-        /*4040*/                   DFMA.RM R16, R16, R20, R18 ;
+        /*4040*/              @!P0 IMAD.MOV.U32 R17, RZ, RZ, -0x80000 ;
 
-        /*4050*/                   IADD3 R18, P0, R16, 0x1, RZ ;
+        /*4050*/              @!P0 BRA 0x4190 ;
 
-        /*4060*/                   IADD3.X R19, RZ, R17, RZ, P0, !PT ;
+        /*4060*/                   ISETP.GT.AND P0, PT, R11, 0x7fefffff, PT ;
 
-        /*4070*/                   DFMA.RP R10, -R16, R18, R10 ;
+        /*4070*/               @P0 BRA 0x4180 ;
 
-        /*4080*/                   DSETP.GT.AND P0, PT, R10, RZ, PT ;
+        /*4080*/                   DMUL R10, R10, 8.11296384146066816958e+31 ;
 
-        /*4090*/                   FSEL R16, R18, R16, P0 ;
+        /*4090*/                   IMAD.MOV.U32 R16, RZ, RZ, RZ ;
 
-        /*40a0*/                   FSEL R17, R19, R17, P0 ;
+        /*40a0*/                   MOV R20, 0x0 ;
 
-        /*40b0*/                   BRA 0x4250 ;
+        /*40b0*/                   IMAD.MOV.U32 R21, RZ, RZ, 0x3fd80000 ;
 
-        /*40c0*/                   DSETP.NE.AND P0, PT, R10, RZ, PT ;
+        /*40c0*/                   MUFU.RSQ64H R17, R11 ;
 
-        /*40d0*/              @!P0 BRA 0x4240 ;
+        /*40d0*/                   DMUL R18, R16, R16 ;
 
-        /*40e0*/                   ISETP.GE.AND P0, PT, R11, RZ, PT ;
+        /*40e0*/                   DFMA R18, R10, -R18, 1 ;
 
-        /*40f0*/              @!P0 IMAD.MOV.U32 R16, RZ, RZ, 0x0 ;
+        /*40f0*/                   DFMA R20, R18, R20, 0.5 ;
 
-        /*4100*/              @!P0 IMAD.MOV.U32 R17, RZ, RZ, -0x80000 ;
+        /*4100*/                   DMUL R18, R16, R18 ;
 
-        /*4110*/              @!P0 BRA 0x4250 ;
+        /*4110*/                   DFMA R18, R20, R18, R16 ;
 
-        /*4120*/                   ISETP.GT.AND P0, PT, R11, 0x7fefffff, PT ;
+        /*4120*/                   DMUL R16, R10, R18 ;
 
-        /*4130*/               @P0 BRA 0x4240 ;
+        /*4130*/                   IADD3 R19, R19, -0x100000, RZ ;
 
-        /*4140*/                   DMUL R10, R10, 8.11296384146066816958e+31 ;
+        /*4140*/                   DFMA R20, R16, -R16, R10 ;
 
-        /*4150*/                   IMAD.MOV.U32 R16, RZ, RZ, RZ ;
+        /*4150*/                   DFMA R16, R18, R20, R16 ;
 
-        /*4160*/                   MOV R20, 0x0 ;
+        /*4160*/                   IADD3 R17, R17, -0x3500000, RZ ;
 
-        /*4170*/                   IMAD.MOV.U32 R21, RZ, RZ, 0x3fd80000 ;
+        /*4170*/                   BRA 0x4190 ;
 
-        /*4180*/                   MUFU.RSQ64H R17, R11 ;
+        /*4180*/                   DADD R16, R10, R10 ;
 
-        /*4190*/                   DMUL R18, R16, R16 ;
+        /*4190*/                   BSYNC B2 ;
 
-        /*41a0*/                   DFMA R18, R10, -R18, 1 ;
+        /*41a0*/                   IMAD.MOV.U32 R9, RZ, RZ, 0x0 ;
 
-        /*41b0*/                   DFMA R20, R18, R20, 0.5 ;
+        /*41b0*/                   RET.REL.NODEC R8 0x0 ;
 
-        /*41c0*/                   DMUL R18, R16, R18 ;
+        /*41c0*/                   BRA 0x41c0;
 
-        /*41d0*/                   DFMA R18, R20, R18, R16 ;
+        /*41d0*/                   NOP;
 
-        /*41e0*/                   DMUL R16, R10, R18 ;
+        /*41e0*/                   NOP;
 
-        /*41f0*/                   IADD3 R19, R19, -0x100000, RZ ;
-
-        /*4200*/                   DFMA R20, R16, -R16, R10 ;
-
-        /*4210*/                   DFMA R16, R18, R20, R16 ;
-
-        /*4220*/                   IADD3 R17, R17, -0x3500000, RZ ;
-
-        /*4230*/                   BRA 0x4250 ;
-
-        /*4240*/                   DADD R16, R10, R10 ;
-
-        /*4250*/                   BSYNC B3 ;
-
-        /*4260*/                   IMAD.MOV.U32 R9, RZ, RZ, 0x0 ;
-
-        /*4270*/                   RET.REL.NODEC R8 0x0 ;
-
-        /*4280*/                   BRA 0x4280;
-
-        /*4290*/                   NOP;
-
-        /*42a0*/                   NOP;
-
-        /*42b0*/                   NOP;
-
-        /*42c0*/                   NOP;
-
-        /*42d0*/                   NOP;
-
-        /*42e0*/                   NOP;
-
-        /*42f0*/                   NOP;
+        /*41f0*/                   NOP;
 
 		............................................................
 

@@ -9,7 +9,7 @@ PTXSTATS=$(dirname $0)/ptx-stats.py
 ARCH=70
 CELERITAS=${HOME}/.local/src/celeritas
 if [ -e ${CELERITAS} ]; then
-  CUDA_FLAGS="${CUDA_FLAGS} -I ${CELERITAS}/src -I ${CELERITAS}/build-opt/src"
+  CUDA_FLAGS="${CUDA_FLAGS} -I${CELERITAS}/src -I${CELERITAS}/test -I${CELERITAS}/build-opt/src"
 fi
 CUDA_FLAGS="${CUDA_FLAGS} -use_fast_math -O3"
 

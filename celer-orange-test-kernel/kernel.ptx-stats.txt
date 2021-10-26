@@ -1,6 +1,6 @@
 abs           1
-add          38
-bra          25
+add          31
+bra          23
 cvt          11
 cvta          7
 div           3
@@ -8,15 +8,15 @@ fma          32
 ld           72
 mad           1
 mov          71
-mul          61
+mul          56
 neg          10
 rcp           4
 rem           1
 selp         22
-setp         75
+setp         73
 shr           7
 sqrt          5
 st           14
 sub          37
 xor           7
-TOTAL       504
+TOTAL       488

@@ -1,0 +1,10 @@
+add           2
+cvta          2
+div           1
+fma           1
+ld            3
+min           1
+mov           3
+mul           1
+st            1
+TOTAL        15

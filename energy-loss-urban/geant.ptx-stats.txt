@@ -1,0 +1,11 @@
+add           3
+cvt           1
+cvta          2
+div           1
+ld            3
+mov           3
+mul           1
+setp          1
+shl           1
+st            1
+TOTAL        17

@@ -1,0 +1,11 @@
+add           2
+and           2
+cvt           1
+cvta          2
+ld            3
+mov           3
+mul           1
+selp          1
+setp          2
+st            1
+TOTAL        18

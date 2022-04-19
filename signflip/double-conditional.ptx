@@ -1,0 +1,64 @@
+
+Fatbin elf code:
+================
+arch = sm_70
+code version = [1,7]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_70
+code version = [7,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed
+
+
+
+
+
+
+
+
+.version 7.5
+.target sm_70
+.address_size 64
+
+
+
+.visible .entry _Z11conditionalPdPKdS1_(
+.param .u64 _Z11conditionalPdPKdS1__param_0,
+.param .u64 _Z11conditionalPdPKdS1__param_1,
+.param .u64 _Z11conditionalPdPKdS1__param_2
+)
+{
+.reg .pred %p<2>;
+.reg .b32 %r<2>;
+.reg .f64 %fd<5>;
+.reg .b64 %rd<11>;
+
+
+ld.param.u64 %rd1, [_Z11conditionalPdPKdS1__param_0];
+ld.param.u64 %rd2, [_Z11conditionalPdPKdS1__param_1];
+ld.param.u64 %rd3, [_Z11conditionalPdPKdS1__param_2];
+cvta.to.global.u64 %rd4, %rd1;
+cvta.to.global.u64 %rd5, %rd2;
+cvta.to.global.u64 %rd6, %rd3;
+mov.u32 %r1, %tid.x;
+mul.wide.s32 %rd7, %r1, 8;
+add.s64 %rd8, %rd6, %rd7;
+ld.global.nc.f64 %fd1, [%rd8];
+setp.gt.f64 %p1, %fd1, 0d0000000000000000;
+selp.f64 %fd2, 0d3FF0000000000000, 0dBFF0000000000000, %p1;
+add.s64 %rd9, %rd5, %rd7;
+ld.global.nc.f64 %fd3, [%rd9];
+mul.f64 %fd4, %fd3, %fd2;
+add.s64 %rd10, %rd4, %rd7;
+st.global.f64 [%rd10], %fd4;
+ret;
+
+}
+

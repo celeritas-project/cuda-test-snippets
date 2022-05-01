@@ -1,0 +1,15 @@
+add           3
+bra           2
+cvt           1
+cvta          3
+div           1
+fma           6
+ld           11
+mov           4
+mul          16
+rcp           2
+setp          2
+sqrt          4
+st            3
+sub           4
+TOTAL        62

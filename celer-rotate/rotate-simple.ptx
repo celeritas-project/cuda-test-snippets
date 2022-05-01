@@ -1,0 +1,84 @@
+
+Fatbin ptx code:
+================
+arch = sm_70
+code version = [7,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed
+
+
+
+
+
+
+
+
+.version 7.5
+.target sm_70
+.address_size 64
+
+
+
+.visible .entry _Z13rotate_kernelPKN9celeritas5ArrayIdLj3EEES3_PS1_(
+.param .u64 _Z13rotate_kernelPKN9celeritas5ArrayIdLj3EEES3_PS1__param_0,
+.param .u64 _Z13rotate_kernelPKN9celeritas5ArrayIdLj3EEES3_PS1__param_1,
+.param .u64 _Z13rotate_kernelPKN9celeritas5ArrayIdLj3EEES3_PS1__param_2
+)
+{
+.reg .pred %p<2>;
+.reg .b32 %r<2>;
+.reg .f64 %fd<31>;
+.reg .b64 %rd<13>;
+
+
+ld.param.u64 %rd3, [_Z13rotate_kernelPKN9celeritas5ArrayIdLj3EEES3_PS1__param_0];
+ld.param.u64 %rd5, [_Z13rotate_kernelPKN9celeritas5ArrayIdLj3EEES3_PS1__param_1];
+ld.param.u64 %rd4, [_Z13rotate_kernelPKN9celeritas5ArrayIdLj3EEES3_PS1__param_2];
+mov.u32 %r1, %tid.x;
+cvt.u64.u32 %rd1, %r1;
+cvta.to.global.u64 %rd6, %rd5;
+mul.wide.u32 %rd7, %r1, 24;
+add.s64 %rd2, %rd6, %rd7;
+ld.global.nc.f64 %fd1, [%rd2+16];
+mul.f64 %fd12, %fd1, %fd1;
+mov.f64 %fd29, 0d3FF0000000000000;
+sub.f64 %fd2, %fd29, %fd12;
+setp.leu.f64 %p1, %fd2, 0d0000000000000000;
+mov.f64 %fd28, 0d0000000000000000;
+mov.f64 %fd30, %fd28;
+@%p1 bra $L__BB0_2;
+
+sqrt.rn.f64 %fd28, %fd2;
+ld.global.nc.f64 %fd13, [%rd2];
+div.rn.f64 %fd29, %fd13, %fd28;
+ld.global.nc.f64 %fd14, [%rd2+8];
+div.rn.f64 %fd30, %fd14, %fd28;
+
+$L__BB0_2:
+cvta.to.global.u64 %rd8, %rd3;
+mul.lo.s64 %rd9, %rd1, 24;
+add.s64 %rd10, %rd8, %rd9;
+ld.global.nc.f64 %fd15, [%rd10];
+ld.global.nc.f64 %fd16, [%rd10+16];
+mul.f64 %fd17, %fd28, %fd16;
+fma.rn.f64 %fd18, %fd1, %fd15, %fd17;
+mul.f64 %fd19, %fd29, %fd18;
+ld.global.nc.f64 %fd20, [%rd10+8];
+mul.f64 %fd21, %fd30, %fd20;
+sub.f64 %fd22, %fd19, %fd21;
+mul.f64 %fd23, %fd30, %fd18;
+fma.rn.f64 %fd24, %fd29, %fd20, %fd23;
+mul.f64 %fd25, %fd28, %fd15;
+mul.f64 %fd26, %fd1, %fd16;
+sub.f64 %fd27, %fd26, %fd25;
+cvta.to.global.u64 %rd11, %rd4;
+add.s64 %rd12, %rd11, %rd9;
+st.global.f64 [%rd12], %fd22;
+st.global.f64 [%rd12+8], %fd24;
+st.global.f64 [%rd12+16], %fd27;
+ret;
+
+}
+

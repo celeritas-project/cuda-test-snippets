@@ -1,0 +1,11 @@
+add           3
+cvta          3
+fma           5
+ld            9
+mov           2
+mul          13
+rcp           2
+sqrt          2
+st            3
+sub           3
+TOTAL        45

@@ -1,0 +1,13 @@
+add           3
+cvt           1
+cvta          3
+div           2
+fma           2
+ld            9
+mov           4
+mul           9
+setp          1
+sqrt          1
+st            3
+sub           3
+TOTAL        41

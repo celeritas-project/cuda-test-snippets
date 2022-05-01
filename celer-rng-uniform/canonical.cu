@@ -1,5 +1,5 @@
 #include "random/RngEngine.hh"
-#include "base/KernelParamCalculator.cuda.hh"
+#include "base/KernelParamCalculator.device.hh"
 
 using namespace celeritas;
 

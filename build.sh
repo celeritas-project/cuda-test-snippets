@@ -9,7 +9,7 @@ PTXSTATS=$(dirname $0)/ptx-stats.py
 ARCH=70
 CELERITAS=${HOME}/.local/src/celeritas
 if [ -e ${CELERITAS} ]; then
-  CUDA_FLAGS="${CUDA_FLAGS} -I${CELERITAS}/src -I${CELERITAS}/test -I${CELERITAS}/build-opt/src"
+  CUDA_FLAGS="${CUDA_FLAGS} -I${CELERITAS}/src -I${CELERITAS}/test -I${CELERITAS}/build-ndebug/src"
 fi
 CUDA_FLAGS="${CUDA_FLAGS} -use_fast_math -O3"
 
@@ -17,8 +17,7 @@ for filename in $*; do
   basename="${filename%.*}"
   tempname=${tempdirname}/${basename##*/}.o
   time nvcc -std=c++14 \
-     -gencode arch=compute_${ARCH},code=compute_${ARCH} \
-     -gencode arch=compute_${ARCH},code=sm_${ARCH} \
+     --gpu-architecture compute_${ARCH} \
      ${CUDA_FLAGS} \
      -c \
      -o ${tempname} \
@@ -29,7 +28,17 @@ for filename in $*; do
   cuobjdump --dump-ptx ${tempname} \
     > ${basename}.ptx
   $PTXSTATS ${basename}.ptx > ${basename}.ptx-stats.txt
-  cuobjdump --dump-sass ${tempname} \
+  cubinname=${tempdirname}/${basename##*/}.cubin
+  time nvcc -std=c++14 \
+     --gpu-architecture compute_${ARCH} \
+     --gpu-code sm_${ARCH} \
+     --cubin  --relocatable-device-code=true \
+     ${CUDA_FLAGS} -G \
+     -c \
+     -o ${cubinname} \
+     ${filename}
+  nvdisasm --print-line-info --print-line-info-inline --print-code \
+    ${cubinname} \
     | sed -e "s'\s*/\* 0x[a-f0-9]\+ \*/\s*$''" \
     > ${basename}.s
 done

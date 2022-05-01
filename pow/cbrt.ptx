@@ -1,16 +1,8 @@
 
-Fatbin elf code:
-================
-arch = sm_35
-code version = [1,7]
-producer = <unknown>
-host = linux
-compile_size = 64bit
-
 Fatbin ptx code:
 ================
-arch = sm_35
-code version = [6,5]
+arch = sm_70
+code version = [7,5]
 producer = <unknown>
 host = linux
 compile_size = 64bit
@@ -23,8 +15,8 @@ compressed
 
 
 
-.version 6.5
-.target sm_35
+.version 7.5
+.target sm_70
 .address_size 64
 
 
@@ -55,17 +47,17 @@ mov.b64 {%r30, %temp}, %fd1;
 mov.b64 {%temp, %r2}, %fd1;
 }
 and.b32 %r31, %r2, 2147483647;
-setp.neu.f64	%p1, %fd1, 0d0000000000000000;
-setp.lt.u32	%p2, %r31, 2146435072;
+setp.neu.f64 %p1, %fd1, 0d0000000000000000;
+setp.lt.u32 %p2, %r31, 2146435072;
 and.pred %p3, %p1, %p2;
-@%p3 bra BB0_2;
-bra.uni BB0_1;
+@%p3 bra $L__BB0_2;
+bra.uni $L__BB0_1;
 
-BB0_2:
+$L__BB0_2:
 shr.u32 %r32, %r31, 20;
+setp.ne.s32 %p4, %r32, 0;
 mov.u32 %r33, 0;
-setp.ne.s32	%p4, %r32, 0;
-@%p4 bra BB0_4;
+@%p4 bra $L__BB0_4;
 
 mov.b64 %fd5, {%r30, %r31};
 mul.f64 %fd6, %fd5, 0d4350000000000000;
@@ -80,18 +72,18 @@ mov.b64 {%temp, %r31}, %fd6;
 shr.u32 %r32, %r31, 20;
 mov.u32 %r33, 18;
 
-BB0_4:
+$L__BB0_4:
 add.s32 %r15, %r32, -1022;
-cvt.rn.f32.s32	%f1, %r15;
+cvt.rn.f32.s32 %f1, %r15;
 mul.ftz.f32 %f2, %f1, 0f3EAAAAAB;
-cvt.rni.ftz.s32.f32	%r16, %f2;
+cvt.rni.ftz.s32.f32 %r16, %f2;
 mad.lo.s32 %r17, %r16, -3145728, %r31;
 mov.b64 %fd7, {%r30, %r17};
-cvt.rn.ftz.f32.f64	%f3, %fd7;
+cvt.rn.ftz.f32.f64 %f3, %fd7;
 lg2.approx.ftz.f32 %f4, %f3;
 mul.ftz.f32 %f5, %f4, 0f3EAAAAAB;
 ex2.approx.ftz.f32 %f6, %f5;
-cvt.ftz.f64.f32	%fd8, %f6;
+cvt.ftz.f64.f32 %fd8, %f6;
 mul.f64 %fd9, %fd8, %fd8;
 {
 .reg .b32 %temp; 
@@ -137,14 +129,14 @@ mov.b64 {%temp, %r27}, %fd22;
 and.b32 %r28, %r2, -2147483648;
 or.b32 %r29, %r27, %r28;
 mov.b64 %fd23, {%r26, %r29};
-bra.uni BB0_5;
+bra.uni $L__BB0_5;
 
-BB0_1:
+$L__BB0_1:
 add.f64 %fd23, %fd1, %fd1;
 
-BB0_5:
+$L__BB0_5:
 st.global.f64 [%rd1], %fd23;
 ret;
-}
 
+}
 

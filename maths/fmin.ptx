@@ -1,16 +1,8 @@
 
-Fatbin elf code:
-================
-arch = sm_35
-code version = [1,7]
-producer = <unknown>
-host = linux
-compile_size = 64bit
-
 Fatbin ptx code:
 ================
-arch = sm_35
-code version = [6,5]
+arch = sm_70
+code version = [7,5]
 producer = <unknown>
 host = linux
 compile_size = 64bit
@@ -23,8 +15,8 @@ compressed
 
 
 
-.version 6.5
-.target sm_35
+.version 7.5
+.target sm_70
 .address_size 64
 
 
@@ -52,6 +44,6 @@ ld.global.f64 %fd2, [%rd7];
 min.f64 %fd3, %fd1, %fd2;
 st.global.f64 [%rd6], %fd3;
 ret;
-}
 
+}
 

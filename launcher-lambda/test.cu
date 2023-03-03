@@ -6,7 +6,7 @@ struct MscData {
 struct UrbanMsc {
   const MscData& data;
 
-  __device__ auto make_calc_thing() const -> decltype(auto) {
+  __device__ decltype(auto) make_calc_thing() const {
     return [this](float step) { return this->data.a * step + this->data.b; };
   }
 };

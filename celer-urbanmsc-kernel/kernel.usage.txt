@@ -13,17 +13,61 @@
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas6detail8UrbanMsc13is_applicableERKNS_13CoreTrackViewEd:
   REG:28 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas6detail8UrbanMsc9calc_stepERKNS_13CoreTrackViewEPNS_19AlongStepLocalStateE:
-  REG:40 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas6detail8UrbanMsc10limit_stepERKNS_13CoreTrackViewEPNS_9StepLimitE:
+  REG:26 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas13CoreTrackView15boundary_actionEv:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas6detail8UrbanMsc10apply_stepERKNS_13CoreTrackViewEPNS_19AlongStepLocalStateE:
-  REG:45 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas6detail8UrbanMsc10apply_stepERKNS_13CoreTrackViewEPNS_9StepLimitE:
+  REG:38 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas12SimTrackView16force_step_limitERKNS_9StepLimitE:
   REG:46 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas7fastpowIdvEET_S1_S1_:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail14UrbanMscHelper15calc_end_energyEd:
+  REG:30 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail14UrbanMscHelper7msc_mfpEv:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail14UrbanMscHelper12calc_msc_mfpENS_8QuantityINS_5units3MevEdEE:
+  REG:28 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas13CoreTrackView18make_particle_viewEv:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas6detail14UrbanMscHelperC1ERKNS_12UrbanMscDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS_17ParticleTrackViewERKNS_16PhysicsTrackViewE:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas6detail17UrbanMscStepLimitC1ERKNS_12UrbanMscDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS0_14UrbanMscHelperENS_8QuantityINS_5units3MevEdEEPNS_16PhysicsTrackViewENS_8OpaqueIdINS_14MaterialRecordEjEEbdd:
+  REG:50 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas15OrangeTrackView11find_safetyEv:
+  REG:26 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas13CoreTrackView15make_rng_engineEv:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas6detail17UrbanMscStepLimitclINS_15XorwowRngEngineEEENS_7MscStepERT_:
+  REG:48 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas6detail12MscStepToGeoC1ERKNS_12UrbanMscDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS0_14UrbanMscHelperENS_8QuantityINS_5units3MevEdEEdd:
+  REG:36 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail12MscStepToGeoclEd:
+  REG:40 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:24 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas13CoreTrackView18make_material_viewEv:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas6detail15UrbanMscScatterC1ERKNS_12UrbanMscDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS0_14UrbanMscHelperERKNS_17ParticleTrackViewERKNS_16PhysicsTrackViewERKNS_12MaterialViewEPNS_15OrangeTrackViewERKNS_7MscStepE:
+  REG:50 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas6detail15UrbanMscScatterclINS_15XorwowRngEngineEEENS_14MscInteractionERT_:
+  REG:43 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas23UniformRealDistributionIdEC1Edd:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas23UniformRealDistributionIdEclINS_15XorwowRngEngineEEEdRT_:
+  REG:26 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail15UrbanMscScatter17simple_scatteringINS_15XorwowRngEngineEEEdRT_:
+  REG:42 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail15UrbanMscScatter16sample_cos_thetaINS_15XorwowRngEngineEEEdRT_:
+  REG:74 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:16 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas12MaterialView16radiation_lengthEv:
+  REG:37 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas18LevelStateAccessorC1EPKNS_15OrangeStateDataILNS_9OwnershipE1ELNS_8MemSpaceE1EEENS_8OpaqueIdINS_6ThreadEjEENS7_INS_5LevelEjEE:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas18LevelStateAccessor3volEv:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas18LevelStateAccessor3posEv:
+  REG:37 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas18LevelStateAccessor3dirEv:
   REG:37 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas18LevelStateAccessor8universeEv:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
@@ -63,6 +107,8 @@
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas10VolumeView13volume_recordERKNS_16OrangeParamsDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS_16SimpleUnitRecordENS_8OpaqueIdINS_6VolumeEjEE:
   REG:36 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas17SimpleUnitTracker6safetyERKNS_5ArrayIdLj3EEENS_8OpaqueIdINS_6VolumeEjEE:
+  REG:34 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas19make_surface_actionINS_6detail18CalcSafetyDistanceEEENS1_13SurfaceActionIT_EERKNS_8SurfacesEOS4_:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas6detail13SurfaceActionINS0_18CalcSafetyDistanceEEclENS_8OpaqueIdINS_7SurfaceEjEE:
@@ -75,8 +121,6 @@
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas6detail11UnitIndexer14global_surfaceENS_8OpaqueIdINS_8UniverseEjEENS2_INS_7SurfaceEjEE:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas15OrangeTrackView11find_safetyEv:
-  REG:26 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas15OrangeTrackView12make_trackerENS_8OpaqueIdINS_8UniverseEjEE:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas15OrangeTrackView13move_internalERKNS_5ArrayIdLj3EEE:
@@ -85,64 +129,56 @@
   REG:34 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas12MaterialViewC1ERKNS_18MaterialParamsDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEENS_8OpaqueIdINS_14MaterialRecordEjEE:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas17MaterialTrackViewC1ERKNS_18MaterialParamsDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS_17MaterialStateDataILS2_1ELS3_1EEENS_8OpaqueIdINS_6ThreadEjEE:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas17ParticleTrackViewC1ERKNS_18ParticleParamsDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS_17ParticleStateDataILS2_1ELS3_1EEENS_8OpaqueIdINS_6ThreadEjEE:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas18generate_canonicalIdNS_15XorwowRngEngineEEET_RT0_:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas8MscRangecvbEv:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas14MscInteractionC1Ev:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas15PhysicsStepView8msc_stepERKNS_7MscStepE:
-  REG:54 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+  REG:44 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas15PhysicsStepView8msc_stepEv:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas12XsCalculatorC1ERKNS_10XsGridDataERKNS_10CollectionIdLNS_9OwnershipE2ELNS_8MemSpaceE1ENS_8OpaqueIdIdjEEEE:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas12XsCalculatorclENS_8QuantityINS_5units3MevEdEE:
+  REG:42 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas16PhysicsTrackView9msc_rangeERKNS_8MscRangeE:
+  REG:51 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas16PhysicsTrackView10value_gridENS_13ValueGridTypeENS_8OpaqueIdINS2_INS_7ProcessEjEEjEE:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas16PhysicsTrackView10eloss_ppidEv:
   REG:37 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas16PhysicsTrackView15make_calculatorINS_12XsCalculatorEEET_NS_8OpaqueIdINS_10XsGridDataEjEE:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas22InverseRangeCalculatorC1ERKNS_10XsGridDataERKNS_10CollectionIdLNS_9OwnershipE2ELNS_8MemSpaceE1ENS_8OpaqueIdIdjEEEE:
   REG:25 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas15XorwowRngEngineC1ERKNS_18XorwowRngStateDataILNS_9OwnershipE1ELNS_8MemSpaceE1EEERKNS_8OpaqueIdINS_6ThreadEjEE:
+  REG:43 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas12SimTrackViewC1ERKNS_12SimStateDataILNS_9OwnershipE1ELNS_8MemSpaceE1EEENS_8OpaqueIdINS_6ThreadEjEE:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas13CoreTrackView13make_geo_viewEv:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas13CoreTrackView18make_material_viewEv:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas13CoreTrackView18make_particle_viewEv:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas13CoreTrackView17make_physics_viewEv:
   REG:25 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas13CoreTrackView22make_physics_step_viewEv:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas13CoreTrackView15make_rng_engineEv:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas12UrbanMscDataILNS_9OwnershipE2ELNS_8MemSpaceE1EE2atENS_8OpaqueIdINS_14MaterialRecordEjEENS4_INS_14ParticleRecordEjEE:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas12UrbanMscDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEcvbEv:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas15UrbanMscScatterC1ERKNS_12UrbanMscDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS_17ParticleTrackViewEPNS_15OrangeTrackViewERKNS_16PhysicsTrackViewERKNS_12MaterialViewERKNS_7MscStepEb:
-  REG:48 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:16 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas15UrbanMscScatter14calc_true_pathEddd:
-  REG:36 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas7fastpowIdvEET_S1_S1_:
+ Function _ZN9celeritas21BernoulliDistributionC1Ed:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas5clampIdEERKT_S3_S3_S3_:
+ Function _ZN9celeritas21BernoulliDistributionclINS_15XorwowRngEngineEEEbRT_:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas15UrbanMscScatter24calc_positron_correctionEd:
-  REG:50 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:24 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas15UrbanMscScatterclINS_15XorwowRngEngineEEENS_14MscInteractionERT_:
-  REG:45 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas15UrbanMscScatter16sample_cos_thetaINS_15XorwowRngEngineEEEdRT_dd:
-  REG:88 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:32 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas15UrbanMscScatter23sample_displacement_dirINS_15XorwowRngEngineEEENS_5ArrayIdLj3EEERT_d:
-  REG:32 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas14from_sphericalIdEENS_5ArrayIT_Lj3EEES2_S2_:
-  REG:28 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas6rotateIdEENS_5ArrayIT_Lj3EEERKS3_S5_:
-  REG:36 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas15UrbanMscScatter17simple_scatteringINS_15XorwowRngEngineEEEdRT_dd:
-  REG:50 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas18generate_canonicalINS_15XorwowRngEngineEEEdRT_:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas17UrbanMscStepLimitC1ERKNS_12UrbanMscDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS_17ParticleTrackViewEPNS_16PhysicsTrackViewENS_8OpaqueIdINS_14MaterialRecordEjEEbdd:
-  REG:38 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas17UrbanMscStepLimitclINS_15XorwowRngEngineEEENS_7MscStepERT_:
-  REG:48 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:16 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas18NormalDistributionIdEC1Edd:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas18NormalDistributionIdEclINS_15XorwowRngEngineEEEdRT_:
   REG:28 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas18generate_canonicalINS_15XorwowRngEngineEEEdRT_:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas6detail19GenerateCanonical32IdEclINS_15XorwowRngEngineEEEdRT_:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas6detail10CalcNormalclINS_12PlaneAlignedILNS_4AxisE0EEEEENS_5ArrayIdLj3EEEOT_:
@@ -187,6 +223,30 @@
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas6detail13SurfaceActionINS0_10CalcNormalEEC1ERKNS_8SurfacesEOS2_:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas6detail14MscStepFromGeoC1ERKNS_18UrbanMscParametersERKNS_7MscStepEdd:
+  REG:36 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail14MscStepFromGeoclEd:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas5clampIdEERKT_S3_S3_S3_:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail14UrbanMscHelper6pmdataEv:
+  REG:25 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail14UrbanMscHelper18calc_inverse_rangeEd:
+  REG:27 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail14UrbanMscHelper8max_stepEv:
+  REG:35 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail15UrbanMscScatter14compute_theta0Ev:
+  REG:48 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas6detail15UrbanMscScatter24calc_displacement_lengthEd:
+  REG:30 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail15UrbanMscScatter23sample_displacement_dirINS_15XorwowRngEngineEEENS_5ArrayIdLj3EEERT_d:
+  REG:32 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas14from_sphericalIdEENS_5ArrayIT_Lj3EEES2_S2_:
+  REG:28 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas6rotateIdEENS_5ArrayIT_Lj3EEERKS3_S5_:
+  REG:36 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail17UrbanMscStepLimit14calc_limit_minEv:
+  REG:43 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas6detail8UrbanMsc14is_geo_limitedERKNS_13CoreTrackViewERKNS_9StepLimitE:
   REG:27 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas6detail16lower_bound_implIRNS_4LessIvEEPKddEET0_S7_S7_RKT1_T_:
@@ -199,10 +259,6 @@
   REG:24 STACK:0 SHARED:0 LOCAL:0 CONSTANT[0]:1872 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas11UrbanMscIdscvbEv:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas18LevelStateAccessor3volEv:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas18LevelStateAccessor3dirEv:
-  REG:37 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas18LevelStateAccessor8boundaryEv:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas8SurfacesC1ERKNS_16OrangeParamsDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS_14SurfacesRecordE:
@@ -285,28 +341,12 @@
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas17SimpleUnitTrackerC1ERKNS_16OrangeParamsDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEENS_8OpaqueIdINS_16SimpleUnitRecordEjEE:
   REG:37 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas17SimpleUnitTracker6safetyERKNS_5ArrayIdLj3EEENS_8OpaqueIdINS_6VolumeEjEE:
-  REG:34 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas17SimpleUnitTracker6normalERKNS_5ArrayIdLj3EEENS_8OpaqueIdINS_7SurfaceEjEE:
   REG:26 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas15OrangeTrackViewC1ERKNS_16OrangeParamsDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS_15OrangeStateDataILS2_1ELS3_1EEENS_8OpaqueIdINS_6ThreadEjEE:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas12MaterialView4zeffEv:
   REG:37 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas12MaterialView16radiation_lengthEv:
-  REG:37 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas17MaterialTrackViewC1ERKNS_18MaterialParamsDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS_17MaterialStateDataILS2_1ELS3_1EEENS_8OpaqueIdINS_6ThreadEjEE:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas17ParticleTrackViewC1ERKNS_18ParticleParamsDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS_17ParticleStateDataILS2_1ELS3_1EEENS_8OpaqueIdINS_6ThreadEjEE:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas23UniformRealDistributionIdEC1Edd:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas23UniformRealDistributionIdEclINS_15XorwowRngEngineEEEdRT_:
-  REG:26 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas8MscRangecvbEv:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas14MscInteractionC1Ev:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas10ValueTablecvbEv:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas15PhysicsStepViewC1ERKNS_17PhysicsParamsDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS_16PhysicsStateDataILS2_1ELS3_1EEENS_8OpaqueIdINS_6ThreadEjEE:
@@ -327,52 +367,36 @@
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas11UniformGrid4findEd:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas12XsCalculatorC1ERKNS_10XsGridDataERKNS_10CollectionIdLNS_9OwnershipE2ELNS_8MemSpaceE1ENS_8OpaqueIdIdjEEEE:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas12XsCalculatorclENS_8QuantityINS_5units3MevEdEE:
-  REG:42 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas16PhysicsTrackViewC1ERKNS_17PhysicsParamsDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS_16PhysicsStateDataILS2_1ELS3_1EEENS_8OpaqueIdINS_14ParticleRecordEjEENSB_INS_14MaterialRecordEjEENSB_INS_6ThreadEjEE:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas16PhysicsTrackView9msc_rangeERKNS_8MscRangeE:
-  REG:51 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas16PhysicsTrackView10value_gridENS_13ValueGridTypeENS_8OpaqueIdINS2_INS_7ProcessEjEEjEE:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas16PhysicsTrackView10eloss_ppidEv:
-  REG:37 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas16PhysicsTrackView15make_calculatorINS_12XsCalculatorEEET_NS_8OpaqueIdINS_10XsGridDataEjEE:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas16PhysicsTrackView15make_calculatorINS_22InverseRangeCalculatorEEET_NS_8OpaqueIdINS_10XsGridDataEjEE:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas15XorwowRngEngineC1ERKNS_18XorwowRngStateDataILNS_9OwnershipE1ELNS_8MemSpaceE1EEERKNS_8OpaqueIdINS_6ThreadEjEE:
-  REG:43 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN9celeritas15XorwowRngEngineclEv:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas13CoreTrackView24propagation_limit_actionEv:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas21BernoulliDistributionC1Ed:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas21BernoulliDistributionclINS_15XorwowRngEngineEEEbRT_:
-  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZNK9celeritas22InverseRangeCalculatorclEd:
   REG:34 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas14UrbanMscHelperC1ERKNS_12UrbanMscDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS_17ParticleTrackViewERKNS_16PhysicsTrackViewE:
-  REG:29 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas14UrbanMscHelper12calc_msc_mfpENS_8QuantityINS_5units3MevEdEE:
-  REG:26 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas14UrbanMscHelper10calc_elossEd:
-  REG:25 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas14UrbanMscHelper15calc_end_energyEd:
-  REG:28 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas14UrbanMscHelper11scaled_zeffEv:
+ Function _ZNK9celeritas12UrbanMscDataILNS_9OwnershipE2ELNS_8MemSpaceE1EE2atENS_8OpaqueIdINS_14MaterialRecordEjEENS4_INS_14ParticleRecordEjEE:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas15UrbanMscScatter14compute_theta0Ed:
-  REG:40 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZN9celeritas15UrbanMscScatter24calc_displacement_lengthEd:
-  REG:30 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas17UrbanMscStepLimit14calc_geom_pathEd:
-  REG:48 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:24 TEXTURE:0 SURFACE:0 SAMPLER:0
- Function _ZNK9celeritas17UrbanMscStepLimit14calc_limit_minEv:
-  REG:43 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail14UrbanMscHelper11scaled_zeffEv:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN9celeritas6detail22UrbanPositronCorrectorC1Ed:
+  REG:37 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZNK9celeritas6detail22UrbanPositronCorrectorclEd:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZZN9celeritas6detail8UrbanMsc10limit_stepERKNS_13CoreTrackViewEPNS_9StepLimitEENKUlvE_clEv:
+  REG:39 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZZN9celeritas6detail8UrbanMsc10apply_stepERKNS_13CoreTrackViewEPNS_9StepLimitEENKUlvE_clEv:
+  REG:38 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZZN9celeritas6detail15UrbanMscScatterclINS_15XorwowRngEngineEEENS_14MscInteractionERT_ENKUlvE_clEv:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZZNK9celeritas6detail15UrbanMscScatter16sample_cos_thetaINS_15XorwowRngEngineEEEdRT_ENKUlvE_clEv:
+  REG:26 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZZNK9celeritas6detail15UrbanMscScatter16sample_cos_thetaINS_15XorwowRngEngineEEEdRT_ENKUlvE0_clEv:
+  REG:42 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZZNK9celeritas6detail15UrbanMscScatter16sample_cos_thetaINS_15XorwowRngEngineEEEdRT_ENKUlvE1_clEv:
+  REG:24 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function fabs:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function fmin:
@@ -395,3 +419,11 @@
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
  Function _ZN39_INTERNAL_a1af0b6e_9_kernel_cu_0ce595603maxEdd:
   REG:24 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZZNK9celeritas6detail14MscStepFromGeoclEdENKUlvE_clEv:
+  REG:42 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZZNK9celeritas6detail22UrbanPositronCorrectorclEdENKUlvE_clEv:
+  REG:42 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:16 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZZN9celeritas6detail15UrbanMscScatterC1ERKNS_12UrbanMscDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS0_14UrbanMscHelperERKNS_17ParticleTrackViewERKNS_16PhysicsTrackViewERKNS_12MaterialViewEPNS_15OrangeTrackViewERKNS_7MscStepEENKUlvE_clEv:
+  REG:35 STACK:0 SHARED:0 LOCAL:0 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZZN9celeritas6detail15UrbanMscScatterC1ERKNS_12UrbanMscDataILNS_9OwnershipE2ELNS_8MemSpaceE1EEERKNS0_14UrbanMscHelperERKNS_17ParticleTrackViewERKNS_16PhysicsTrackViewERKNS_12MaterialViewEPNS_15OrangeTrackViewERKNS_7MscStepEENKUlvE0_clEv:
+  REG:32 STACK:0 SHARED:0 LOCAL:0 CONSTANT[2]:8 TEXTURE:0 SURFACE:0 SAMPLER:0

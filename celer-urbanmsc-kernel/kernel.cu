@@ -21,25 +21,20 @@ __global__ void test_kernel(CoreRef<MemSpace::device> const track_data,
   UrbanMsc msc{msc_data};
 
   auto sim = track.make_sim_view();
-  AlongStepLocalState local;
-  local.step_limit = sim.step_limit();
-  local.geo_step = local.step_limit.step;
-  bool use_msc = msc.is_applicable(track, local.geo_step);
+  auto step_limit = sim.step_limit();
+  bool use_msc = msc.is_applicable(track, step_limit.step);
   if (use_msc) {
-    msc.calc_step(track, &local);
+    msc.limit_step(track, &step_limit);
   }
 
   // Surrogate for propagation
-  if (local.geo_step < 0.1) {
-    local.geo_step = 0.1;
-    local.step_limit.action = track.boundary_action();
+  if (step_limit.step < 0.1) {
+    step_limit.step = 0.1;
+    step_limit.action = track.boundary_action();
   }
   if (use_msc) {
-    msc.apply_step(track, &local);
-  } else {
-    // Step might have been reduced due to geometry boundary
-    local.step_limit.step = local.geo_step;
+    msc.apply_step(track, &step_limit);
   }
 
-  sim.force_step_limit(local.step_limit);
+  sim.force_step_limit(step_limit);
 }

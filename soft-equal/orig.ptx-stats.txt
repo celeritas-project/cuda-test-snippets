@@ -1,0 +1,15 @@
+abs           3
+add           3
+and           4
+cvt           2
+cvta          3
+ld            7
+mov           7
+mul           2
+or            2
+setp          9
+shr           1
+st            1
+sub           1
+xor           2
+TOTAL        47

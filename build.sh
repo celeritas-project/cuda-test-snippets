@@ -12,7 +12,7 @@ if [ -e ${CELERITAS} ]; then
   CUDA_FLAGS="${CUDA_FLAGS} -I${CELERITAS}/src -I${CELERITAS}/test
   -I${CELERITAS}/build-ndebug/include"
 fi
-CUDA_FLAGS="${CUDA_FLAGS} -use_fast_math -O3"
+CUDA_FLAGS="${CUDA_FLAGS} -O3"
 
 for filename in $*; do
   basename="${filename%.*}"
@@ -30,7 +30,7 @@ for filename in $*; do
   time nvcc -std=c++17 \
      --gpu-architecture compute_${ARCH} \
      --gpu-code sm_${ARCH} \
-     --cubin  --relocatable-device-code=true \
+     --cubin \
      ${CUDA_FLAGS} -G \
      -c \
      -o ${cubinname} \

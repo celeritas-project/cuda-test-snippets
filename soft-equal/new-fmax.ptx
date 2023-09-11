@@ -1,0 +1,68 @@
+
+Fatbin ptx code:
+================
+arch = sm_70
+code version = [7,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed
+
+
+
+
+
+
+
+
+.version 7.5
+.target sm_70
+.address_size 64
+
+
+
+.visible .entry _Z17soft_equal_kernelPbPdS0_dd(
+.param .u64 _Z17soft_equal_kernelPbPdS0_dd_param_0,
+.param .u64 _Z17soft_equal_kernelPbPdS0_dd_param_1,
+.param .u64 _Z17soft_equal_kernelPbPdS0_dd_param_2,
+.param .f64 _Z17soft_equal_kernelPbPdS0_dd_param_3,
+.param .f64 _Z17soft_equal_kernelPbPdS0_dd_param_4
+)
+{
+.reg .pred %p<2>;
+.reg .b16 %rs<2>;
+.reg .b32 %r<2>;
+.reg .f64 %fd<12>;
+.reg .b64 %rd<12>;
+
+
+ld.param.u64 %rd1, [_Z17soft_equal_kernelPbPdS0_dd_param_0];
+ld.param.u64 %rd2, [_Z17soft_equal_kernelPbPdS0_dd_param_1];
+ld.param.u64 %rd3, [_Z17soft_equal_kernelPbPdS0_dd_param_2];
+ld.param.f64 %fd1, [_Z17soft_equal_kernelPbPdS0_dd_param_3];
+ld.param.f64 %fd2, [_Z17soft_equal_kernelPbPdS0_dd_param_4];
+cvta.to.global.u64 %rd4, %rd1;
+cvta.to.global.u64 %rd5, %rd3;
+cvta.to.global.u64 %rd6, %rd2;
+mov.u32 %r1, %tid.x;
+cvt.u64.u32 %rd7, %r1;
+mul.wide.u32 %rd8, %r1, 8;
+add.s64 %rd9, %rd6, %rd8;
+ld.global.f64 %fd3, [%rd9];
+add.s64 %rd10, %rd5, %rd8;
+ld.global.f64 %fd4, [%rd10];
+abs.f64 %fd5, %fd3;
+abs.f64 %fd6, %fd4;
+max.f64 %fd7, %fd5, %fd6;
+mul.f64 %fd8, %fd7, %fd2;
+max.f64 %fd9, %fd1, %fd8;
+sub.f64 %fd10, %fd3, %fd4;
+abs.f64 %fd11, %fd10;
+setp.lt.f64 %p1, %fd11, %fd9;
+selp.u16 %rs1, 1, 0, %p1;
+add.s64 %rd11, %rd4, %rd7;
+st.global.u8 [%rd11], %rs1;
+ret;
+
+}
+

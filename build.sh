@@ -7,7 +7,7 @@ tempdirname=$(mktemp -d)
 
 PTXSTATS=$(dirname $0)/ptx-stats.py
 ARCH=70
-CELERITAS=${HOME}/.local/src/celeritas
+CELERITAS=${HOME}/Code/celeritas
 if [ -e ${CELERITAS} ]; then
   CUDA_FLAGS="${CUDA_FLAGS} -I${CELERITAS}/src -I${CELERITAS}/test
   -I${CELERITAS}/build-ndebug/include"

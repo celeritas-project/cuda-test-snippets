@@ -1,0 +1,82 @@
+
+Fatbin ptx code:
+================
+arch = sm_70
+code version = [7,5]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed
+
+
+
+
+
+
+
+
+.version 7.5
+.target sm_70
+.address_size 64
+
+
+
+.visible .entry _ZN9celeritas13test_kernel_2EPKNS_5ArrayIdLj3EEES3_S3_PKNS_10FourVectorEPS1_(
+.param .u64 _ZN9celeritas13test_kernel_2EPKNS_5ArrayIdLj3EEES3_S3_PKNS_10FourVectorEPS1__param_0,
+.param .u64 _ZN9celeritas13test_kernel_2EPKNS_5ArrayIdLj3EEES3_S3_PKNS_10FourVectorEPS1__param_1,
+.param .u64 _ZN9celeritas13test_kernel_2EPKNS_5ArrayIdLj3EEES3_S3_PKNS_10FourVectorEPS1__param_2,
+.param .u64 _ZN9celeritas13test_kernel_2EPKNS_5ArrayIdLj3EEES3_S3_PKNS_10FourVectorEPS1__param_3,
+.param .u64 _ZN9celeritas13test_kernel_2EPKNS_5ArrayIdLj3EEES3_S3_PKNS_10FourVectorEPS1__param_4
+)
+{
+.reg .b32 %r<2>;
+.reg .f64 %fd<22>;
+.reg .b64 %rd<18>;
+
+
+ld.param.u64 %rd1, [_ZN9celeritas13test_kernel_2EPKNS_5ArrayIdLj3EEES3_S3_PKNS_10FourVectorEPS1__param_0];
+ld.param.u64 %rd2, [_ZN9celeritas13test_kernel_2EPKNS_5ArrayIdLj3EEES3_S3_PKNS_10FourVectorEPS1__param_1];
+ld.param.u64 %rd3, [_ZN9celeritas13test_kernel_2EPKNS_5ArrayIdLj3EEES3_S3_PKNS_10FourVectorEPS1__param_2];
+ld.param.u64 %rd4, [_ZN9celeritas13test_kernel_2EPKNS_5ArrayIdLj3EEES3_S3_PKNS_10FourVectorEPS1__param_3];
+ld.param.u64 %rd5, [_ZN9celeritas13test_kernel_2EPKNS_5ArrayIdLj3EEES3_S3_PKNS_10FourVectorEPS1__param_4];
+cvta.to.global.u64 %rd6, %rd5;
+cvta.to.global.u64 %rd7, %rd3;
+cvta.to.global.u64 %rd8, %rd2;
+cvta.to.global.u64 %rd9, %rd1;
+cvta.to.global.u64 %rd10, %rd4;
+mov.u32 %r1, %tid.x;
+mul.wide.u32 %rd11, %r1, 32;
+add.s64 %rd12, %rd10, %rd11;
+ld.global.f64 %fd1, [%rd12];
+ld.global.f64 %fd2, [%rd12+8];
+ld.global.f64 %fd3, [%rd12+16];
+mul.wide.u32 %rd13, %r1, 24;
+add.s64 %rd14, %rd9, %rd13;
+ld.global.f64 %fd4, [%rd14];
+add.s64 %rd15, %rd8, %rd13;
+ld.global.f64 %fd5, [%rd15];
+mul.f64 %fd6, %fd2, %fd5;
+fma.rn.f64 %fd7, %fd1, %fd4, %fd6;
+add.s64 %rd16, %rd7, %rd13;
+ld.global.f64 %fd8, [%rd16];
+fma.rn.f64 %fd9, %fd3, %fd8, %fd7;
+add.s64 %rd17, %rd6, %rd13;
+st.global.f64 [%rd17], %fd9;
+ld.global.f64 %fd10, [%rd14+8];
+ld.global.f64 %fd11, [%rd15+8];
+mul.f64 %fd12, %fd2, %fd11;
+fma.rn.f64 %fd13, %fd1, %fd10, %fd12;
+ld.global.f64 %fd14, [%rd16+8];
+fma.rn.f64 %fd15, %fd3, %fd14, %fd13;
+st.global.f64 [%rd17+8], %fd15;
+ld.global.f64 %fd16, [%rd14+16];
+ld.global.f64 %fd17, [%rd15+16];
+mul.f64 %fd18, %fd2, %fd17;
+fma.rn.f64 %fd19, %fd1, %fd16, %fd18;
+ld.global.f64 %fd20, [%rd16+16];
+fma.rn.f64 %fd21, %fd3, %fd20, %fd19;
+st.global.f64 [%rd17+16], %fd21;
+ret;
+
+}
+

@@ -1,0 +1,6 @@
+
+Resource usage:
+ Common:
+  GLOBAL:0
+ Function _ZN9celeritas11test_kernelEPKNS_5ArrayIdLj3EEES3_S3_PKNS_10FourVectorEPS1_:
+  REG:25 STACK:56 SHARED:0 LOCAL:0 CONSTANT[0]:392 TEXTURE:0 SURFACE:0 SAMPLER:0

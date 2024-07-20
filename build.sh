@@ -36,7 +36,6 @@ for filename in $*; do
      -o ${cubinname} \
      ${filename}
   cuobjdump --dump-resource-usage ${cubinname} \
-    | tail -n +9 \
     > ${basename}.usage.txt
   nvdisasm --print-line-info --print-line-info-inline --print-code \
     ${cubinname} \
